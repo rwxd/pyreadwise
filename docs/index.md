@@ -1,5 +1,9 @@
 # Python Module to use the Readwise API
 
+This module is a wrapper for the Readwise API.
+
+It allows you to easily access your Readwise data in Python.
+
 ## Installation
 
 ```bash
@@ -35,3 +39,11 @@ client = ReadwiseReaderClient('token')
 response = client.create_document('https://www.example.com')
 response.raise_for_status()
 ```
+
+## Documentation
+
+### Readwise API
+
+The Readwise API is documented [here](readwise-api.md).
+
+The Readwise Reader API is documented [here](readwise-reader-api.md).
