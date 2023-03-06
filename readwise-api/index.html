@@ -354,98 +354,98 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#readwise.api.ReadwiseClient" class="md-nav__link">
-    readwise.api.ReadwiseClient
+  <a href="#readwise.api.Readwise" class="md-nav__link">
+    readwise.api.Readwise
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#readwise.api.ReadwiseClient.token" class="md-nav__link">
+  <a href="#readwise.api.Readwise.token" class="md-nav__link">
     token
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#readwise.api.ReadwiseClient.url" class="md-nav__link">
+  <a href="#readwise.api.Readwise.url" class="md-nav__link">
     url
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#readwise.api.ReadwiseClient.__init__" class="md-nav__link">
+  <a href="#readwise.api.Readwise.__init__" class="md-nav__link">
     __init__()
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#readwise.api.ReadwiseClient.add_tag" class="md-nav__link">
+  <a href="#readwise.api.Readwise.add_tag" class="md-nav__link">
     add_tag()
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#readwise.api.ReadwiseClient.create_highlight" class="md-nav__link">
+  <a href="#readwise.api.Readwise.create_highlight" class="md-nav__link">
     create_highlight()
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#readwise.api.ReadwiseClient.delete" class="md-nav__link">
+  <a href="#readwise.api.Readwise.delete" class="md-nav__link">
     delete()
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#readwise.api.ReadwiseClient.delete_tag" class="md-nav__link">
+  <a href="#readwise.api.Readwise.delete_tag" class="md-nav__link">
     delete_tag()
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#readwise.api.ReadwiseClient.get" class="md-nav__link">
+  <a href="#readwise.api.Readwise.get" class="md-nav__link">
     get()
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#readwise.api.ReadwiseClient.get_book_highlights" class="md-nav__link">
+  <a href="#readwise.api.Readwise.get_book_highlights" class="md-nav__link">
     get_book_highlights()
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#readwise.api.ReadwiseClient.get_book_tags" class="md-nav__link">
+  <a href="#readwise.api.Readwise.get_book_tags" class="md-nav__link">
     get_book_tags()
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#readwise.api.ReadwiseClient.get_books" class="md-nav__link">
+  <a href="#readwise.api.Readwise.get_books" class="md-nav__link">
     get_books()
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#readwise.api.ReadwiseClient.get_with_limit_20" class="md-nav__link">
+  <a href="#readwise.api.Readwise.get_with_limit_20" class="md-nav__link">
     get_with_limit_20()
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#readwise.api.ReadwiseClient.post" class="md-nav__link">
+  <a href="#readwise.api.Readwise.post" class="md-nav__link">
     post()
   </a>
   
@@ -514,20 +514,20 @@
 <div class="doc doc-object doc-class">
 
 
-<a id="readwise.api.ReadwiseClient"></a>
+<a id="readwise.api.Readwise"></a>
   <div class="doc doc-contents first">
 
 
 
         <details class="quote">
           <summary>Source code in <code>readwise/api.py</code></summary>
-          <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 19 "></span><span class="k">class</span> <span class="nc">ReadwiseClient</span><span class="p">:</span>
+          <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 19 "></span><span class="k">class</span> <span class="nc">Readwise</span><span class="p">:</span>
 <span class="linenos" data-linenos=" 20 "></span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
 <span class="linenos" data-linenos=" 21 "></span>        <span class="bp">self</span><span class="p">,</span>
 <span class="linenos" data-linenos=" 22 "></span>        <span class="n">token</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 <span class="linenos" data-linenos=" 23 "></span>    <span class="p">):</span>
 <span class="linenos" data-linenos=" 24 "></span><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="linenos" data-linenos=" 25 "></span><span class="sd">        Initialize a ReadwiseClient.</span>
+<span class="linenos" data-linenos=" 25 "></span><span class="sd">        Initialize a Readwise API client.</span>
 <span class="linenos" data-linenos=" 26 "></span>
 <span class="linenos" data-linenos=" 27 "></span><span class="sd">        Documentation for the Readwise API can be found here:</span>
 <span class="linenos" data-linenos=" 28 "></span><span class="sd">        https://readwise.io/api_deets</span>
@@ -843,14 +843,14 @@
 
 
 
-<h2 id="readwise.api.ReadwiseClient.token" class="doc doc-heading">
+<h2 id="readwise.api.Readwise.token" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">token</span> <span class="o">=</span> <span class="n">token</span></code>
   
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
-<a href="#readwise.api.ReadwiseClient.token" class="headerlink" title="Permanent link">⚑</a></h2>
+<a href="#readwise.api.Readwise.token" class="headerlink" title="Permanent link">⚑</a></h2>
 
 
   <div class="doc doc-contents ">
@@ -862,14 +862,14 @@
 
 
 
-<h2 id="readwise.api.ReadwiseClient.url" class="doc doc-heading">
+<h2 id="readwise.api.Readwise.url" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://readwise.io/api/v2&#39;</span></code>
   
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
-<a href="#readwise.api.ReadwiseClient.url" class="headerlink" title="Permanent link">⚑</a></h2>
+<a href="#readwise.api.Readwise.url" class="headerlink" title="Permanent link">⚑</a></h2>
 
 
   <div class="doc doc-contents ">
@@ -883,15 +883,15 @@
 
 
 
-<h2 id="readwise.api.ReadwiseClient.__init__" class="doc doc-heading">
+<h2 id="readwise.api.Readwise.__init__" class="doc doc-heading">
 <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">token</span><span class="p">)</span></code>
 
-<a href="#readwise.api.ReadwiseClient.__init__" class="headerlink" title="Permanent link">⚑</a></h2>
+<a href="#readwise.api.Readwise.__init__" class="headerlink" title="Permanent link">⚑</a></h2>
 
 
   <div class="doc doc-contents ">
   
-      <p>Initialize a ReadwiseClient.</p>
+      <p>Initialize a Readwise API client.</p>
 <p>Documentation for the Readwise API can be found here:
 https://readwise.io/api_deets</p>
 
@@ -926,7 +926,7 @@ https://readwise.io/api_deets</p>
 <span class="linenos" data-linenos="22 "></span>    <span class="n">token</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 <span class="linenos" data-linenos="23 "></span><span class="p">):</span>
 <span class="linenos" data-linenos="24 "></span><span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="linenos" data-linenos="25 "></span><span class="sd">    Initialize a ReadwiseClient.</span>
+<span class="linenos" data-linenos="25 "></span><span class="sd">    Initialize a Readwise API client.</span>
 <span class="linenos" data-linenos="26 "></span>
 <span class="linenos" data-linenos="27 "></span><span class="sd">    Documentation for the Readwise API can be found here:</span>
 <span class="linenos" data-linenos="28 "></span><span class="sd">    https://readwise.io/api_deets</span>
@@ -946,10 +946,10 @@ https://readwise.io/api_deets</p>
 
 
 
-<h2 id="readwise.api.ReadwiseClient.add_tag" class="doc doc-heading">
+<h2 id="readwise.api.Readwise.add_tag" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">add_tag</span><span class="p">(</span><span class="n">book_id</span><span class="p">,</span> <span class="n">tag</span><span class="p">)</span></code>
 
-<a href="#readwise.api.ReadwiseClient.add_tag" class="headerlink" title="Permanent link">⚑</a></h2>
+<a href="#readwise.api.Readwise.add_tag" class="headerlink" title="Permanent link">⚑</a></h2>
 
 
   <div class="doc doc-contents ">
@@ -1033,10 +1033,10 @@ https://readwise.io/api_deets</p>
 
 
 
-<h2 id="readwise.api.ReadwiseClient.create_highlight" class="doc doc-heading">
+<h2 id="readwise.api.Readwise.create_highlight" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">create_highlight</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">author</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">highlighted_at</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">source_url</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s1">&#39;articles&#39;</span><span class="p">,</span> <span class="n">note</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
-<a href="#readwise.api.ReadwiseClient.create_highlight" class="headerlink" title="Permanent link">⚑</a></h2>
+<a href="#readwise.api.Readwise.create_highlight" class="headerlink" title="Permanent link">⚑</a></h2>
 
 
   <div class="doc doc-contents ">
@@ -1172,10 +1172,10 @@ https://readwise.io/api_deets</p>
 
 
 
-<h2 id="readwise.api.ReadwiseClient.delete" class="doc doc-heading">
+<h2 id="readwise.api.Readwise.delete" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">delete</span><span class="p">(</span><span class="n">endpoint</span><span class="p">)</span></code>
 
-<a href="#readwise.api.ReadwiseClient.delete" class="headerlink" title="Permanent link">⚑</a></h2>
+<a href="#readwise.api.Readwise.delete" class="headerlink" title="Permanent link">⚑</a></h2>
 
 
   <div class="doc doc-contents ">
@@ -1255,10 +1255,10 @@ https://readwise.io/api_deets</p>
 
 
 
-<h2 id="readwise.api.ReadwiseClient.delete_tag" class="doc doc-heading">
+<h2 id="readwise.api.Readwise.delete_tag" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">delete_tag</span><span class="p">(</span><span class="n">book_id</span><span class="p">,</span> <span class="n">tag_id</span><span class="p">)</span></code>
 
-<a href="#readwise.api.ReadwiseClient.delete_tag" class="headerlink" title="Permanent link">⚑</a></h2>
+<a href="#readwise.api.Readwise.delete_tag" class="headerlink" title="Permanent link">⚑</a></h2>
 
 
   <div class="doc doc-contents ">
@@ -1330,10 +1330,10 @@ https://readwise.io/api_deets</p>
 
 
 
-<h2 id="readwise.api.ReadwiseClient.get" class="doc doc-heading">
+<h2 id="readwise.api.Readwise.get" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">get</span><span class="p">(</span><span class="n">endpoint</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{})</span></code>
 
-<a href="#readwise.api.ReadwiseClient.get" class="headerlink" title="Permanent link">⚑</a></h2>
+<a href="#readwise.api.Readwise.get" class="headerlink" title="Permanent link">⚑</a></h2>
 
 
   <div class="doc doc-contents ">
@@ -1424,10 +1424,10 @@ https://readwise.io/api_deets</p>
 
 
 
-<h2 id="readwise.api.ReadwiseClient.get_book_highlights" class="doc doc-heading">
+<h2 id="readwise.api.Readwise.get_book_highlights" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">get_book_highlights</span><span class="p">(</span><span class="n">book_id</span><span class="p">)</span></code>
 
-<a href="#readwise.api.ReadwiseClient.get_book_highlights" class="headerlink" title="Permanent link">⚑</a></h2>
+<a href="#readwise.api.Readwise.get_book_highlights" class="headerlink" title="Permanent link">⚑</a></h2>
 
 
   <div class="doc doc-contents ">
@@ -1527,10 +1527,10 @@ https://readwise.io/api_deets</p>
 
 
 
-<h2 id="readwise.api.ReadwiseClient.get_book_tags" class="doc doc-heading">
+<h2 id="readwise.api.Readwise.get_book_tags" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">get_book_tags</span><span class="p">(</span><span class="n">book_id</span><span class="p">)</span></code>
 
-<a href="#readwise.api.ReadwiseClient.get_book_tags" class="headerlink" title="Permanent link">⚑</a></h2>
+<a href="#readwise.api.Readwise.get_book_tags" class="headerlink" title="Permanent link">⚑</a></h2>
 
 
   <div class="doc doc-contents ">
@@ -1610,10 +1610,10 @@ https://readwise.io/api_deets</p>
 
 
 
-<h2 id="readwise.api.ReadwiseClient.get_books" class="doc doc-heading">
+<h2 id="readwise.api.Readwise.get_books" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">get_books</span><span class="p">(</span><span class="n">category</span><span class="p">)</span></code>
 
-<a href="#readwise.api.ReadwiseClient.get_books" class="headerlink" title="Permanent link">⚑</a></h2>
+<a href="#readwise.api.Readwise.get_books" class="headerlink" title="Permanent link">⚑</a></h2>
 
 
   <div class="doc doc-contents ">
@@ -1718,10 +1718,10 @@ https://readwise.io/api_deets</p>
 
 
 
-<h2 id="readwise.api.ReadwiseClient.get_with_limit_20" class="doc doc-heading">
+<h2 id="readwise.api.Readwise.get_with_limit_20" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">get_with_limit_20</span><span class="p">(</span><span class="n">endpoint</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{})</span></code>
 
-<a href="#readwise.api.ReadwiseClient.get_with_limit_20" class="headerlink" title="Permanent link">⚑</a></h2>
+<a href="#readwise.api.Readwise.get_with_limit_20" class="headerlink" title="Permanent link">⚑</a></h2>
 
 
   <div class="doc doc-contents ">
@@ -1813,10 +1813,10 @@ endpoints /highlights/ and /books/ because they return a lot of data.</p>
 
 
 
-<h2 id="readwise.api.ReadwiseClient.post" class="doc doc-heading">
+<h2 id="readwise.api.Readwise.post" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">post</span><span class="p">(</span><span class="n">endpoint</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">{})</span></code>
 
-<a href="#readwise.api.ReadwiseClient.post" class="headerlink" title="Permanent link">⚑</a></h2>
+<a href="#readwise.api.Readwise.post" class="headerlink" title="Permanent link">⚑</a></h2>
 
 
   <div class="doc doc-contents ">

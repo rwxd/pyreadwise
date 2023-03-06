@@ -375,19 +375,6 @@
     Documentation
   </a>
   
-    <nav class="md-nav" aria-label="Documentation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#readwise-api_1" class="md-nav__link">
-    Readwise API
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
     </ul>
@@ -470,9 +457,9 @@
 </code></pre></div>
 <h2 id="quickstart">Quickstart<a class="headerlink" href="#quickstart" title="Permanent link">⚑</a></h2>
 <h3 id="readwise-api">Readwise API<a class="headerlink" href="#readwise-api" title="Permanent link">⚑</a></h3>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="kn">from</span> <span class="nn">readwise</span> <span class="kn">import</span> <span class="n">ReadwiseClient</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="kn">from</span> <span class="nn">readwise</span> <span class="kn">import</span> <span class="n">Readwise</span>
 <span class="linenos" data-linenos=" 2 "></span>
-<span class="linenos" data-linenos=" 3 "></span><span class="n">client</span> <span class="o">=</span> <span class="n">ReadwiseClient</span><span class="p">(</span><span class="s1">&#39;token&#39;</span><span class="p">)</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="n">client</span> <span class="o">=</span> <span class="n">Readwise</span><span class="p">(</span><span class="s1">&#39;token&#39;</span><span class="p">)</span>
 <span class="linenos" data-linenos=" 4 "></span>
 <span class="linenos" data-linenos=" 5 "></span><span class="n">books</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_books</span><span class="p">(</span><span class="n">category</span><span class="o">=</span><span class="s1">&#39;articles&#39;</span><span class="p">)</span>
 <span class="linenos" data-linenos=" 6 "></span>
@@ -484,17 +471,15 @@
 <span class="linenos" data-linenos="12 "></span>            <span class="nb">print</span><span class="p">(</span><span class="n">highlight</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="readwise-readwise-api">Readwise Readwise API<a class="headerlink" href="#readwise-readwise-api" title="Permanent link">⚑</a></h3>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="kn">from</span> <span class="nn">readwise</span> <span class="kn">import</span> <span class="n">ReadwiseReaderClient</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="kn">from</span> <span class="nn">readwise</span> <span class="kn">import</span> <span class="n">ReadwiseReader</span>
 <span class="linenos" data-linenos="2 "></span>
-<span class="linenos" data-linenos="3 "></span><span class="n">client</span> <span class="o">=</span> <span class="n">ReadwiseReaderClient</span><span class="p">(</span><span class="s1">&#39;token&#39;</span><span class="p">)</span>
+<span class="linenos" data-linenos="3 "></span><span class="n">client</span> <span class="o">=</span> <span class="n">ReadwiseReader</span><span class="p">(</span><span class="s1">&#39;token&#39;</span><span class="p">)</span>
 <span class="linenos" data-linenos="4 "></span>
 <span class="linenos" data-linenos="5 "></span><span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">create_document</span><span class="p">(</span><span class="s1">&#39;https://www.example.com&#39;</span><span class="p">)</span>
 <span class="linenos" data-linenos="6 "></span><span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
 </code></pre></div>
 <h2 id="documentation">Documentation<a class="headerlink" href="#documentation" title="Permanent link">⚑</a></h2>
-<h3 id="readwise-api_1">Readwise API<a class="headerlink" href="#readwise-api_1" title="Permanent link">⚑</a></h3>
-<p>The Readwise API is documented <a href="readwise-api/">here</a>.</p>
-<p>The Readwise Reader API is documented <a href="readwise-reader-api/">here</a>.</p>
+<p>The documentation can be found at <a href="https://rwxd.github.io/pyreadwise/">https://rwxd.github.io/pyreadwise/</a></p>
 
 
 

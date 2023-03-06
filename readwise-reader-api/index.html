@@ -369,49 +369,49 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#readwise.api.ReadwiseReaderClient" class="md-nav__link">
-    readwise.api.ReadwiseReaderClient
+  <a href="#readwise.api.ReadwiseReader" class="md-nav__link">
+    readwise.api.ReadwiseReader
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#readwise.api.ReadwiseReaderClient.token" class="md-nav__link">
+  <a href="#readwise.api.ReadwiseReader.token" class="md-nav__link">
     token
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#readwise.api.ReadwiseReaderClient.url" class="md-nav__link">
+  <a href="#readwise.api.ReadwiseReader.url" class="md-nav__link">
     url
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#readwise.api.ReadwiseReaderClient.__init__" class="md-nav__link">
+  <a href="#readwise.api.ReadwiseReader.__init__" class="md-nav__link">
     __init__()
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#readwise.api.ReadwiseReaderClient.create_document" class="md-nav__link">
+  <a href="#readwise.api.ReadwiseReader.create_document" class="md-nav__link">
     create_document()
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#readwise.api.ReadwiseReaderClient.get" class="md-nav__link">
+  <a href="#readwise.api.ReadwiseReader.get" class="md-nav__link">
     get()
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#readwise.api.ReadwiseReaderClient.post" class="md-nav__link">
+  <a href="#readwise.api.ReadwiseReader.post" class="md-nav__link">
     post()
   </a>
   
@@ -465,20 +465,20 @@
 <div class="doc doc-object doc-class">
 
 
-<a id="readwise.api.ReadwiseReaderClient"></a>
+<a id="readwise.api.ReadwiseReader"></a>
   <div class="doc doc-contents first">
 
 
 
         <details class="quote">
           <summary>Source code in <code>readwise/api.py</code></summary>
-          <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="326 "></span><span class="k">class</span> <span class="nc">ReadwiseReaderClient</span><span class="p">:</span>
+          <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="326 "></span><span class="k">class</span> <span class="nc">ReadwiseReader</span><span class="p">:</span>
 <span class="linenos" data-linenos="327 "></span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
 <span class="linenos" data-linenos="328 "></span>        <span class="bp">self</span><span class="p">,</span>
 <span class="linenos" data-linenos="329 "></span>        <span class="n">token</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 <span class="linenos" data-linenos="330 "></span>    <span class="p">):</span>
 <span class="linenos" data-linenos="331 "></span><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="linenos" data-linenos="332 "></span><span class="sd">        Readwise Reader Connector.</span>
+<span class="linenos" data-linenos="332 "></span><span class="sd">        Readwise Reader API client.</span>
 <span class="linenos" data-linenos="333 "></span>
 <span class="linenos" data-linenos="334 "></span><span class="sd">        Documentation for the Readwise Reader API can be found here:</span>
 <span class="linenos" data-linenos="335 "></span><span class="sd">        https://readwise.io/reader_api</span>
@@ -536,7 +536,7 @@
 <span class="linenos" data-linenos="387 "></span>
 <span class="linenos" data-linenos="388 "></span>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{})</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
 <span class="linenos" data-linenos="389 "></span><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="linenos" data-linenos="390 "></span><span class="sd">        Make a GET request to the Readwise Reader API.</span>
+<span class="linenos" data-linenos="390 "></span><span class="sd">        Make a GET request to the Readwise Reader API client.</span>
 <span class="linenos" data-linenos="391 "></span>
 <span class="linenos" data-linenos="392 "></span><span class="sd">        Args:</span>
 <span class="linenos" data-linenos="393 "></span><span class="sd">            endpoint: API endpoints</span>
@@ -646,14 +646,14 @@
 
 
 
-<h2 id="readwise.api.ReadwiseReaderClient.token" class="doc doc-heading">
+<h2 id="readwise.api.ReadwiseReader.token" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">token</span> <span class="o">=</span> <span class="n">token</span></code>
   
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
-<a href="#readwise.api.ReadwiseReaderClient.token" class="headerlink" title="Permanent link">⚑</a></h2>
+<a href="#readwise.api.ReadwiseReader.token" class="headerlink" title="Permanent link">⚑</a></h2>
 
 
   <div class="doc doc-contents ">
@@ -665,14 +665,14 @@
 
 
 
-<h2 id="readwise.api.ReadwiseReaderClient.url" class="doc doc-heading">
+<h2 id="readwise.api.ReadwiseReader.url" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://readwise.io/api/v3&#39;</span></code>
   
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
-<a href="#readwise.api.ReadwiseReaderClient.url" class="headerlink" title="Permanent link">⚑</a></h2>
+<a href="#readwise.api.ReadwiseReader.url" class="headerlink" title="Permanent link">⚑</a></h2>
 
 
   <div class="doc doc-contents ">
@@ -686,15 +686,15 @@
 
 
 
-<h2 id="readwise.api.ReadwiseReaderClient.__init__" class="doc doc-heading">
+<h2 id="readwise.api.ReadwiseReader.__init__" class="doc doc-heading">
 <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">token</span><span class="p">)</span></code>
 
-<a href="#readwise.api.ReadwiseReaderClient.__init__" class="headerlink" title="Permanent link">⚑</a></h2>
+<a href="#readwise.api.ReadwiseReader.__init__" class="headerlink" title="Permanent link">⚑</a></h2>
 
 
   <div class="doc doc-contents ">
   
-      <p>Readwise Reader Connector.</p>
+      <p>Readwise Reader API client.</p>
 <p>Documentation for the Readwise Reader API can be found here:
 https://readwise.io/reader_api</p>
 
@@ -729,7 +729,7 @@ https://readwise.io/reader_api</p>
 <span class="linenos" data-linenos="329 "></span>    <span class="n">token</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 <span class="linenos" data-linenos="330 "></span><span class="p">):</span>
 <span class="linenos" data-linenos="331 "></span><span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="linenos" data-linenos="332 "></span><span class="sd">    Readwise Reader Connector.</span>
+<span class="linenos" data-linenos="332 "></span><span class="sd">    Readwise Reader API client.</span>
 <span class="linenos" data-linenos="333 "></span>
 <span class="linenos" data-linenos="334 "></span><span class="sd">    Documentation for the Readwise Reader API can be found here:</span>
 <span class="linenos" data-linenos="335 "></span><span class="sd">    https://readwise.io/reader_api</span>
@@ -749,10 +749,10 @@ https://readwise.io/reader_api</p>
 
 
 
-<h2 id="readwise.api.ReadwiseReaderClient.create_document" class="doc doc-heading">
+<h2 id="readwise.api.ReadwiseReader.create_document" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">create_document</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">html</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">should_clean_html</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">author</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">summary</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">published_at</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">image_url</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="s1">&#39;new&#39;</span><span class="p">,</span> <span class="n">saved_using</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="p">[])</span></code>
 
-<a href="#readwise.api.ReadwiseReaderClient.create_document" class="headerlink" title="Permanent link">⚑</a></h2>
+<a href="#readwise.api.ReadwiseReader.create_document" class="headerlink" title="Permanent link">⚑</a></h2>
 
 
   <div class="doc doc-contents ">
@@ -977,15 +977,15 @@ https://readwise.io/reader_api</p>
 
 
 
-<h2 id="readwise.api.ReadwiseReaderClient.get" class="doc doc-heading">
+<h2 id="readwise.api.ReadwiseReader.get" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">get</span><span class="p">(</span><span class="n">endpoint</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{})</span></code>
 
-<a href="#readwise.api.ReadwiseReaderClient.get" class="headerlink" title="Permanent link">⚑</a></h2>
+<a href="#readwise.api.ReadwiseReader.get" class="headerlink" title="Permanent link">⚑</a></h2>
 
 
   <div class="doc doc-contents ">
   
-      <p>Make a GET request to the Readwise Reader API.</p>
+      <p>Make a GET request to the Readwise Reader API client.</p>
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -1043,7 +1043,7 @@ https://readwise.io/reader_api</p>
         <summary>Source code in <code>readwise/api.py</code></summary>
         <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="388 "></span><span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{})</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
 <span class="linenos" data-linenos="389 "></span><span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="linenos" data-linenos="390 "></span><span class="sd">    Make a GET request to the Readwise Reader API.</span>
+<span class="linenos" data-linenos="390 "></span><span class="sd">    Make a GET request to the Readwise Reader API client.</span>
 <span class="linenos" data-linenos="391 "></span>
 <span class="linenos" data-linenos="392 "></span><span class="sd">    Args:</span>
 <span class="linenos" data-linenos="393 "></span><span class="sd">        endpoint: API endpoints</span>
@@ -1064,10 +1064,10 @@ https://readwise.io/reader_api</p>
 
 
 
-<h2 id="readwise.api.ReadwiseReaderClient.post" class="doc doc-heading">
+<h2 id="readwise.api.ReadwiseReader.post" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">post</span><span class="p">(</span><span class="n">endpoint</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">{})</span></code>
 
-<a href="#readwise.api.ReadwiseReaderClient.post" class="headerlink" title="Permanent link">⚑</a></h2>
+<a href="#readwise.api.ReadwiseReader.post" class="headerlink" title="Permanent link">⚑</a></h2>
 
 
   <div class="doc doc-contents ">
