@@ -1,0 +1,1266 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Python module to use the readwise api">
+      
+      
+        <meta name="author" content="rwxd">
+      
+      
+        <link rel="canonical" href="https://rwxd.github.io/pyreadwise/readwise-reader-api/">
+      
+      
+        <link rel="prev" href="../readwise-api/">
+      
+      
+        <link rel="next" href="../models/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.0">
+    
+    
+      
+        <title>Readwise Reader API - pyreadwise</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.f79797b0.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CFira+Code:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"Fira Code"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#readwise-reader-api" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="pyreadwise" class="md-header__button md-logo" aria-label="pyreadwise" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2m-8 5H9v2c0 1.1-.9 2-2 2 1.1 0 2 .9 2 2v2h2v2H9c-1.1 0-2-.9-2-2v-1c0-1.1-.9-2-2-2v-2c1.1 0 2-.9 2-2V8c0-1.1.9-2 2-2h2v2m8 5c-1.1 0-2 .9-2 2v1c0 1.1-.9 2-2 2h-2v-2h2v-2c0-1.1.9-2 2-2-1.1 0-2-.9-2-2V8h-2V6h2c1.1 0 2 .9 2 2v1c0 1.1.9 2 2 2v2Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            pyreadwise
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Readwise Reader API
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+            </label>
+          
+        
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/rwxd/pyreadwise" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    pyreadwise
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="pyreadwise" class="md-nav__button md-logo" aria-label="pyreadwise" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2m-8 5H9v2c0 1.1-.9 2-2 2 1.1 0 2 .9 2 2v2h2v2H9c-1.1 0-2-.9-2-2v-1c0-1.1-.9-2-2-2v-2c1.1 0 2-.9 2-2V8c0-1.1.9-2 2-2h2v2m8 5c-1.1 0-2 .9-2 2v1c0 1.1-.9 2-2 2h-2v-2h2v-2c0-1.1.9-2 2-2-1.1 0-2-.9-2-2V8h-2V6h2c1.1 0 2 .9 2 2v1c0 1.1.9 2 2 2v2Z"/></svg>
+
+    </a>
+    pyreadwise
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/rwxd/pyreadwise" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    pyreadwise
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Code Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Code Reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Code Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../readwise-api/" class="md-nav__link">
+        Readwise API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Readwise Reader API
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Readwise Reader API
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#readwise.api.ReadwiseReaderClient" class="md-nav__link">
+    readwise.api.ReadwiseReaderClient
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#readwise.api.ReadwiseReaderClient.token" class="md-nav__link">
+    token
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#readwise.api.ReadwiseReaderClient.url" class="md-nav__link">
+    url
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#readwise.api.ReadwiseReaderClient.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#readwise.api.ReadwiseReaderClient.create_document" class="md-nav__link">
+    create_document()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#readwise.api.ReadwiseReaderClient.get" class="md-nav__link">
+    get()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#readwise.api.ReadwiseReaderClient.post" class="md-nav__link">
+    post()
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../models/" class="md-nav__link">
+        Models
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#readwise.api.ReadwiseReaderClient" class="md-nav__link">
+    readwise.api.ReadwiseReaderClient
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#readwise.api.ReadwiseReaderClient.token" class="md-nav__link">
+    token
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#readwise.api.ReadwiseReaderClient.url" class="md-nav__link">
+    url
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#readwise.api.ReadwiseReaderClient.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#readwise.api.ReadwiseReaderClient.create_document" class="md-nav__link">
+    create_document()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#readwise.api.ReadwiseReaderClient.get" class="md-nav__link">
+    get()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#readwise.api.ReadwiseReaderClient.post" class="md-nav__link">
+    post()
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+
+<h1 id="readwise-reader-api">Readwise Reader API<a class="headerlink" href="#readwise-reader-api" title="Permanent link">⚑</a></h1>
+
+
+<div class="doc doc-object doc-class">
+
+
+<a id="readwise.api.ReadwiseReaderClient"></a>
+  <div class="doc doc-contents first">
+
+
+
+        <details class="quote">
+          <summary>Source code in <code>readwise/api.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="326 "></span><span class="k">class</span> <span class="nc">ReadwiseReaderClient</span><span class="p">:</span>
+<span class="linenos" data-linenos="327 "></span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+<span class="linenos" data-linenos="328 "></span>        <span class="bp">self</span><span class="p">,</span>
+<span class="linenos" data-linenos="329 "></span>        <span class="n">token</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<span class="linenos" data-linenos="330 "></span>    <span class="p">):</span>
+<span class="linenos" data-linenos="331 "></span><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="332 "></span><span class="sd">        Readwise Reader Connector.</span>
+<span class="linenos" data-linenos="333 "></span>
+<span class="linenos" data-linenos="334 "></span><span class="sd">        Documentation for the Readwise Reader API can be found here:</span>
+<span class="linenos" data-linenos="335 "></span><span class="sd">        https://readwise.io/reader_api</span>
+<span class="linenos" data-linenos="336 "></span>
+<span class="linenos" data-linenos="337 "></span><span class="sd">        Args:</span>
+<span class="linenos" data-linenos="338 "></span><span class="sd">            token: Readwise Reader Connector token</span>
+<span class="linenos" data-linenos="339 "></span><span class="sd">        &#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="340 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">token</span> <span class="o">=</span> <span class="n">token</span>
+<span class="linenos" data-linenos="341 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://readwise.io/api/v3&#39;</span>
+<span class="linenos" data-linenos="342 "></span>
+<span class="linenos" data-linenos="343 "></span>    <span class="nd">@property</span>
+<span class="linenos" data-linenos="344 "></span>    <span class="k">def</span> <span class="nf">_session</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Session</span><span class="p">:</span>
+<span class="linenos" data-linenos="345 "></span><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="346 "></span><span class="sd">        Session object for making requests.</span>
+<span class="linenos" data-linenos="347 "></span><span class="sd">        The headers are set to include the token.</span>
+<span class="linenos" data-linenos="348 "></span><span class="sd">        &#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="349 "></span>        <span class="n">session</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
+<span class="linenos" data-linenos="350 "></span>        <span class="n">session</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+<span class="linenos" data-linenos="351 "></span>            <span class="p">{</span>
+<span class="linenos" data-linenos="352 "></span>                <span class="s1">&#39;Accept&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">,</span>
+<span class="linenos" data-linenos="353 "></span>                <span class="s1">&#39;Authorization&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;Token </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">token</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+<span class="linenos" data-linenos="354 "></span>            <span class="p">}</span>
+<span class="linenos" data-linenos="355 "></span>        <span class="p">)</span>
+<span class="linenos" data-linenos="356 "></span>        <span class="k">return</span> <span class="n">session</span>
+<span class="linenos" data-linenos="357 "></span>
+<span class="linenos" data-linenos="358 "></span>    <span class="nd">@on_exception</span><span class="p">(</span><span class="n">expo</span><span class="p">,</span> <span class="n">RateLimitException</span><span class="p">,</span> <span class="n">max_tries</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="linenos" data-linenos="359 "></span>    <span class="nd">@sleep_and_retry</span>
+<span class="linenos" data-linenos="360 "></span>    <span class="nd">@limits</span><span class="p">(</span><span class="n">calls</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+<span class="linenos" data-linenos="361 "></span>    <span class="k">def</span> <span class="nf">_request</span><span class="p">(</span>
+<span class="linenos" data-linenos="362 "></span>        <span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{},</span> <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="linenos" data-linenos="363 "></span>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
+<span class="linenos" data-linenos="364 "></span><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="365 "></span><span class="sd">        Make a request to the Readwise Reader API.</span>
+<span class="linenos" data-linenos="366 "></span><span class="sd">        The request is rate limited to 20 calls per minute.</span>
+<span class="linenos" data-linenos="367 "></span>
+<span class="linenos" data-linenos="368 "></span><span class="sd">        Args:</span>
+<span class="linenos" data-linenos="369 "></span><span class="sd">            method: HTTP method</span>
+<span class="linenos" data-linenos="370 "></span><span class="sd">            endpoint: API endpoints</span>
+<span class="linenos" data-linenos="371 "></span><span class="sd">            params: Query parameters</span>
+<span class="linenos" data-linenos="372 "></span><span class="sd">            data: Request body</span>
+<span class="linenos" data-linenos="373 "></span>
+<span class="linenos" data-linenos="374 "></span><span class="sd">        Returns:</span>
+<span class="linenos" data-linenos="375 "></span><span class="sd">            requests.Response</span>
+<span class="linenos" data-linenos="376 "></span><span class="sd">        &#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="377 "></span>        <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">+</span> <span class="n">endpoint</span>
+<span class="linenos" data-linenos="378 "></span>        <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Calling &quot;</span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s1">&quot; on &quot;</span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s1">&quot; with params: </span><span class="si">{</span><span class="n">params</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="linenos" data-linenos="379 "></span>        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_session</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+<span class="linenos" data-linenos="380 "></span>        <span class="k">while</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">429</span><span class="p">:</span>
+<span class="linenos" data-linenos="381 "></span>            <span class="n">seconds</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s1">&#39;Retry-After&#39;</span><span class="p">])</span>
+<span class="linenos" data-linenos="382 "></span>            <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Rate limited by Readwise, retrying in </span><span class="si">{</span><span class="n">seconds</span><span class="si">}</span><span class="s1"> seconds&#39;</span><span class="p">)</span>
+<span class="linenos" data-linenos="383 "></span>            <span class="n">sleep</span><span class="p">(</span><span class="n">seconds</span><span class="p">)</span>
+<span class="linenos" data-linenos="384 "></span>            <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_session</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+<span class="linenos" data-linenos="385 "></span>        <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+<span class="linenos" data-linenos="386 "></span>        <span class="k">return</span> <span class="n">response</span>
+<span class="linenos" data-linenos="387 "></span>
+<span class="linenos" data-linenos="388 "></span>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{})</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
+<span class="linenos" data-linenos="389 "></span><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="390 "></span><span class="sd">        Make a GET request to the Readwise Reader API.</span>
+<span class="linenos" data-linenos="391 "></span>
+<span class="linenos" data-linenos="392 "></span><span class="sd">        Args:</span>
+<span class="linenos" data-linenos="393 "></span><span class="sd">            endpoint: API endpoints</span>
+<span class="linenos" data-linenos="394 "></span><span class="sd">            params: Query parameters</span>
+<span class="linenos" data-linenos="395 "></span>
+<span class="linenos" data-linenos="396 "></span><span class="sd">        Returns:</span>
+<span class="linenos" data-linenos="397 "></span><span class="sd">            requests.Response</span>
+<span class="linenos" data-linenos="398 "></span><span class="sd">        &#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="399 "></span>        <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Getting &quot;</span><span class="si">{</span><span class="n">endpoint</span><span class="si">}</span><span class="s1">&quot; with params: </span><span class="si">{</span><span class="n">params</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="linenos" data-linenos="400 "></span>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+<span class="linenos" data-linenos="401 "></span>
+<span class="linenos" data-linenos="402 "></span>    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{})</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
+<span class="linenos" data-linenos="403 "></span><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="404 "></span><span class="sd">        Make a POST request to the Readwise Reader API.</span>
+<span class="linenos" data-linenos="405 "></span>
+<span class="linenos" data-linenos="406 "></span><span class="sd">        Args:</span>
+<span class="linenos" data-linenos="407 "></span><span class="sd">            endpoint: API endpoints</span>
+<span class="linenos" data-linenos="408 "></span><span class="sd">            data: Request body</span>
+<span class="linenos" data-linenos="409 "></span>
+<span class="linenos" data-linenos="410 "></span><span class="sd">        Returns:</span>
+<span class="linenos" data-linenos="411 "></span><span class="sd">            requests.Response</span>
+<span class="linenos" data-linenos="412 "></span><span class="sd">        &#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="413 "></span>        <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">+</span> <span class="n">endpoint</span>
+<span class="linenos" data-linenos="414 "></span>        <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Posting &quot;</span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s1">&quot; with data: </span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="linenos" data-linenos="415 "></span>        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_request</span><span class="p">(</span><span class="s1">&#39;POST&#39;</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+<span class="linenos" data-linenos="416 "></span>        <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+<span class="linenos" data-linenos="417 "></span>        <span class="k">return</span> <span class="n">response</span>
+<span class="linenos" data-linenos="418 "></span>
+<span class="linenos" data-linenos="419 "></span>    <span class="k">def</span> <span class="nf">create_document</span><span class="p">(</span>
+<span class="linenos" data-linenos="420 "></span>        <span class="bp">self</span><span class="p">,</span>
+<span class="linenos" data-linenos="421 "></span>        <span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<span class="linenos" data-linenos="422 "></span>        <span class="n">html</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="linenos" data-linenos="423 "></span>        <span class="n">should_clean_html</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="linenos" data-linenos="424 "></span>        <span class="n">title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="linenos" data-linenos="425 "></span>        <span class="n">author</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="linenos" data-linenos="426 "></span>        <span class="n">summary</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="linenos" data-linenos="427 "></span>        <span class="n">published_at</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="linenos" data-linenos="428 "></span>        <span class="n">image_url</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="linenos" data-linenos="429 "></span>        <span class="n">location</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;new&#39;</span><span class="p">,</span> <span class="s1">&#39;later&#39;</span><span class="p">,</span> <span class="s1">&#39;archive&#39;</span><span class="p">,</span> <span class="s1">&#39;feed&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;new&#39;</span><span class="p">,</span>
+<span class="linenos" data-linenos="430 "></span>        <span class="n">saved_using</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="linenos" data-linenos="431 "></span>        <span class="n">tags</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
+<span class="linenos" data-linenos="432 "></span>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
+<span class="linenos" data-linenos="433 "></span><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="434 "></span><span class="sd">        Create a document in Readwise Reader.</span>
+<span class="linenos" data-linenos="435 "></span>
+<span class="linenos" data-linenos="436 "></span><span class="sd">        Args:</span>
+<span class="linenos" data-linenos="437 "></span><span class="sd">            url: Document URL</span>
+<span class="linenos" data-linenos="438 "></span><span class="sd">            html: Document HTML</span>
+<span class="linenos" data-linenos="439 "></span><span class="sd">            should_clean_html: Whether to clean the HTML</span>
+<span class="linenos" data-linenos="440 "></span><span class="sd">            title: Document title</span>
+<span class="linenos" data-linenos="441 "></span><span class="sd">            author: Document author</span>
+<span class="linenos" data-linenos="442 "></span><span class="sd">            summary: Document summary</span>
+<span class="linenos" data-linenos="443 "></span><span class="sd">            published_at: Date and time the document was published</span>
+<span class="linenos" data-linenos="444 "></span><span class="sd">            image_url: An image URL to use as cover image</span>
+<span class="linenos" data-linenos="445 "></span><span class="sd">            location: Document location</span>
+<span class="linenos" data-linenos="446 "></span><span class="sd">            saved_using: How the document was saved</span>
+<span class="linenos" data-linenos="447 "></span><span class="sd">            tags: List of tags</span>
+<span class="linenos" data-linenos="448 "></span>
+<span class="linenos" data-linenos="449 "></span><span class="sd">        Returns:</span>
+<span class="linenos" data-linenos="450 "></span><span class="sd">            requests.Response</span>
+<span class="linenos" data-linenos="451 "></span><span class="sd">        &#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="452 "></span>        <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+<span class="linenos" data-linenos="453 "></span>            <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="n">url</span><span class="p">,</span>
+<span class="linenos" data-linenos="454 "></span>            <span class="s1">&#39;tags&#39;</span><span class="p">:</span> <span class="n">tags</span><span class="p">,</span>
+<span class="linenos" data-linenos="455 "></span>            <span class="s1">&#39;location&#39;</span><span class="p">:</span> <span class="n">location</span><span class="p">,</span>
+<span class="linenos" data-linenos="456 "></span>        <span class="p">}</span>
+<span class="linenos" data-linenos="457 "></span>
+<span class="linenos" data-linenos="458 "></span>        <span class="k">if</span> <span class="n">html</span><span class="p">:</span>
+<span class="linenos" data-linenos="459 "></span>            <span class="n">data</span><span class="p">[</span><span class="s1">&#39;html&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">html</span>
+<span class="linenos" data-linenos="460 "></span>
+<span class="linenos" data-linenos="461 "></span>        <span class="k">if</span> <span class="n">should_clean_html</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="linenos" data-linenos="462 "></span>            <span class="n">data</span><span class="p">[</span><span class="s1">&#39;should_clean_html&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">should_clean_html</span>
+<span class="linenos" data-linenos="463 "></span>
+<span class="linenos" data-linenos="464 "></span>        <span class="k">if</span> <span class="n">title</span><span class="p">:</span>
+<span class="linenos" data-linenos="465 "></span>            <span class="n">data</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">title</span>
+<span class="linenos" data-linenos="466 "></span>
+<span class="linenos" data-linenos="467 "></span>        <span class="k">if</span> <span class="n">author</span><span class="p">:</span>
+<span class="linenos" data-linenos="468 "></span>            <span class="n">data</span><span class="p">[</span><span class="s1">&#39;author&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">author</span>
+<span class="linenos" data-linenos="469 "></span>
+<span class="linenos" data-linenos="470 "></span>        <span class="k">if</span> <span class="n">summary</span><span class="p">:</span>
+<span class="linenos" data-linenos="471 "></span>            <span class="n">data</span><span class="p">[</span><span class="s1">&#39;summary&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">summary</span>
+<span class="linenos" data-linenos="472 "></span>
+<span class="linenos" data-linenos="473 "></span>        <span class="k">if</span> <span class="n">published_at</span><span class="p">:</span>
+<span class="linenos" data-linenos="474 "></span>            <span class="n">data</span><span class="p">[</span><span class="s1">&#39;published_at&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">published_at</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span>
+<span class="linenos" data-linenos="475 "></span>
+<span class="linenos" data-linenos="476 "></span>        <span class="k">if</span> <span class="n">image_url</span><span class="p">:</span>
+<span class="linenos" data-linenos="477 "></span>            <span class="n">data</span><span class="p">[</span><span class="s1">&#39;image_url&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">image_url</span>
+<span class="linenos" data-linenos="478 "></span>
+<span class="linenos" data-linenos="479 "></span>        <span class="k">if</span> <span class="n">saved_using</span><span class="p">:</span>
+<span class="linenos" data-linenos="480 "></span>            <span class="n">data</span><span class="p">[</span><span class="s1">&#39;saved_using&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">saved_using</span>
+<span class="linenos" data-linenos="481 "></span>
+<span class="linenos" data-linenos="482 "></span>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;/save/&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+
+  
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h2 id="readwise.api.ReadwiseReaderClient.token" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">token</span> <span class="o">=</span> <span class="n">token</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+<a href="#readwise.api.ReadwiseReaderClient.token" class="headerlink" title="Permanent link">⚑</a></h2>
+
+
+  <div class="doc doc-contents ">
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h2 id="readwise.api.ReadwiseReaderClient.url" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://readwise.io/api/v3&#39;</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+<a href="#readwise.api.ReadwiseReaderClient.url" class="headerlink" title="Permanent link">⚑</a></h2>
+
+
+  <div class="doc doc-contents ">
+  </div>
+
+</div>
+
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="readwise.api.ReadwiseReaderClient.__init__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">token</span><span class="p">)</span></code>
+
+<a href="#readwise.api.ReadwiseReaderClient.__init__" class="headerlink" title="Permanent link">⚑</a></h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Readwise Reader Connector.</p>
+<p>Documentation for the Readwise Reader API can be found here:
+https://readwise.io/reader_api</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>token</code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td><p>Readwise Reader Connector token</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>readwise/api.py</code></summary>
+        <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="327 "></span><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+<span class="linenos" data-linenos="328 "></span>    <span class="bp">self</span><span class="p">,</span>
+<span class="linenos" data-linenos="329 "></span>    <span class="n">token</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<span class="linenos" data-linenos="330 "></span><span class="p">):</span>
+<span class="linenos" data-linenos="331 "></span><span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="332 "></span><span class="sd">    Readwise Reader Connector.</span>
+<span class="linenos" data-linenos="333 "></span>
+<span class="linenos" data-linenos="334 "></span><span class="sd">    Documentation for the Readwise Reader API can be found here:</span>
+<span class="linenos" data-linenos="335 "></span><span class="sd">    https://readwise.io/reader_api</span>
+<span class="linenos" data-linenos="336 "></span>
+<span class="linenos" data-linenos="337 "></span><span class="sd">    Args:</span>
+<span class="linenos" data-linenos="338 "></span><span class="sd">        token: Readwise Reader Connector token</span>
+<span class="linenos" data-linenos="339 "></span><span class="sd">    &#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="340 "></span>    <span class="bp">self</span><span class="o">.</span><span class="n">token</span> <span class="o">=</span> <span class="n">token</span>
+<span class="linenos" data-linenos="341 "></span>    <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://readwise.io/api/v3&#39;</span>
+</code></pre></div>
+      </details>
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="readwise.api.ReadwiseReaderClient.create_document" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">create_document</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">html</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">should_clean_html</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">author</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">summary</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">published_at</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">image_url</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="s1">&#39;new&#39;</span><span class="p">,</span> <span class="n">saved_using</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="p">[])</span></code>
+
+<a href="#readwise.api.ReadwiseReaderClient.create_document" class="headerlink" title="Permanent link">⚑</a></h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Create a document in Readwise Reader.</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>url</code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td><p>Document URL</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>html</code></td>
+          <td>
+                <code>str | None</code>
+          </td>
+          <td><p>Document HTML</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>should_clean_html</code></td>
+          <td>
+                <code>bool | None</code>
+          </td>
+          <td><p>Whether to clean the HTML</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>title</code></td>
+          <td>
+                <code>str | None</code>
+          </td>
+          <td><p>Document title</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>author</code></td>
+          <td>
+                <code>str | None</code>
+          </td>
+          <td><p>Document author</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>summary</code></td>
+          <td>
+                <code>str | None</code>
+          </td>
+          <td><p>Document summary</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>published_at</code></td>
+          <td>
+                <code><span title="datetime.datetime">datetime</span> | None</code>
+          </td>
+          <td><p>Date and time the document was published</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>image_url</code></td>
+          <td>
+                <code>str | None</code>
+          </td>
+          <td><p>An image URL to use as cover image</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>location</code></td>
+          <td>
+                <code><span title="typing.Literal">Literal</span>[&#39;new&#39;, &#39;later&#39;, &#39;archive&#39;, &#39;feed&#39;]</code>
+          </td>
+          <td><p>Document location</p></td>
+          <td>
+                <code>&#39;new&#39;</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>saved_using</code></td>
+          <td>
+                <code>str | None</code>
+          </td>
+          <td><p>How the document was saved</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>tags</code></td>
+          <td>
+                <code>list[str]</code>
+          </td>
+          <td><p>List of tags</p></td>
+          <td>
+                <code>[]</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+                <code><a class="autorefs autorefs-external" href="https://docs.python-requests.org/en/master/api/#module-requests">requests</a>.<a class="autorefs autorefs-external" title="requests.Response" href="https://docs.python-requests.org/en/master/api/#requests.Response">Response</a></code>
+          </td>
+          <td><p>requests.Response</p></td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>readwise/api.py</code></summary>
+        <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="419 "></span><span class="k">def</span> <span class="nf">create_document</span><span class="p">(</span>
+<span class="linenos" data-linenos="420 "></span>    <span class="bp">self</span><span class="p">,</span>
+<span class="linenos" data-linenos="421 "></span>    <span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<span class="linenos" data-linenos="422 "></span>    <span class="n">html</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="linenos" data-linenos="423 "></span>    <span class="n">should_clean_html</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="linenos" data-linenos="424 "></span>    <span class="n">title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="linenos" data-linenos="425 "></span>    <span class="n">author</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="linenos" data-linenos="426 "></span>    <span class="n">summary</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="linenos" data-linenos="427 "></span>    <span class="n">published_at</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="linenos" data-linenos="428 "></span>    <span class="n">image_url</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="linenos" data-linenos="429 "></span>    <span class="n">location</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;new&#39;</span><span class="p">,</span> <span class="s1">&#39;later&#39;</span><span class="p">,</span> <span class="s1">&#39;archive&#39;</span><span class="p">,</span> <span class="s1">&#39;feed&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;new&#39;</span><span class="p">,</span>
+<span class="linenos" data-linenos="430 "></span>    <span class="n">saved_using</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="linenos" data-linenos="431 "></span>    <span class="n">tags</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
+<span class="linenos" data-linenos="432 "></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
+<span class="linenos" data-linenos="433 "></span><span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="434 "></span><span class="sd">    Create a document in Readwise Reader.</span>
+<span class="linenos" data-linenos="435 "></span>
+<span class="linenos" data-linenos="436 "></span><span class="sd">    Args:</span>
+<span class="linenos" data-linenos="437 "></span><span class="sd">        url: Document URL</span>
+<span class="linenos" data-linenos="438 "></span><span class="sd">        html: Document HTML</span>
+<span class="linenos" data-linenos="439 "></span><span class="sd">        should_clean_html: Whether to clean the HTML</span>
+<span class="linenos" data-linenos="440 "></span><span class="sd">        title: Document title</span>
+<span class="linenos" data-linenos="441 "></span><span class="sd">        author: Document author</span>
+<span class="linenos" data-linenos="442 "></span><span class="sd">        summary: Document summary</span>
+<span class="linenos" data-linenos="443 "></span><span class="sd">        published_at: Date and time the document was published</span>
+<span class="linenos" data-linenos="444 "></span><span class="sd">        image_url: An image URL to use as cover image</span>
+<span class="linenos" data-linenos="445 "></span><span class="sd">        location: Document location</span>
+<span class="linenos" data-linenos="446 "></span><span class="sd">        saved_using: How the document was saved</span>
+<span class="linenos" data-linenos="447 "></span><span class="sd">        tags: List of tags</span>
+<span class="linenos" data-linenos="448 "></span>
+<span class="linenos" data-linenos="449 "></span><span class="sd">    Returns:</span>
+<span class="linenos" data-linenos="450 "></span><span class="sd">        requests.Response</span>
+<span class="linenos" data-linenos="451 "></span><span class="sd">    &#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="452 "></span>    <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+<span class="linenos" data-linenos="453 "></span>        <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="n">url</span><span class="p">,</span>
+<span class="linenos" data-linenos="454 "></span>        <span class="s1">&#39;tags&#39;</span><span class="p">:</span> <span class="n">tags</span><span class="p">,</span>
+<span class="linenos" data-linenos="455 "></span>        <span class="s1">&#39;location&#39;</span><span class="p">:</span> <span class="n">location</span><span class="p">,</span>
+<span class="linenos" data-linenos="456 "></span>    <span class="p">}</span>
+<span class="linenos" data-linenos="457 "></span>
+<span class="linenos" data-linenos="458 "></span>    <span class="k">if</span> <span class="n">html</span><span class="p">:</span>
+<span class="linenos" data-linenos="459 "></span>        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;html&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">html</span>
+<span class="linenos" data-linenos="460 "></span>
+<span class="linenos" data-linenos="461 "></span>    <span class="k">if</span> <span class="n">should_clean_html</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="linenos" data-linenos="462 "></span>        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;should_clean_html&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">should_clean_html</span>
+<span class="linenos" data-linenos="463 "></span>
+<span class="linenos" data-linenos="464 "></span>    <span class="k">if</span> <span class="n">title</span><span class="p">:</span>
+<span class="linenos" data-linenos="465 "></span>        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">title</span>
+<span class="linenos" data-linenos="466 "></span>
+<span class="linenos" data-linenos="467 "></span>    <span class="k">if</span> <span class="n">author</span><span class="p">:</span>
+<span class="linenos" data-linenos="468 "></span>        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;author&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">author</span>
+<span class="linenos" data-linenos="469 "></span>
+<span class="linenos" data-linenos="470 "></span>    <span class="k">if</span> <span class="n">summary</span><span class="p">:</span>
+<span class="linenos" data-linenos="471 "></span>        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;summary&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">summary</span>
+<span class="linenos" data-linenos="472 "></span>
+<span class="linenos" data-linenos="473 "></span>    <span class="k">if</span> <span class="n">published_at</span><span class="p">:</span>
+<span class="linenos" data-linenos="474 "></span>        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;published_at&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">published_at</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span>
+<span class="linenos" data-linenos="475 "></span>
+<span class="linenos" data-linenos="476 "></span>    <span class="k">if</span> <span class="n">image_url</span><span class="p">:</span>
+<span class="linenos" data-linenos="477 "></span>        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;image_url&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">image_url</span>
+<span class="linenos" data-linenos="478 "></span>
+<span class="linenos" data-linenos="479 "></span>    <span class="k">if</span> <span class="n">saved_using</span><span class="p">:</span>
+<span class="linenos" data-linenos="480 "></span>        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;saved_using&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">saved_using</span>
+<span class="linenos" data-linenos="481 "></span>
+<span class="linenos" data-linenos="482 "></span>    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;/save/&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+</code></pre></div>
+      </details>
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="readwise.api.ReadwiseReaderClient.get" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">get</span><span class="p">(</span><span class="n">endpoint</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{})</span></code>
+
+<a href="#readwise.api.ReadwiseReaderClient.get" class="headerlink" title="Permanent link">⚑</a></h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Make a GET request to the Readwise Reader API.</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>endpoint</code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td><p>API endpoints</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>params</code></td>
+          <td>
+                <code>dict</code>
+          </td>
+          <td><p>Query parameters</p></td>
+          <td>
+                <code>{}</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+                <code><a class="autorefs autorefs-external" href="https://docs.python-requests.org/en/master/api/#module-requests">requests</a>.<a class="autorefs autorefs-external" title="requests.Response" href="https://docs.python-requests.org/en/master/api/#requests.Response">Response</a></code>
+          </td>
+          <td><p>requests.Response</p></td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>readwise/api.py</code></summary>
+        <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="388 "></span><span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{})</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
+<span class="linenos" data-linenos="389 "></span><span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="390 "></span><span class="sd">    Make a GET request to the Readwise Reader API.</span>
+<span class="linenos" data-linenos="391 "></span>
+<span class="linenos" data-linenos="392 "></span><span class="sd">    Args:</span>
+<span class="linenos" data-linenos="393 "></span><span class="sd">        endpoint: API endpoints</span>
+<span class="linenos" data-linenos="394 "></span><span class="sd">        params: Query parameters</span>
+<span class="linenos" data-linenos="395 "></span>
+<span class="linenos" data-linenos="396 "></span><span class="sd">    Returns:</span>
+<span class="linenos" data-linenos="397 "></span><span class="sd">        requests.Response</span>
+<span class="linenos" data-linenos="398 "></span><span class="sd">    &#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="399 "></span>    <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Getting &quot;</span><span class="si">{</span><span class="n">endpoint</span><span class="si">}</span><span class="s1">&quot; with params: </span><span class="si">{</span><span class="n">params</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="linenos" data-linenos="400 "></span>    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+</code></pre></div>
+      </details>
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="readwise.api.ReadwiseReaderClient.post" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">post</span><span class="p">(</span><span class="n">endpoint</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">{})</span></code>
+
+<a href="#readwise.api.ReadwiseReaderClient.post" class="headerlink" title="Permanent link">⚑</a></h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Make a POST request to the Readwise Reader API.</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>endpoint</code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td><p>API endpoints</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>data</code></td>
+          <td>
+                <code>dict</code>
+          </td>
+          <td><p>Request body</p></td>
+          <td>
+                <code>{}</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+                <code><a class="autorefs autorefs-external" href="https://docs.python-requests.org/en/master/api/#module-requests">requests</a>.<a class="autorefs autorefs-external" title="requests.Response" href="https://docs.python-requests.org/en/master/api/#requests.Response">Response</a></code>
+          </td>
+          <td><p>requests.Response</p></td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>readwise/api.py</code></summary>
+        <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="402 "></span><span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{})</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
+<span class="linenos" data-linenos="403 "></span><span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="404 "></span><span class="sd">    Make a POST request to the Readwise Reader API.</span>
+<span class="linenos" data-linenos="405 "></span>
+<span class="linenos" data-linenos="406 "></span><span class="sd">    Args:</span>
+<span class="linenos" data-linenos="407 "></span><span class="sd">        endpoint: API endpoints</span>
+<span class="linenos" data-linenos="408 "></span><span class="sd">        data: Request body</span>
+<span class="linenos" data-linenos="409 "></span>
+<span class="linenos" data-linenos="410 "></span><span class="sd">    Returns:</span>
+<span class="linenos" data-linenos="411 "></span><span class="sd">        requests.Response</span>
+<span class="linenos" data-linenos="412 "></span><span class="sd">    &#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="413 "></span>    <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">+</span> <span class="n">endpoint</span>
+<span class="linenos" data-linenos="414 "></span>    <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Posting &quot;</span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s1">&quot; with data: </span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="linenos" data-linenos="415 "></span>    <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_request</span><span class="p">(</span><span class="s1">&#39;POST&#39;</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+<span class="linenos" data-linenos="416 "></span>    <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+<span class="linenos" data-linenos="417 "></span>    <span class="k">return</span> <span class="n">response</span>
+</code></pre></div>
+      </details>
+  </div>
+
+</div>
+
+
+
+  </div>
+
+  </div>
+
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2023 rwxd
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/rwxd" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.annotate"], "search": "../assets/javascripts/workers/search.12658920.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.5cf534bf.min.js"></script>
+      
+    
+  </body>
+</html>
