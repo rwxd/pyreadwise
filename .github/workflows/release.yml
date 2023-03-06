@@ -56,6 +56,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Setup
+        run: make setup
+
       - name: build docs
         run: make build-docs
 
