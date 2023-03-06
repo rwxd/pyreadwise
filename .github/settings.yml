@@ -1,0 +1,5 @@
+repository:
+  name: "pyreadwise"
+  description: "Python Module to use the Readwise API"
+  homepage: "https://rwxd.github.io/pyreadwise/"
+  topics: "python, readwise"

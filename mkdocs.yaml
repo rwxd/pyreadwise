@@ -1,0 +1,88 @@
+---
+site_name: pyreadwise
+site_description: Python module to use the readwise api
+site_author: rwxd
+site_url: https://rwxd.github.io/pyreadwise
+dev_addr: 0.0.0.0:8000
+
+repo_name: "pyreadwise"
+repo_url: "https://github.com/rwxd/pyreadwise"
+
+docs_dir: "./docs"
+edit_uri: "edit/source/docs/content/"
+
+# https://squidfunk.github.io/mkdocs-material/
+theme:
+  name: "material"
+  palette:
+    - scheme: slate
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+    - scheme: default
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+  icon:
+    logo: material/code-braces-box
+    # logo: material/pine-tree
+  # favicon: assets/page/favicon-32x32.png
+  language: en
+  include_sidebar: true
+  features:
+    - content.code.annotate
+  feature:
+    tabs: false
+  i18n:
+    prev: "Previous"
+    next: "Next"
+  font:
+    text: Inter
+    code: Fira Code
+
+copyright: "Copyright &copy; 2023 rwxd"
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          import:
+          - https://docs.python-requests.org/en/master/objects.inv
+      options:
+        docstring_style: google
+        docstring_section_style: "table"
+        merge_init_into_class: True
+        line_length: 100
+        members_order: 'source'
+
+        show_signature_annotations: True
+        separate_signature: True
+
+markdown_extensions:
+  - pymdownx.highlight:
+      linenums: true
+      linenums_style: pymdownx-inline
+      guess_lang: true
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.snippets
+  - toc:
+      permalink: "⚑"
+
+nav:
+  - "Home": 'index.md'
+  - "Code Reference":
+    - "Readwise API": readwise-api.md
+    - "Readwise Reader API": readwise-reader-api.md
+    - "Models": models.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/rwxd
