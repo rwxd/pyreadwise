@@ -42,8 +42,4 @@ response.raise_for_status()
 
 ## Documentation
 
-### Readwise API
-
-The Readwise API is documented [here](readwise-api.md).
-
-The Readwise Reader API is documented [here](readwise-reader-api.md).
+The documentation can be found at <https://rwxd.github.io/pyreadwise/>
