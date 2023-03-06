@@ -15,9 +15,9 @@ pip install -U readwise
 ### Readwise API
 
 ```python
-from readwise import ReadwiseClient
+from readwise import Readwise
 
-client = ReadwiseClient('token')
+client = Readwise('token')
 
 books = client.get_books(category='articles')
 
@@ -32,9 +32,9 @@ for book in books:
 ### Readwise Readwise API
 
 ```python
-from readwise import ReadwiseReaderClient
+from readwise import ReadwiseReader
 
-client = ReadwiseReaderClient('token')
+client = ReadwiseReader('token')
 
 response = client.create_document('https://www.example.com')
 response.raise_for_status()

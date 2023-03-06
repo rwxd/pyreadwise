@@ -16,13 +16,13 @@ class ReadwiseRateLimitException(Exception):
     pass
 
 
-class ReadwiseClient:
+class Readwise:
     def __init__(
         self,
         token: str,
     ):
         '''
-        Initialize a ReadwiseClient.
+        Initialize a Readwise API client.
 
         Documentation for the Readwise API can be found here:
         https://readwise.io/api_deets
@@ -323,13 +323,13 @@ class ReadwiseClient:
         self.delete(f'/books/{book_id}/tags/{tag_id}')
 
 
-class ReadwiseReaderClient:
+class ReadwiseReader:
     def __init__(
         self,
         token: str,
     ):
         '''
-        Readwise Reader Connector.
+        Readwise Reader API client.
 
         Documentation for the Readwise Reader API can be found here:
         https://readwise.io/reader_api
@@ -387,7 +387,7 @@ class ReadwiseReaderClient:
 
     def get(self, endpoint: str, params: dict = {}) -> requests.Response:
         '''
-        Make a GET request to the Readwise Reader API.
+        Make a GET request to the Readwise Reader API client.
 
         Args:
             endpoint: API endpoints

@@ -1,6 +1,6 @@
-from readwise.api import ReadwiseClient, ReadwiseReaderClient
+from readwise.api import Readwise, ReadwiseReader
 
 __all__ = [
-    'ReadwiseClient',
-    'ReadwiseReaderClient',
+    'Readwise',
+    'ReadwiseReader',
 ]
