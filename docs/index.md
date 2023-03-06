@@ -42,4 +42,6 @@ response.raise_for_status()
 
 ## Documentation
 
-The documentation can be found at <https://rwxd.github.io/pyreadwise/>
+The latest documentation can be found at <https://rwxd.github.io/pyreadwise/>
+
+If you've checked out the source code (for example to review a PR), you can build the latest documentation by running `make serve-docs`.
