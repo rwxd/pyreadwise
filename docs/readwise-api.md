@@ -1,5 +1,5 @@
 # Readwise API
 
-::: readwise.api.ReadwiseClient
+::: readwise.api.Readwise
 	options:
 		show_if_no_docstring: true
