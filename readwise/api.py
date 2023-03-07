@@ -30,8 +30,8 @@ class Readwise:
         Args:
             token: Readwise API token
         '''
-        self.token = token
-        self.url = 'https://readwise.io/api/v2'
+        self._token = token
+        self._url = 'https://readwise.io/api/v2'
 
     @property
     def _session(self) -> requests.Session:
@@ -43,7 +43,7 @@ class Readwise:
         session.headers.update(
             {
                 'Accept': 'application/json',
-                'Authorization': f'Token {self.token}',
+                'Authorization': f'Token {self._token}',
             }
         )
         return session
@@ -72,7 +72,7 @@ class Readwise:
         Returns:
             requests.Response
         '''
-        url = self.url + endpoint
+        url = self._url + endpoint
         logging.debug(f'Calling "{method}" on "{url}" with params: {params}')
         response = self._session.request(method, url, params=params, json=data)
         while response.status_code == 429:
@@ -133,7 +133,7 @@ class Readwise:
         Returns:
             requests.Response
         '''
-        url = self.url + endpoint
+        url = self._url + endpoint
         logging.debug(f'Posting "{url}" with data: {data}')
         response = self._request('POST', endpoint, data=data)
         response.raise_for_status()
@@ -337,8 +337,8 @@ class ReadwiseReader:
         Args:
             token: Readwise Reader Connector token
         '''
-        self.token = token
-        self.url = 'https://readwise.io/api/v3'
+        self._token = token
+        self._url = 'https://readwise.io/api/v3'
 
     @property
     def _session(self) -> requests.Session:
@@ -350,7 +350,7 @@ class ReadwiseReader:
         session.headers.update(
             {
                 'Accept': 'application/json',
-                'Authorization': f'Token {self.token}',
+                'Authorization': f'Token {self._token}',
             }
         )
         return session
@@ -374,7 +374,7 @@ class ReadwiseReader:
         Returns:
             requests.Response
         '''
-        url = self.url + endpoint
+        url = self._url + endpoint
         logging.debug(f'Calling "{method}" on "{url}" with params: {params}')
         response = self._session.request(method, url, params=params, json=data)
         while response.status_code == 429:
@@ -410,7 +410,7 @@ class ReadwiseReader:
         Returns:
             requests.Response
         '''
-        url = self.url + endpoint
+        url = self._url + endpoint
         logging.debug(f'Posting "{url}" with data: {data}')
         response = self._request('POST', endpoint, data=data)
         response.raise_for_status()
