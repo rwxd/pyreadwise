@@ -376,20 +376,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#readwise.api.ReadwiseReader.token" class="md-nav__link">
-    token
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#readwise.api.ReadwiseReader.url" class="md-nav__link">
-    url
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#readwise.api.ReadwiseReader.__init__" class="md-nav__link">
     __init__()
   </a>
@@ -486,8 +472,8 @@
 <span class="linenos" data-linenos="337 "></span><span class="sd">        Args:</span>
 <span class="linenos" data-linenos="338 "></span><span class="sd">            token: Readwise Reader Connector token</span>
 <span class="linenos" data-linenos="339 "></span><span class="sd">        &#39;&#39;&#39;</span>
-<span class="linenos" data-linenos="340 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">token</span> <span class="o">=</span> <span class="n">token</span>
-<span class="linenos" data-linenos="341 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://readwise.io/api/v3&#39;</span>
+<span class="linenos" data-linenos="340 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">_token</span> <span class="o">=</span> <span class="n">token</span>
+<span class="linenos" data-linenos="341 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">_url</span> <span class="o">=</span> <span class="s1">&#39;https://readwise.io/api/v3&#39;</span>
 <span class="linenos" data-linenos="342 "></span>
 <span class="linenos" data-linenos="343 "></span>    <span class="nd">@property</span>
 <span class="linenos" data-linenos="344 "></span>    <span class="k">def</span> <span class="nf">_session</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Session</span><span class="p">:</span>
@@ -499,7 +485,7 @@
 <span class="linenos" data-linenos="350 "></span>        <span class="n">session</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
 <span class="linenos" data-linenos="351 "></span>            <span class="p">{</span>
 <span class="linenos" data-linenos="352 "></span>                <span class="s1">&#39;Accept&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">,</span>
-<span class="linenos" data-linenos="353 "></span>                <span class="s1">&#39;Authorization&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;Token </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">token</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+<span class="linenos" data-linenos="353 "></span>                <span class="s1">&#39;Authorization&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;Token </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_token</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
 <span class="linenos" data-linenos="354 "></span>            <span class="p">}</span>
 <span class="linenos" data-linenos="355 "></span>        <span class="p">)</span>
 <span class="linenos" data-linenos="356 "></span>        <span class="k">return</span> <span class="n">session</span>
@@ -523,7 +509,7 @@
 <span class="linenos" data-linenos="374 "></span><span class="sd">        Returns:</span>
 <span class="linenos" data-linenos="375 "></span><span class="sd">            requests.Response</span>
 <span class="linenos" data-linenos="376 "></span><span class="sd">        &#39;&#39;&#39;</span>
-<span class="linenos" data-linenos="377 "></span>        <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">+</span> <span class="n">endpoint</span>
+<span class="linenos" data-linenos="377 "></span>        <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_url</span> <span class="o">+</span> <span class="n">endpoint</span>
 <span class="linenos" data-linenos="378 "></span>        <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Calling &quot;</span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s1">&quot; on &quot;</span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s1">&quot; with params: </span><span class="si">{</span><span class="n">params</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="linenos" data-linenos="379 "></span>        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_session</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 <span class="linenos" data-linenos="380 "></span>        <span class="k">while</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">429</span><span class="p">:</span>
@@ -559,7 +545,7 @@
 <span class="linenos" data-linenos="410 "></span><span class="sd">        Returns:</span>
 <span class="linenos" data-linenos="411 "></span><span class="sd">            requests.Response</span>
 <span class="linenos" data-linenos="412 "></span><span class="sd">        &#39;&#39;&#39;</span>
-<span class="linenos" data-linenos="413 "></span>        <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">+</span> <span class="n">endpoint</span>
+<span class="linenos" data-linenos="413 "></span>        <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_url</span> <span class="o">+</span> <span class="n">endpoint</span>
 <span class="linenos" data-linenos="414 "></span>        <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Posting &quot;</span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s1">&quot; with data: </span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="linenos" data-linenos="415 "></span>        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_request</span><span class="p">(</span><span class="s1">&#39;POST&#39;</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 <span class="linenos" data-linenos="416 "></span>        <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
@@ -642,44 +628,6 @@
 
 
 
-<div class="doc doc-object doc-attribute">
-
-
-
-<h2 id="readwise.api.ReadwiseReader.token" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">token</span> <span class="o">=</span> <span class="n">token</span></code>
-  
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
-  </span>
-
-<a href="#readwise.api.ReadwiseReader.token" class="headerlink" title="Permanent link">⚑</a></h2>
-
-
-  <div class="doc doc-contents ">
-  </div>
-
-</div>
-
-<div class="doc doc-object doc-attribute">
-
-
-
-<h2 id="readwise.api.ReadwiseReader.url" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://readwise.io/api/v3&#39;</span></code>
-  
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
-  </span>
-
-<a href="#readwise.api.ReadwiseReader.url" class="headerlink" title="Permanent link">⚑</a></h2>
-
-
-  <div class="doc doc-contents ">
-  </div>
-
-</div>
-
 
 
 <div class="doc doc-object doc-function">
@@ -737,8 +685,8 @@ https://readwise.io/reader_api</p>
 <span class="linenos" data-linenos="337 "></span><span class="sd">    Args:</span>
 <span class="linenos" data-linenos="338 "></span><span class="sd">        token: Readwise Reader Connector token</span>
 <span class="linenos" data-linenos="339 "></span><span class="sd">    &#39;&#39;&#39;</span>
-<span class="linenos" data-linenos="340 "></span>    <span class="bp">self</span><span class="o">.</span><span class="n">token</span> <span class="o">=</span> <span class="n">token</span>
-<span class="linenos" data-linenos="341 "></span>    <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://readwise.io/api/v3&#39;</span>
+<span class="linenos" data-linenos="340 "></span>    <span class="bp">self</span><span class="o">.</span><span class="n">_token</span> <span class="o">=</span> <span class="n">token</span>
+<span class="linenos" data-linenos="341 "></span>    <span class="bp">self</span><span class="o">.</span><span class="n">_url</span> <span class="o">=</span> <span class="s1">&#39;https://readwise.io/api/v3&#39;</span>
 </code></pre></div>
       </details>
   </div>
@@ -1139,7 +1087,7 @@ https://readwise.io/reader_api</p>
 <span class="linenos" data-linenos="410 "></span><span class="sd">    Returns:</span>
 <span class="linenos" data-linenos="411 "></span><span class="sd">        requests.Response</span>
 <span class="linenos" data-linenos="412 "></span><span class="sd">    &#39;&#39;&#39;</span>
-<span class="linenos" data-linenos="413 "></span>    <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">+</span> <span class="n">endpoint</span>
+<span class="linenos" data-linenos="413 "></span>    <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_url</span> <span class="o">+</span> <span class="n">endpoint</span>
 <span class="linenos" data-linenos="414 "></span>    <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Posting &quot;</span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s1">&quot; with data: </span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="linenos" data-linenos="415 "></span>    <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_request</span><span class="p">(</span><span class="s1">&#39;POST&#39;</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 <span class="linenos" data-linenos="416 "></span>    <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
