@@ -8,7 +8,6 @@ setup: ## Setup required things
 	python3 -m pip install -U -r requirements-dev.txt
 	python3 -m pip install -U -r requirements-docs.txt
 	pre-commit install
-	pre-commit install-hooks
 
 serve-docs: ## Serve the documentation locally
 	mkdocs serve
