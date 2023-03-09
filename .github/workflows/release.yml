@@ -71,7 +71,7 @@ jobs:
     needs:
       - test
       - pre-commit
-    if: github.event_name == 'push' == github.ref == 'main'
+    if: github.event_name == 'push' == github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v3
 
@@ -90,7 +90,7 @@ jobs:
 
   semantic-release:
     uses: rwxd/gh-templates/.github/workflows/common-semantic-release.yml@main
-    if: github.event_name == 'push' && github.ref == 'main'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs:
       - docs
       - test
