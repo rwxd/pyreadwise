@@ -80,7 +80,9 @@ markdown_extensions:
       permalink: "⚑"
 
 nav:
-  - "Home": 'index.md'
+  - "Home":
+    - "Quickstart": 'index.md'
+    - "Advanced Usage": "advanced-usage.md"
   - "Readwise API": readwise-api.md
   - "Readwise Reader API": readwise-reader-api.md
   - "Models": models.md

@@ -10,7 +10,7 @@ It allows you to easily access your Readwise data in Python.
 pip install -U readwise
 ```
 
-## Quickstart
+## How to use
 
 ### Readwise API
 
