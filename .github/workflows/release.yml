@@ -70,6 +70,7 @@ jobs:
     runs-on: ubuntu-latest
     needs:
       - test
+      - pre-commit
     if: github.event_name == 'push' == github.ref == 'main'
     steps:
       - uses: actions/checkout@v3
