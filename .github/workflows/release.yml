@@ -71,7 +71,7 @@ jobs:
     needs:
       - test
       - pre-commit
-    if: github.event_name == 'push' == github.ref == 'refs/heads/main'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v3
 
