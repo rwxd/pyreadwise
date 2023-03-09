@@ -155,6 +155,67 @@ class Readwise:
         logging.debug(f'Deleting "{endpoint}"')
         return self._request('DELETE', endpoint)
 
+    def get_pagination(
+        self, endpoint: str, params: dict = {}
+    ) -> Generator[dict, None, None]:
+        '''
+        Get a response from the Readwise API with pagination.
+
+        Args:
+            endpoint: API endpoint
+            params: Query parameters
+        Yields:
+            dict: Response data
+        '''
+        yield from self._get_pagination('get', endpoint, params)
+
+    def get_pagination_limit_20(
+        self, endpoint: str, params: dict = {}, page_size: int = 1000
+    ) -> Generator[dict, None, None]:
+        '''
+        Get a response from the Readwise API with pagination and a rate limit
+        of 20 requests per minute.
+
+        Args:
+            endpoint: API endpoint
+            params: Query parameters
+            page_size: Number of items per page
+        Yields:
+            dict: Response data
+        '''
+        yield from self._get_pagination(
+            'get_with_limit_20', endpoint, params, page_size
+        )
+
+    def _get_pagination(
+        self,
+        get_method: Literal['get', 'get_with_limit_20'],
+        endpoint: str,
+        params: dict = {},
+        page_size: int = 1000,
+    ) -> Generator[dict, None, None]:
+        '''
+        Get a response from the Readwise API with pagination.
+
+        Args:
+            get_method: Method to use for making requests
+            endpoint: API endpoint
+            params: Query parameters
+            page_size: Number of items per page
+        Yields:
+            dict: Response data
+        '''
+        page = 1
+        while True:
+            response = getattr(self, get_method)(
+                endpoint, params={'page': page, 'page_size': page_size, **params}
+            )
+            data = response.json()
+            yield data
+            if not data['next']:
+                break
+            page += 1
+
     def get_books(
         self, category: Literal['articles', 'books', 'tweets', 'podcasts']
     ) -> Generator[ReadwiseBook, None, None]:
@@ -167,14 +228,9 @@ class Readwise:
         Returns:
             A generator of ReadwiseBook objects
         '''
-        page = 1
-        page_size = 1000
-        while True:
-            data = self.get_with_limit_20(
-                '/books',
-                {'page': page, 'page_size': page_size, 'category': category},
-            ).json()
-
+        for data in self.get_pagination_limit_20(
+            '/books/', params={'category': category}
+        ):
             for book in data['results']:
                 yield ReadwiseBook(
                     id=book['id'],
@@ -196,10 +252,6 @@ class Readwise:
                     document_note=book['document_note'],
                 )
 
-            if not data['next']:
-                break
-            page += 1
-
     def get_book_highlights(
         self, book_id: str
     ) -> Generator[ReadwiseHighlight, None, None]:
@@ -212,13 +264,9 @@ class Readwise:
         Returns:
             A generator of ReadwiseHighlight objects
         '''
-        page = 1
-        page_size = 1000
-        while True:
-            data = self.get_with_limit_20(
-                '/highlights',
-                {'page': page, 'page_size': page_size, 'book_id': book_id},
-            ).json()
+        for data in self.get_pagination_limit_20(
+            f'/books/{book_id}/highlights/', params={'book_id': book_id}
+        ):
             for highlight in data['results']:
                 yield ReadwiseHighlight(
                     id=highlight['id'],
@@ -235,10 +283,6 @@ class Readwise:
                         for tag in highlight['tags']
                     ],
                 )
-
-            if not data['next']:
-                break
-            page += 1
 
     def create_highlight(
         self,
@@ -284,15 +328,11 @@ class Readwise:
         Returns:
             A generator of ReadwiseTag objects
         '''
-        page = 1
-        page_size = 1000
-        data = self.get(
-            f'/books/{book_id}/tags',
-            {'page': page, 'page_size': page_size, 'book_id': book_id},
-        ).json()
-
-        for tag in data:
-            yield ReadwiseTag(tag['id'], tag['name'])
+        for data in self.get_pagination_limit_20(
+            f'/books/{book_id}/tags/', params={'book_id': book_id}
+        ):
+            for tag in data['results']:
+                yield ReadwiseTag(id=tag['id'], name=tag['name'])
 
     def add_tag(self, book_id: str, tag: str):
         '''

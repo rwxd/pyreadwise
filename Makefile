@@ -14,3 +14,6 @@ serve-docs: ## Serve the documentation locally
 
 build-docs: ## Build the documentation
 	mkdocs build
+
+unit: ## Run unit tests
+	python3 -m pytest -vvl tests/unit
