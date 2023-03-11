@@ -43,7 +43,7 @@ class ReadwiseBook:
     category: str
     source: str
     num_highlights: int
-    last_highlight_at: datetime
+    last_highlight_at: datetime | None
     updated: datetime
     cover_image_url: str
     highlights_url: str

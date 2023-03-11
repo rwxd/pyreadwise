@@ -4,8 +4,6 @@ from time import sleep
 from typing import Any, Generator, Literal
 
 import requests
-from backoff import expo, on_exception
-from ratelimit import RateLimitException, limits, sleep_and_retry
 
 from readwise.models import ReadwiseBook, ReadwiseHighlight, ReadwiseTag
 
@@ -48,9 +46,6 @@ class Readwise:
         )
         return session
 
-    @on_exception(expo, RateLimitException, max_tries=8)
-    @sleep_and_retry
-    @limits(calls=240, period=60)
     def _request(
         self, method: str, endpoint: str, params: dict = {}, data: dict = {}
     ) -> requests.Response:
@@ -100,9 +95,6 @@ class Readwise:
         logging.debug(f'Getting "{endpoint}" with params: {params}')
         return self._request('GET', endpoint, params=params)
 
-    @on_exception(expo, RateLimitException, max_tries=8)
-    @sleep_and_retry
-    @limits(calls=20, period=60)
     def get_with_limit_20(self, endpoint: str, params: dict = {}) -> requests.Response:
         '''
         Get a response from the Readwise API with a rate limit of 20 requests
@@ -212,7 +204,7 @@ class Readwise:
             )
             data = response.json()
             yield data
-            if not data['next']:
+            if type(data) == list or not data.get('next'):
                 break
             page += 1
 
@@ -239,7 +231,9 @@ class Readwise:
                     category=book['category'],
                     source=book['source'],
                     num_highlights=book['num_highlights'],
-                    last_highlight_at=datetime.fromisoformat(book['last_highlight_at']),
+                    last_highlight_at=datetime.fromisoformat(book['last_highlight_at'])
+                    if book['last_highlight_at']
+                    else None,
                     updated=datetime.fromisoformat(book['updated']),
                     cover_image_url=book['cover_image_url'],
                     highlights_url=book['highlights_url'],
@@ -265,7 +259,7 @@ class Readwise:
             A generator of ReadwiseHighlight objects
         '''
         for data in self.get_pagination_limit_20(
-            f'/books/{book_id}/highlights/', params={'book_id': book_id}
+            '/highlights/', params={'book_id': book_id}
         ):
             for highlight in data['results']:
                 yield ReadwiseHighlight(
@@ -331,7 +325,7 @@ class Readwise:
         for data in self.get_pagination_limit_20(
             f'/books/{book_id}/tags/', params={'book_id': book_id}
         ):
-            for tag in data['results']:
+            for tag in data:
                 yield ReadwiseTag(id=tag['id'], name=tag['name'])
 
     def add_tag(self, book_id: str, tag: str):
@@ -395,9 +389,6 @@ class ReadwiseReader:
         )
         return session
 
-    @on_exception(expo, RateLimitException, max_tries=8)
-    @sleep_and_retry
-    @limits(calls=20, period=60)
     def _request(
         self, method: str, endpoint: str, params: dict = {}, data: dict = {}
     ) -> requests.Response:
