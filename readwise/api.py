@@ -204,7 +204,7 @@ class Readwise:
             )
             data = response.json()
             yield data
-            if not data['next']:
+            if type(data) == list or not data.get('next'):
                 break
             page += 1
 
@@ -231,7 +231,9 @@ class Readwise:
                     category=book['category'],
                     source=book['source'],
                     num_highlights=book['num_highlights'],
-                    last_highlight_at=datetime.fromisoformat(book['last_highlight_at']),
+                    last_highlight_at=datetime.fromisoformat(book['last_highlight_at'])
+                    if book['last_highlight_at']
+                    else None,
                     updated=datetime.fromisoformat(book['updated']),
                     cover_image_url=book['cover_image_url'],
                     highlights_url=book['highlights_url'],
@@ -257,7 +259,7 @@ class Readwise:
             A generator of ReadwiseHighlight objects
         '''
         for data in self.get_pagination_limit_20(
-            f'/books/{book_id}/highlights/', params={'book_id': book_id}
+            '/highlights/', params={'book_id': book_id}
         ):
             for highlight in data['results']:
                 yield ReadwiseHighlight(
@@ -323,7 +325,7 @@ class Readwise:
         for data in self.get_pagination_limit_20(
             f'/books/{book_id}/tags/', params={'book_id': book_id}
         ):
-            for tag in data['results']:
+            for tag in data:
                 yield ReadwiseTag(id=tag['id'], name=tag['name'])
 
     def add_tag(self, book_id: str, tag: str):

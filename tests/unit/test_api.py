@@ -66,7 +66,7 @@ def test_get_books(mock_get):
                 'category': 'article',
                 'source': 'Test Source',
                 'num_highlights': 1,
-                'last_highlight_at': '2020-01-01T00:00:00Z',
+                'last_highlight_at': '2022-12-27T11:33:09Z',
                 'updated': '2020-01-01T00:00:00Z',
                 'cover_image_url': 'https://example.com/image.jpg',
                 'highlights_url': 'https://example.com/highlights',
@@ -88,7 +88,7 @@ def test_get_books(mock_get):
     assert books[0].category == 'article'
     assert books[0].source == 'Test Source'
     assert books[0].num_highlights == 1
-    assert books[0].last_highlight_at == datetime.fromisoformat('2020-01-01T00:00:00Z')
+    assert books[0].last_highlight_at == datetime.fromisoformat('2022-12-27T11:33:09Z')
     assert books[0].updated == datetime.fromisoformat('2020-01-01T00:00:00Z')
     assert books[0].cover_image_url == 'https://example.com/image.jpg'
     assert books[0].highlights_url == 'https://example.com/highlights'
