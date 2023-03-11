@@ -157,7 +157,7 @@ class Readwise:
             endpoint: API endpoint
             params: Query parameters
         Yields:
-            dict: Response data
+            Response data
         '''
         yield from self._get_pagination('get', endpoint, params)
 
@@ -173,7 +173,7 @@ class Readwise:
             params: Query parameters
             page_size: Number of items per page
         Yields:
-            dict: Response data
+            Response data
         '''
         yield from self._get_pagination(
             'get_with_limit_20', endpoint, params, page_size
