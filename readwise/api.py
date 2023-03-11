@@ -4,8 +4,6 @@ from time import sleep
 from typing import Any, Generator, Literal
 
 import requests
-from backoff import expo, on_exception
-from ratelimit import RateLimitException, limits, sleep_and_retry
 
 from readwise.models import ReadwiseBook, ReadwiseHighlight, ReadwiseTag
 
@@ -48,9 +46,6 @@ class Readwise:
         )
         return session
 
-    @on_exception(expo, RateLimitException, max_tries=8)
-    @sleep_and_retry
-    @limits(calls=240, period=60)
     def _request(
         self, method: str, endpoint: str, params: dict = {}, data: dict = {}
     ) -> requests.Response:
@@ -100,9 +95,6 @@ class Readwise:
         logging.debug(f'Getting "{endpoint}" with params: {params}')
         return self._request('GET', endpoint, params=params)
 
-    @on_exception(expo, RateLimitException, max_tries=8)
-    @sleep_and_retry
-    @limits(calls=20, period=60)
     def get_with_limit_20(self, endpoint: str, params: dict = {}) -> requests.Response:
         '''
         Get a response from the Readwise API with a rate limit of 20 requests
@@ -395,9 +387,6 @@ class ReadwiseReader:
         )
         return session
 
-    @on_exception(expo, RateLimitException, max_tries=8)
-    @sleep_and_retry
-    @limits(calls=20, period=60)
     def _request(
         self, method: str, endpoint: str, params: dict = {}, data: dict = {}
     ) -> requests.Response:
