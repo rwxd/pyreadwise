@@ -44,7 +44,7 @@ class ReadwiseBook:
     source: str
     num_highlights: int
     last_highlight_at: datetime | None
-    updated: datetime
+    updated: datetime | None
     cover_image_url: str
     highlights_url: str
     source_url: str
@@ -78,6 +78,6 @@ class ReadwiseHighlight:
     location_type: str
     url: str | None
     color: str
-    updated: datetime
+    updated: datetime | None
     book_id: str
     tags: list[ReadwiseTag]
