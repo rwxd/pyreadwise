@@ -157,7 +157,7 @@ class Readwise:
             endpoint: API endpoint
             params: Query parameters
         Yields:
-            dict: Response data
+            Response data
         '''
         yield from self._get_pagination('get', endpoint, params)
 
@@ -173,7 +173,7 @@ class Readwise:
             params: Query parameters
             page_size: Number of items per page
         Yields:
-            dict: Response data
+            Response data
         '''
         yield from self._get_pagination(
             'get_with_limit_20', endpoint, params, page_size
@@ -234,7 +234,9 @@ class Readwise:
                     last_highlight_at=datetime.fromisoformat(book['last_highlight_at'])
                     if book['last_highlight_at']
                     else None,
-                    updated=datetime.fromisoformat(book['updated']),
+                    updated=datetime.fromisoformat(book['updated'])
+                    if book['updated']
+                    else None,
                     cover_image_url=book['cover_image_url'],
                     highlights_url=book['highlights_url'],
                     source_url=book['source_url'],
@@ -270,7 +272,9 @@ class Readwise:
                     location_type=highlight['location_type'],
                     url=highlight['url'],
                     color=highlight['color'],
-                    updated=datetime.fromisoformat(highlight['updated']),
+                    updated=datetime.fromisoformat(highlight['updated'])
+                    if highlight['updated']
+                    else None,
                     book_id=highlight['book_id'],
                     tags=[
                         ReadwiseTag(id=tag['id'], name=tag['name'])
