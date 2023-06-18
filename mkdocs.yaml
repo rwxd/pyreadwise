@@ -50,6 +50,7 @@ copyright: "Copyright &copy; 2023 rwxd"
 
 plugins:
   - search
+  - material-plausible
   - mkdocstrings:
       handlers:
         python:
@@ -91,3 +92,7 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/rwxd
+  analytics:
+    provider: plausible
+    domain: rwxd.github.io/pyreadwise
+    src: "https://plausible.chaops.de/js/script.js"
