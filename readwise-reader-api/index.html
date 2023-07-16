@@ -564,10 +564,9 @@
   <div class="doc doc-contents first">
 
 
-
-        <details class="quote">
-          <summary>Source code in <code>readwise/api.py</code></summary>
-          <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="364 "></span><span class="k">class</span> <span class="nc">ReadwiseReader</span><span class="p">:</span>
+            <details class="quote">
+              <summary>Source code in <code>readwise/api.py</code></summary>
+              <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="364 "></span><span class="k">class</span> <span class="nc">ReadwiseReader</span><span class="p">:</span>
 <span class="linenos" data-linenos="365 "></span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
 <span class="linenos" data-linenos="366 "></span>        <span class="bp">self</span><span class="p">,</span>
 <span class="linenos" data-linenos="367 "></span>        <span class="n">token</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -722,11 +721,12 @@
 <span class="linenos" data-linenos="516 "></span>
 <span class="linenos" data-linenos="517 "></span>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;/save/&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
 </code></pre></div>
-        </details>
+            </details>
 
   
 
   <div class="doc doc-children">
+
 
 
 
@@ -751,6 +751,8 @@
       <p>Readwise Reader API client.</p>
 <p>Documentation for the Readwise Reader API can be found here:
 https://readwise.io/reader_api</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -780,9 +782,9 @@ https://readwise.io/reader_api</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>readwise/api.py</code></summary>
-        <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="365 "></span><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+          <details class="quote">
+            <summary>Source code in <code>readwise/api.py</code></summary>
+            <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="365 "></span><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
 <span class="linenos" data-linenos="366 "></span>    <span class="bp">self</span><span class="p">,</span>
 <span class="linenos" data-linenos="367 "></span>    <span class="n">token</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 <span class="linenos" data-linenos="368 "></span><span class="p">):</span>
@@ -798,10 +800,11 @@ https://readwise.io/reader_api</p>
 <span class="linenos" data-linenos="378 "></span>    <span class="bp">self</span><span class="o">.</span><span class="n">_token</span> <span class="o">=</span> <span class="n">token</span>
 <span class="linenos" data-linenos="379 "></span>    <span class="bp">self</span><span class="o">.</span><span class="n">_url</span> <span class="o">=</span> <span class="s1">&#39;https://readwise.io/api/v3&#39;</span>
 </code></pre></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -816,6 +819,8 @@ https://readwise.io/reader_api</p>
   <div class="doc doc-contents ">
   
       <p>Create a document in Readwise Reader.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -985,6 +990,8 @@ https://readwise.io/reader_api</p>
     </tbody>
   </table>
 
+
+
   <p><strong>Returns:</strong></p>
   <table>
     <thead>
@@ -1007,9 +1014,9 @@ https://readwise.io/reader_api</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>readwise/api.py</code></summary>
-        <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="454 "></span><span class="k">def</span> <span class="nf">create_document</span><span class="p">(</span>
+          <details class="quote">
+            <summary>Source code in <code>readwise/api.py</code></summary>
+            <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="454 "></span><span class="k">def</span> <span class="nf">create_document</span><span class="p">(</span>
 <span class="linenos" data-linenos="455 "></span>    <span class="bp">self</span><span class="p">,</span>
 <span class="linenos" data-linenos="456 "></span>    <span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 <span class="linenos" data-linenos="457 "></span>    <span class="n">html</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -1074,10 +1081,11 @@ https://readwise.io/reader_api</p>
 <span class="linenos" data-linenos="516 "></span>
 <span class="linenos" data-linenos="517 "></span>    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;/save/&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
 </code></pre></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -1092,6 +1100,8 @@ https://readwise.io/reader_api</p>
   <div class="doc doc-contents ">
   
       <p>Make a GET request to the Readwise Reader API client.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -1135,6 +1145,8 @@ https://readwise.io/reader_api</p>
     </tbody>
   </table>
 
+
+
   <p><strong>Returns:</strong></p>
   <table>
     <thead>
@@ -1157,9 +1169,9 @@ https://readwise.io/reader_api</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>readwise/api.py</code></summary>
-        <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="423 "></span><span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{})</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
+          <details class="quote">
+            <summary>Source code in <code>readwise/api.py</code></summary>
+            <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="423 "></span><span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{})</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
 <span class="linenos" data-linenos="424 "></span><span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="linenos" data-linenos="425 "></span><span class="sd">    Make a GET request to the Readwise Reader API client.</span>
 <span class="linenos" data-linenos="426 "></span>
@@ -1173,10 +1185,11 @@ https://readwise.io/reader_api</p>
 <span class="linenos" data-linenos="434 "></span>    <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Getting &quot;</span><span class="si">{</span><span class="n">endpoint</span><span class="si">}</span><span class="s1">&quot; with params: </span><span class="si">{</span><span class="n">params</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="linenos" data-linenos="435 "></span>    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
 </code></pre></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -1191,6 +1204,8 @@ https://readwise.io/reader_api</p>
   <div class="doc doc-contents ">
   
       <p>Make a POST request to the Readwise Reader API.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -1234,6 +1249,8 @@ https://readwise.io/reader_api</p>
     </tbody>
   </table>
 
+
+
   <p><strong>Returns:</strong></p>
   <table>
     <thead>
@@ -1256,9 +1273,9 @@ https://readwise.io/reader_api</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>readwise/api.py</code></summary>
-        <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="437 "></span><span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{})</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
+          <details class="quote">
+            <summary>Source code in <code>readwise/api.py</code></summary>
+            <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="437 "></span><span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{})</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
 <span class="linenos" data-linenos="438 "></span><span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="linenos" data-linenos="439 "></span><span class="sd">    Make a POST request to the Readwise Reader API.</span>
 <span class="linenos" data-linenos="440 "></span>
@@ -1275,7 +1292,7 @@ https://readwise.io/reader_api</p>
 <span class="linenos" data-linenos="451 "></span>    <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
 <span class="linenos" data-linenos="452 "></span>    <span class="k">return</span> <span class="n">response</span>
 </code></pre></div>
-      </details>
+          </details>
   </div>
 
 </div>

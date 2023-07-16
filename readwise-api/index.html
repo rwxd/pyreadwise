@@ -627,10 +627,9 @@
   <div class="doc doc-contents first">
 
 
-
-        <details class="quote">
-          <summary>Source code in <code>readwise/api.py</code></summary>
-          <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 17 "></span><span class="k">class</span> <span class="nc">Readwise</span><span class="p">:</span>
+            <details class="quote">
+              <summary>Source code in <code>readwise/api.py</code></summary>
+              <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 17 "></span><span class="k">class</span> <span class="nc">Readwise</span><span class="p">:</span>
 <span class="linenos" data-linenos=" 18 "></span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
 <span class="linenos" data-linenos=" 19 "></span>        <span class="bp">self</span><span class="p">,</span>
 <span class="linenos" data-linenos=" 20 "></span>        <span class="n">token</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -976,11 +975,12 @@
 <span class="linenos" data-linenos="360 "></span>        <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Deleting tag &quot;</span><span class="si">{</span><span class="n">tag_id</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">)</span>
 <span class="linenos" data-linenos="361 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;/books/</span><span class="si">{</span><span class="n">book_id</span><span class="si">}</span><span class="s1">/tags/</span><span class="si">{</span><span class="n">tag_id</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </code></pre></div>
-        </details>
+            </details>
 
   
 
   <div class="doc doc-children">
+
 
 
 
@@ -1005,6 +1005,8 @@
       <p>Initialize a Readwise API client.</p>
 <p>Documentation for the Readwise API can be found here:
 https://readwise.io/api_deets</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -1034,9 +1036,9 @@ https://readwise.io/api_deets</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>readwise/api.py</code></summary>
-        <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="18 "></span><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+          <details class="quote">
+            <summary>Source code in <code>readwise/api.py</code></summary>
+            <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="18 "></span><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
 <span class="linenos" data-linenos="19 "></span>    <span class="bp">self</span><span class="p">,</span>
 <span class="linenos" data-linenos="20 "></span>    <span class="n">token</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 <span class="linenos" data-linenos="21 "></span><span class="p">):</span>
@@ -1052,10 +1054,11 @@ https://readwise.io/api_deets</p>
 <span class="linenos" data-linenos="31 "></span>    <span class="bp">self</span><span class="o">.</span><span class="n">_token</span> <span class="o">=</span> <span class="n">token</span>
 <span class="linenos" data-linenos="32 "></span>    <span class="bp">self</span><span class="o">.</span><span class="n">_url</span> <span class="o">=</span> <span class="s1">&#39;https://readwise.io/api/v2&#39;</span>
 </code></pre></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -1070,6 +1073,8 @@ https://readwise.io/api_deets</p>
   <div class="doc doc-contents ">
   
       <p>Add a tag to a Readwise book.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -1113,6 +1118,8 @@ https://readwise.io/api_deets</p>
     </tbody>
   </table>
 
+
+
   <p><strong>Returns:</strong></p>
   <table>
     <thead>
@@ -1134,9 +1141,9 @@ https://readwise.io/api_deets</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>readwise/api.py</code></summary>
-        <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="335 "></span><span class="k">def</span> <span class="nf">add_tag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">book_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">tag</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+          <details class="quote">
+            <summary>Source code in <code>readwise/api.py</code></summary>
+            <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="335 "></span><span class="k">def</span> <span class="nf">add_tag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">book_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">tag</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
 <span class="linenos" data-linenos="336 "></span><span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="linenos" data-linenos="337 "></span><span class="sd">    Add a tag to a Readwise book.</span>
 <span class="linenos" data-linenos="338 "></span>
@@ -1151,10 +1158,11 @@ https://readwise.io/api_deets</p>
 <span class="linenos" data-linenos="347 "></span>    <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">tag</span><span class="p">}</span>
 <span class="linenos" data-linenos="348 "></span>    <span class="bp">self</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;/books/</span><span class="si">{</span><span class="n">book_id</span><span class="si">}</span><span class="s1">/tags/&#39;</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
 </code></pre></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -1169,6 +1177,8 @@ https://readwise.io/api_deets</p>
   <div class="doc doc-contents ">
   
       <p>Create a Readwise highlight.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -1282,9 +1292,9 @@ https://readwise.io/api_deets</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>readwise/api.py</code></summary>
-        <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="285 "></span><span class="k">def</span> <span class="nf">create_highlight</span><span class="p">(</span>
+          <details class="quote">
+            <summary>Source code in <code>readwise/api.py</code></summary>
+            <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="285 "></span><span class="k">def</span> <span class="nf">create_highlight</span><span class="p">(</span>
 <span class="linenos" data-linenos="286 "></span>    <span class="bp">self</span><span class="p">,</span>
 <span class="linenos" data-linenos="287 "></span>    <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 <span class="linenos" data-linenos="288 "></span>    <span class="n">title</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -1318,10 +1328,11 @@ https://readwise.io/api_deets</p>
 <span class="linenos" data-linenos="316 "></span>
 <span class="linenos" data-linenos="317 "></span>    <span class="bp">self</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;/highlights/&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;highlights&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">payload</span><span class="p">]})</span>
 </code></pre></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -1337,9 +1348,13 @@ https://readwise.io/api_deets</p>
   
       <p>Make a DELETE request to the Readwise API.</p>
 
+
+
 <p><strong>Examples:</strong></p>
     <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">client</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s1">&#39;/highlights/1234&#39;</span><span class="p">)</span>
 </code></pre></div>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -1369,6 +1384,8 @@ https://readwise.io/api_deets</p>
     </tbody>
   </table>
 
+
+
   <p><strong>Returns:</strong></p>
   <table>
     <thead>
@@ -1391,9 +1408,9 @@ https://readwise.io/api_deets</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>readwise/api.py</code></summary>
-        <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="134 "></span><span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
+          <details class="quote">
+            <summary>Source code in <code>readwise/api.py</code></summary>
+            <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="134 "></span><span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
 <span class="linenos" data-linenos="135 "></span><span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="linenos" data-linenos="136 "></span><span class="sd">    Make a DELETE request to the Readwise API.</span>
 <span class="linenos" data-linenos="137 "></span>
@@ -1409,10 +1426,11 @@ https://readwise.io/api_deets</p>
 <span class="linenos" data-linenos="147 "></span>    <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Deleting &quot;</span><span class="si">{</span><span class="n">endpoint</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">)</span>
 <span class="linenos" data-linenos="148 "></span>    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_request</span><span class="p">(</span><span class="s1">&#39;DELETE&#39;</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">)</span>
 </code></pre></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -1427,6 +1445,8 @@ https://readwise.io/api_deets</p>
   <div class="doc doc-contents ">
   
       <p>Delete a tag from a Readwise book.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -1456,6 +1476,8 @@ https://readwise.io/api_deets</p>
     </tbody>
   </table>
 
+
+
   <p><strong>Returns:</strong></p>
   <table>
     <thead>
@@ -1477,9 +1499,9 @@ https://readwise.io/api_deets</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>readwise/api.py</code></summary>
-        <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="350 "></span><span class="k">def</span> <span class="nf">delete_tag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">book_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">tag_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+          <details class="quote">
+            <summary>Source code in <code>readwise/api.py</code></summary>
+            <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="350 "></span><span class="k">def</span> <span class="nf">delete_tag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">book_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">tag_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
 <span class="linenos" data-linenos="351 "></span><span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="linenos" data-linenos="352 "></span><span class="sd">    Delete a tag from a Readwise book.</span>
 <span class="linenos" data-linenos="353 "></span>
@@ -1492,10 +1514,11 @@ https://readwise.io/api_deets</p>
 <span class="linenos" data-linenos="360 "></span>    <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Deleting tag &quot;</span><span class="si">{</span><span class="n">tag_id</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">)</span>
 <span class="linenos" data-linenos="361 "></span>    <span class="bp">self</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;/books/</span><span class="si">{</span><span class="n">book_id</span><span class="si">}</span><span class="s1">/tags/</span><span class="si">{</span><span class="n">tag_id</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </code></pre></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -1511,9 +1534,13 @@ https://readwise.io/api_deets</p>
   
       <p>Make a GET request to the Readwise API.</p>
 
+
+
 <p><strong>Examples:</strong></p>
     <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;/highlights/&#39;</span><span class="p">)</span>
 </code></pre></div>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -1557,6 +1584,8 @@ https://readwise.io/api_deets</p>
     </tbody>
   </table>
 
+
+
   <p><strong>Returns:</strong></p>
   <table>
     <thead>
@@ -1579,9 +1608,9 @@ https://readwise.io/api_deets</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>readwise/api.py</code></summary>
-        <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="81 "></span><span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{})</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
+          <details class="quote">
+            <summary>Source code in <code>readwise/api.py</code></summary>
+            <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="81 "></span><span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{})</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
 <span class="linenos" data-linenos="82 "></span><span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="linenos" data-linenos="83 "></span><span class="sd">    Make a GET request to the Readwise API.</span>
 <span class="linenos" data-linenos="84 "></span>
@@ -1598,10 +1627,11 @@ https://readwise.io/api_deets</p>
 <span class="linenos" data-linenos="95 "></span>    <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Getting &quot;</span><span class="si">{</span><span class="n">endpoint</span><span class="si">}</span><span class="s1">&quot; with params: </span><span class="si">{</span><span class="n">params</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="linenos" data-linenos="96 "></span>    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
 </code></pre></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -1616,6 +1646,8 @@ https://readwise.io/api_deets</p>
   <div class="doc doc-contents ">
   
       <p>Get all highlights for a Readwise book.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -1645,6 +1677,8 @@ https://readwise.io/api_deets</p>
     </tbody>
   </table>
 
+
+
   <p><strong>Returns:</strong></p>
   <table>
     <thead>
@@ -1667,9 +1701,9 @@ https://readwise.io/api_deets</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>readwise/api.py</code></summary>
-        <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="251 "></span><span class="k">def</span> <span class="nf">get_book_highlights</span><span class="p">(</span>
+          <details class="quote">
+            <summary>Source code in <code>readwise/api.py</code></summary>
+            <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="251 "></span><span class="k">def</span> <span class="nf">get_book_highlights</span><span class="p">(</span>
 <span class="linenos" data-linenos="252 "></span>    <span class="bp">self</span><span class="p">,</span> <span class="n">book_id</span><span class="p">:</span> <span class="nb">str</span>
 <span class="linenos" data-linenos="253 "></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">ReadwiseHighlight</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
 <span class="linenos" data-linenos="254 "></span><span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
@@ -1703,10 +1737,11 @@ https://readwise.io/api_deets</p>
 <span class="linenos" data-linenos="282 "></span>                <span class="p">],</span>
 <span class="linenos" data-linenos="283 "></span>            <span class="p">)</span>
 </code></pre></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -1721,6 +1756,8 @@ https://readwise.io/api_deets</p>
   <div class="doc doc-contents ">
   
       <p>Get all tags for a Readwise book.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -1750,6 +1787,8 @@ https://readwise.io/api_deets</p>
     </tbody>
   </table>
 
+
+
   <p><strong>Returns:</strong></p>
   <table>
     <thead>
@@ -1772,9 +1811,9 @@ https://readwise.io/api_deets</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>readwise/api.py</code></summary>
-        <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="319 "></span><span class="k">def</span> <span class="nf">get_book_tags</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">book_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">ReadwiseTag</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+          <details class="quote">
+            <summary>Source code in <code>readwise/api.py</code></summary>
+            <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="319 "></span><span class="k">def</span> <span class="nf">get_book_tags</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">book_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">ReadwiseTag</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
 <span class="linenos" data-linenos="320 "></span><span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="linenos" data-linenos="321 "></span><span class="sd">    Get all tags for a Readwise book.</span>
 <span class="linenos" data-linenos="322 "></span>
@@ -1790,10 +1829,11 @@ https://readwise.io/api_deets</p>
 <span class="linenos" data-linenos="332 "></span>        <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
 <span class="linenos" data-linenos="333 "></span>            <span class="k">yield</span> <span class="n">ReadwiseTag</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">tag</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="n">tag</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span>
 </code></pre></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -1808,6 +1848,8 @@ https://readwise.io/api_deets</p>
   <div class="doc doc-contents ">
   
       <p>Get all Readwise books.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -1837,6 +1879,8 @@ https://readwise.io/api_deets</p>
     </tbody>
   </table>
 
+
+
   <p><strong>Returns:</strong></p>
   <table>
     <thead>
@@ -1859,9 +1903,9 @@ https://readwise.io/api_deets</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>readwise/api.py</code></summary>
-        <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="211 "></span><span class="k">def</span> <span class="nf">get_books</span><span class="p">(</span>
+          <details class="quote">
+            <summary>Source code in <code>readwise/api.py</code></summary>
+            <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="211 "></span><span class="k">def</span> <span class="nf">get_books</span><span class="p">(</span>
 <span class="linenos" data-linenos="212 "></span>    <span class="bp">self</span><span class="p">,</span> <span class="n">category</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;articles&#39;</span><span class="p">,</span> <span class="s1">&#39;books&#39;</span><span class="p">,</span> <span class="s1">&#39;tweets&#39;</span><span class="p">,</span> <span class="s1">&#39;podcasts&#39;</span><span class="p">]</span>
 <span class="linenos" data-linenos="213 "></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">ReadwiseBook</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
 <span class="linenos" data-linenos="214 "></span><span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
@@ -1901,10 +1945,11 @@ https://readwise.io/api_deets</p>
 <span class="linenos" data-linenos="248 "></span>                <span class="n">document_note</span><span class="o">=</span><span class="n">book</span><span class="p">[</span><span class="s1">&#39;document_note&#39;</span><span class="p">],</span>
 <span class="linenos" data-linenos="249 "></span>            <span class="p">)</span>
 </code></pre></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -1919,6 +1964,8 @@ https://readwise.io/api_deets</p>
   <div class="doc doc-contents ">
   
       <p>Get a response from the Readwise API with pagination.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -1962,6 +2009,8 @@ https://readwise.io/api_deets</p>
     </tbody>
   </table>
 
+
+
   <p><strong>Yields:</strong></p>
   <table>
     <thead>
@@ -1973,7 +2022,7 @@ https://readwise.io/api_deets</p>
     <tbody>
         <tr>
           <td>
-                <code><span title="typing.Generator">Generator</span>[dict, None, None]</code>
+                <code>dict</code>
           </td>
           <td>
             <div class="doc-md-description">
@@ -1984,9 +2033,9 @@ https://readwise.io/api_deets</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>readwise/api.py</code></summary>
-        <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="150 "></span><span class="k">def</span> <span class="nf">get_pagination</span><span class="p">(</span>
+          <details class="quote">
+            <summary>Source code in <code>readwise/api.py</code></summary>
+            <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="150 "></span><span class="k">def</span> <span class="nf">get_pagination</span><span class="p">(</span>
 <span class="linenos" data-linenos="151 "></span>    <span class="bp">self</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="linenos" data-linenos="152 "></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
 <span class="linenos" data-linenos="153 "></span><span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
@@ -2000,10 +2049,11 @@ https://readwise.io/api_deets</p>
 <span class="linenos" data-linenos="161 "></span><span class="sd">    &#39;&#39;&#39;</span>
 <span class="linenos" data-linenos="162 "></span>    <span class="k">yield from</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_pagination</span><span class="p">(</span><span class="s1">&#39;get&#39;</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
 </code></pre></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -2019,6 +2069,8 @@ https://readwise.io/api_deets</p>
   
       <p>Get a response from the Readwise API with pagination and a rate limit
 of 20 requests per minute.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -2076,6 +2128,8 @@ of 20 requests per minute.</p>
     </tbody>
   </table>
 
+
+
   <p><strong>Yields:</strong></p>
   <table>
     <thead>
@@ -2087,7 +2141,7 @@ of 20 requests per minute.</p>
     <tbody>
         <tr>
           <td>
-                <code><span title="typing.Generator">Generator</span>[dict, None, None]</code>
+                <code>dict</code>
           </td>
           <td>
             <div class="doc-md-description">
@@ -2098,9 +2152,9 @@ of 20 requests per minute.</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>readwise/api.py</code></summary>
-        <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="164 "></span><span class="k">def</span> <span class="nf">get_pagination_limit_20</span><span class="p">(</span>
+          <details class="quote">
+            <summary>Source code in <code>readwise/api.py</code></summary>
+            <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="164 "></span><span class="k">def</span> <span class="nf">get_pagination_limit_20</span><span class="p">(</span>
 <span class="linenos" data-linenos="165 "></span>    <span class="bp">self</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{},</span> <span class="n">page_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1000</span>
 <span class="linenos" data-linenos="166 "></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
 <span class="linenos" data-linenos="167 "></span><span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
@@ -2118,10 +2172,11 @@ of 20 requests per minute.</p>
 <span class="linenos" data-linenos="179 "></span>        <span class="s1">&#39;get_with_limit_20&#39;</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">page_size</span>
 <span class="linenos" data-linenos="180 "></span>    <span class="p">)</span>
 </code></pre></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -2139,6 +2194,8 @@ of 20 requests per minute.</p>
 per minute.</p>
 <p>The rate limit of 20 requests per minute needs to be used at the
 endpoints /highlights/ and /books/ because they return a lot of data.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -2182,6 +2239,8 @@ endpoints /highlights/ and /books/ because they return a lot of data.</p>
     </tbody>
   </table>
 
+
+
   <p><strong>Returns:</strong></p>
   <table>
     <thead>
@@ -2204,9 +2263,9 @@ endpoints /highlights/ and /books/ because they return a lot of data.</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>readwise/api.py</code></summary>
-        <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 98 "></span><span class="k">def</span> <span class="nf">get_with_limit_20</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{})</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
+          <details class="quote">
+            <summary>Source code in <code>readwise/api.py</code></summary>
+            <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 98 "></span><span class="k">def</span> <span class="nf">get_with_limit_20</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{})</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
 <span class="linenos" data-linenos=" 99 "></span><span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="linenos" data-linenos="100 "></span><span class="sd">    Get a response from the Readwise API with a rate limit of 20 requests</span>
 <span class="linenos" data-linenos="101 "></span><span class="sd">    per minute.</span>
@@ -2222,10 +2281,11 @@ endpoints /highlights/ and /books/ because they return a lot of data.</p>
 <span class="linenos" data-linenos="111 "></span><span class="sd">    &#39;&#39;&#39;</span>
 <span class="linenos" data-linenos="112 "></span>    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">endpoint</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
 </code></pre></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -2241,9 +2301,13 @@ endpoints /highlights/ and /books/ because they return a lot of data.</p>
   
       <p>Make a POST request to the Readwise API.</p>
 
+
+
 <p><strong>Examples:</strong></p>
     <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;/highlights/&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;highlights&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="s1">&#39;foo&#39;</span><span class="p">}]})</span>
 </code></pre></div>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -2287,6 +2351,8 @@ endpoints /highlights/ and /books/ because they return a lot of data.</p>
     </tbody>
   </table>
 
+
+
   <p><strong>Returns:</strong></p>
   <table>
     <thead>
@@ -2309,9 +2375,9 @@ endpoints /highlights/ and /books/ because they return a lot of data.</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>readwise/api.py</code></summary>
-        <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="114 "></span><span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{})</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
+          <details class="quote">
+            <summary>Source code in <code>readwise/api.py</code></summary>
+            <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="114 "></span><span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{})</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
 <span class="linenos" data-linenos="115 "></span><span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="linenos" data-linenos="116 "></span><span class="sd">    Make a POST request to the Readwise API.</span>
 <span class="linenos" data-linenos="117 "></span>
@@ -2331,7 +2397,7 @@ endpoints /highlights/ and /books/ because they return a lot of data.</p>
 <span class="linenos" data-linenos="131 "></span>    <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
 <span class="linenos" data-linenos="132 "></span>    <span class="k">return</span> <span class="n">response</span>
 </code></pre></div>
-      </details>
+          </details>
   </div>
 
 </div>
