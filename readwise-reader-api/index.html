@@ -507,6 +507,27 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#readwise.api.ReadwiseReader.get_documents" class="md-nav__link">
+    get_documents()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#readwise.api.ReadwiseReader.get_pagination_limit_20" class="md-nav__link">
+    get_pagination_limit_20()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#readwise.api.ReadwiseReader.get_with_limit_20" class="md-nav__link">
+    get_with_limit_20()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#readwise.api.ReadwiseReader.post" class="md-nav__link">
     post()
   </a>
@@ -566,160 +587,254 @@
 
             <details class="quote">
               <summary>Source code in <code>readwise/api.py</code></summary>
-              <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="364 "></span><span class="k">class</span> <span class="nc">ReadwiseReader</span><span class="p">:</span>
-<span class="linenos" data-linenos="365 "></span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
-<span class="linenos" data-linenos="366 "></span>        <span class="bp">self</span><span class="p">,</span>
-<span class="linenos" data-linenos="367 "></span>        <span class="n">token</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-<span class="linenos" data-linenos="368 "></span>    <span class="p">):</span>
-<span class="linenos" data-linenos="369 "></span><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="linenos" data-linenos="370 "></span><span class="sd">        Readwise Reader API client.</span>
-<span class="linenos" data-linenos="371 "></span>
-<span class="linenos" data-linenos="372 "></span><span class="sd">        Documentation for the Readwise Reader API can be found here:</span>
-<span class="linenos" data-linenos="373 "></span><span class="sd">        https://readwise.io/reader_api</span>
-<span class="linenos" data-linenos="374 "></span>
-<span class="linenos" data-linenos="375 "></span><span class="sd">        Args:</span>
-<span class="linenos" data-linenos="376 "></span><span class="sd">            token: Readwise Reader Connector token</span>
-<span class="linenos" data-linenos="377 "></span><span class="sd">        &#39;&#39;&#39;</span>
-<span class="linenos" data-linenos="378 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">_token</span> <span class="o">=</span> <span class="n">token</span>
-<span class="linenos" data-linenos="379 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">_url</span> <span class="o">=</span> <span class="s1">&#39;https://readwise.io/api/v3&#39;</span>
+              <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="370 "></span><span class="k">class</span> <span class="nc">ReadwiseReader</span><span class="p">:</span>
+<span class="linenos" data-linenos="371 "></span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+<span class="linenos" data-linenos="372 "></span>        <span class="bp">self</span><span class="p">,</span>
+<span class="linenos" data-linenos="373 "></span>        <span class="n">token</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<span class="linenos" data-linenos="374 "></span>    <span class="p">):</span>
+<span class="linenos" data-linenos="375 "></span><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="376 "></span><span class="sd">        Readwise Reader API client.</span>
+<span class="linenos" data-linenos="377 "></span>
+<span class="linenos" data-linenos="378 "></span><span class="sd">        Documentation for the Readwise Reader API can be found here:</span>
+<span class="linenos" data-linenos="379 "></span><span class="sd">        https://readwise.io/reader_api</span>
 <span class="linenos" data-linenos="380 "></span>
-<span class="linenos" data-linenos="381 "></span>    <span class="nd">@property</span>
-<span class="linenos" data-linenos="382 "></span>    <span class="k">def</span> <span class="nf">_session</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Session</span><span class="p">:</span>
-<span class="linenos" data-linenos="383 "></span><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="linenos" data-linenos="384 "></span><span class="sd">        Session object for making requests.</span>
-<span class="linenos" data-linenos="385 "></span><span class="sd">        The headers are set to include the token.</span>
-<span class="linenos" data-linenos="386 "></span><span class="sd">        &#39;&#39;&#39;</span>
-<span class="linenos" data-linenos="387 "></span>        <span class="n">session</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
-<span class="linenos" data-linenos="388 "></span>        <span class="n">session</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
-<span class="linenos" data-linenos="389 "></span>            <span class="p">{</span>
-<span class="linenos" data-linenos="390 "></span>                <span class="s1">&#39;Accept&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">,</span>
-<span class="linenos" data-linenos="391 "></span>                <span class="s1">&#39;Authorization&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;Token </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_token</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
-<span class="linenos" data-linenos="392 "></span>            <span class="p">}</span>
-<span class="linenos" data-linenos="393 "></span>        <span class="p">)</span>
-<span class="linenos" data-linenos="394 "></span>        <span class="k">return</span> <span class="n">session</span>
-<span class="linenos" data-linenos="395 "></span>
-<span class="linenos" data-linenos="396 "></span>    <span class="k">def</span> <span class="nf">_request</span><span class="p">(</span>
-<span class="linenos" data-linenos="397 "></span>        <span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{},</span> <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="linenos" data-linenos="398 "></span>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
-<span class="linenos" data-linenos="399 "></span><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="linenos" data-linenos="400 "></span><span class="sd">        Make a request to the Readwise Reader API.</span>
-<span class="linenos" data-linenos="401 "></span><span class="sd">        The request is rate limited to 20 calls per minute.</span>
-<span class="linenos" data-linenos="402 "></span>
-<span class="linenos" data-linenos="403 "></span><span class="sd">        Args:</span>
-<span class="linenos" data-linenos="404 "></span><span class="sd">            method: HTTP method</span>
-<span class="linenos" data-linenos="405 "></span><span class="sd">            endpoint: API endpoints</span>
-<span class="linenos" data-linenos="406 "></span><span class="sd">            params: Query parameters</span>
-<span class="linenos" data-linenos="407 "></span><span class="sd">            data: Request body</span>
+<span class="linenos" data-linenos="381 "></span><span class="sd">        Args:</span>
+<span class="linenos" data-linenos="382 "></span><span class="sd">            token: Readwise Reader Connector token</span>
+<span class="linenos" data-linenos="383 "></span><span class="sd">        &#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="384 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">_token</span> <span class="o">=</span> <span class="n">token</span>
+<span class="linenos" data-linenos="385 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">_url</span> <span class="o">=</span> <span class="s1">&#39;https://readwise.io/api/v3&#39;</span>
+<span class="linenos" data-linenos="386 "></span>
+<span class="linenos" data-linenos="387 "></span>    <span class="nd">@property</span>
+<span class="linenos" data-linenos="388 "></span>    <span class="k">def</span> <span class="nf">_session</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Session</span><span class="p">:</span>
+<span class="linenos" data-linenos="389 "></span><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="390 "></span><span class="sd">        Session object for making requests.</span>
+<span class="linenos" data-linenos="391 "></span><span class="sd">        The headers are set to include the token.</span>
+<span class="linenos" data-linenos="392 "></span><span class="sd">        &#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="393 "></span>        <span class="n">session</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
+<span class="linenos" data-linenos="394 "></span>        <span class="n">session</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+<span class="linenos" data-linenos="395 "></span>            <span class="p">{</span>
+<span class="linenos" data-linenos="396 "></span>                <span class="s1">&#39;Accept&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">,</span>
+<span class="linenos" data-linenos="397 "></span>                <span class="s1">&#39;Authorization&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;Token </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_token</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+<span class="linenos" data-linenos="398 "></span>            <span class="p">}</span>
+<span class="linenos" data-linenos="399 "></span>        <span class="p">)</span>
+<span class="linenos" data-linenos="400 "></span>        <span class="k">return</span> <span class="n">session</span>
+<span class="linenos" data-linenos="401 "></span>
+<span class="linenos" data-linenos="402 "></span>    <span class="k">def</span> <span class="nf">_request</span><span class="p">(</span>
+<span class="linenos" data-linenos="403 "></span>        <span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{},</span> <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="linenos" data-linenos="404 "></span>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
+<span class="linenos" data-linenos="405 "></span><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="406 "></span><span class="sd">        Make a request to the Readwise Reader API.</span>
+<span class="linenos" data-linenos="407 "></span><span class="sd">        The request is rate limited to 20 calls per minute.</span>
 <span class="linenos" data-linenos="408 "></span>
-<span class="linenos" data-linenos="409 "></span><span class="sd">        Returns:</span>
-<span class="linenos" data-linenos="410 "></span><span class="sd">            requests.Response</span>
-<span class="linenos" data-linenos="411 "></span><span class="sd">        &#39;&#39;&#39;</span>
-<span class="linenos" data-linenos="412 "></span>        <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_url</span> <span class="o">+</span> <span class="n">endpoint</span>
-<span class="linenos" data-linenos="413 "></span>        <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Calling &quot;</span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s1">&quot; on &quot;</span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s1">&quot; with params: </span><span class="si">{</span><span class="n">params</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="linenos" data-linenos="414 "></span>        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_session</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
-<span class="linenos" data-linenos="415 "></span>        <span class="k">while</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">429</span><span class="p">:</span>
-<span class="linenos" data-linenos="416 "></span>            <span class="n">seconds</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s1">&#39;Retry-After&#39;</span><span class="p">])</span>
-<span class="linenos" data-linenos="417 "></span>            <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Rate limited by Readwise, retrying in </span><span class="si">{</span><span class="n">seconds</span><span class="si">}</span><span class="s1"> seconds&#39;</span><span class="p">)</span>
-<span class="linenos" data-linenos="418 "></span>            <span class="n">sleep</span><span class="p">(</span><span class="n">seconds</span><span class="p">)</span>
-<span class="linenos" data-linenos="419 "></span>            <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_session</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
-<span class="linenos" data-linenos="420 "></span>        <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
-<span class="linenos" data-linenos="421 "></span>        <span class="k">return</span> <span class="n">response</span>
-<span class="linenos" data-linenos="422 "></span>
-<span class="linenos" data-linenos="423 "></span>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{})</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
-<span class="linenos" data-linenos="424 "></span><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="linenos" data-linenos="425 "></span><span class="sd">        Make a GET request to the Readwise Reader API client.</span>
-<span class="linenos" data-linenos="426 "></span>
-<span class="linenos" data-linenos="427 "></span><span class="sd">        Args:</span>
-<span class="linenos" data-linenos="428 "></span><span class="sd">            endpoint: API endpoints</span>
-<span class="linenos" data-linenos="429 "></span><span class="sd">            params: Query parameters</span>
-<span class="linenos" data-linenos="430 "></span>
-<span class="linenos" data-linenos="431 "></span><span class="sd">        Returns:</span>
-<span class="linenos" data-linenos="432 "></span><span class="sd">            requests.Response</span>
-<span class="linenos" data-linenos="433 "></span><span class="sd">        &#39;&#39;&#39;</span>
-<span class="linenos" data-linenos="434 "></span>        <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Getting &quot;</span><span class="si">{</span><span class="n">endpoint</span><span class="si">}</span><span class="s1">&quot; with params: </span><span class="si">{</span><span class="n">params</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="linenos" data-linenos="435 "></span>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+<span class="linenos" data-linenos="409 "></span><span class="sd">        Args:</span>
+<span class="linenos" data-linenos="410 "></span><span class="sd">            method: HTTP method</span>
+<span class="linenos" data-linenos="411 "></span><span class="sd">            endpoint: API endpoints</span>
+<span class="linenos" data-linenos="412 "></span><span class="sd">            params: Query parameters</span>
+<span class="linenos" data-linenos="413 "></span><span class="sd">            data: Request body</span>
+<span class="linenos" data-linenos="414 "></span>
+<span class="linenos" data-linenos="415 "></span><span class="sd">        Returns:</span>
+<span class="linenos" data-linenos="416 "></span><span class="sd">            requests.Response</span>
+<span class="linenos" data-linenos="417 "></span><span class="sd">        &#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="418 "></span>        <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_url</span> <span class="o">+</span> <span class="n">endpoint</span>
+<span class="linenos" data-linenos="419 "></span>        <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Calling &quot;</span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s1">&quot; on &quot;</span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s1">&quot; with params: </span><span class="si">{</span><span class="n">params</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="linenos" data-linenos="420 "></span>        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_session</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+<span class="linenos" data-linenos="421 "></span>        <span class="k">while</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">429</span><span class="p">:</span>
+<span class="linenos" data-linenos="422 "></span>            <span class="n">seconds</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s1">&#39;Retry-After&#39;</span><span class="p">])</span>
+<span class="linenos" data-linenos="423 "></span>            <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Rate limited by Readwise, retrying in </span><span class="si">{</span><span class="n">seconds</span><span class="si">}</span><span class="s1"> seconds&#39;</span><span class="p">)</span>
+<span class="linenos" data-linenos="424 "></span>            <span class="n">sleep</span><span class="p">(</span><span class="n">seconds</span><span class="p">)</span>
+<span class="linenos" data-linenos="425 "></span>            <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_session</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+<span class="linenos" data-linenos="426 "></span>        <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+<span class="linenos" data-linenos="427 "></span>        <span class="k">return</span> <span class="n">response</span>
+<span class="linenos" data-linenos="428 "></span>
+<span class="linenos" data-linenos="429 "></span>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{})</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
+<span class="linenos" data-linenos="430 "></span><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="431 "></span><span class="sd">        Make a GET request to the Readwise Reader API client.</span>
+<span class="linenos" data-linenos="432 "></span>
+<span class="linenos" data-linenos="433 "></span><span class="sd">        Args:</span>
+<span class="linenos" data-linenos="434 "></span><span class="sd">            endpoint: API endpoints</span>
+<span class="linenos" data-linenos="435 "></span><span class="sd">            params: Query parameters</span>
 <span class="linenos" data-linenos="436 "></span>
-<span class="linenos" data-linenos="437 "></span>    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{})</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
-<span class="linenos" data-linenos="438 "></span><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="linenos" data-linenos="439 "></span><span class="sd">        Make a POST request to the Readwise Reader API.</span>
-<span class="linenos" data-linenos="440 "></span>
-<span class="linenos" data-linenos="441 "></span><span class="sd">        Args:</span>
-<span class="linenos" data-linenos="442 "></span><span class="sd">            endpoint: API endpoints</span>
-<span class="linenos" data-linenos="443 "></span><span class="sd">            data: Request body</span>
-<span class="linenos" data-linenos="444 "></span>
-<span class="linenos" data-linenos="445 "></span><span class="sd">        Returns:</span>
-<span class="linenos" data-linenos="446 "></span><span class="sd">            requests.Response</span>
-<span class="linenos" data-linenos="447 "></span><span class="sd">        &#39;&#39;&#39;</span>
-<span class="linenos" data-linenos="448 "></span>        <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_url</span> <span class="o">+</span> <span class="n">endpoint</span>
-<span class="linenos" data-linenos="449 "></span>        <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Posting &quot;</span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s1">&quot; with data: </span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="linenos" data-linenos="450 "></span>        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_request</span><span class="p">(</span><span class="s1">&#39;POST&#39;</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
-<span class="linenos" data-linenos="451 "></span>        <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
-<span class="linenos" data-linenos="452 "></span>        <span class="k">return</span> <span class="n">response</span>
-<span class="linenos" data-linenos="453 "></span>
-<span class="linenos" data-linenos="454 "></span>    <span class="k">def</span> <span class="nf">create_document</span><span class="p">(</span>
-<span class="linenos" data-linenos="455 "></span>        <span class="bp">self</span><span class="p">,</span>
-<span class="linenos" data-linenos="456 "></span>        <span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-<span class="linenos" data-linenos="457 "></span>        <span class="n">html</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<span class="linenos" data-linenos="458 "></span>        <span class="n">should_clean_html</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<span class="linenos" data-linenos="459 "></span>        <span class="n">title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<span class="linenos" data-linenos="460 "></span>        <span class="n">author</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<span class="linenos" data-linenos="461 "></span>        <span class="n">summary</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<span class="linenos" data-linenos="462 "></span>        <span class="n">published_at</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<span class="linenos" data-linenos="463 "></span>        <span class="n">image_url</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<span class="linenos" data-linenos="464 "></span>        <span class="n">location</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;new&#39;</span><span class="p">,</span> <span class="s1">&#39;later&#39;</span><span class="p">,</span> <span class="s1">&#39;archive&#39;</span><span class="p">,</span> <span class="s1">&#39;feed&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;new&#39;</span><span class="p">,</span>
-<span class="linenos" data-linenos="465 "></span>        <span class="n">saved_using</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<span class="linenos" data-linenos="466 "></span>        <span class="n">tags</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
-<span class="linenos" data-linenos="467 "></span>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
-<span class="linenos" data-linenos="468 "></span><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="linenos" data-linenos="469 "></span><span class="sd">        Create a document in Readwise Reader.</span>
-<span class="linenos" data-linenos="470 "></span>
-<span class="linenos" data-linenos="471 "></span><span class="sd">        Args:</span>
-<span class="linenos" data-linenos="472 "></span><span class="sd">            url: Document URL</span>
-<span class="linenos" data-linenos="473 "></span><span class="sd">            html: Document HTML</span>
-<span class="linenos" data-linenos="474 "></span><span class="sd">            should_clean_html: Whether to clean the HTML</span>
-<span class="linenos" data-linenos="475 "></span><span class="sd">            title: Document title</span>
-<span class="linenos" data-linenos="476 "></span><span class="sd">            author: Document author</span>
-<span class="linenos" data-linenos="477 "></span><span class="sd">            summary: Document summary</span>
-<span class="linenos" data-linenos="478 "></span><span class="sd">            published_at: Date and time the document was published</span>
-<span class="linenos" data-linenos="479 "></span><span class="sd">            image_url: An image URL to use as cover image</span>
-<span class="linenos" data-linenos="480 "></span><span class="sd">            location: Document location</span>
-<span class="linenos" data-linenos="481 "></span><span class="sd">            saved_using: How the document was saved</span>
-<span class="linenos" data-linenos="482 "></span><span class="sd">            tags: List of tags</span>
-<span class="linenos" data-linenos="483 "></span>
-<span class="linenos" data-linenos="484 "></span><span class="sd">        Returns:</span>
-<span class="linenos" data-linenos="485 "></span><span class="sd">            requests.Response</span>
-<span class="linenos" data-linenos="486 "></span><span class="sd">        &#39;&#39;&#39;</span>
-<span class="linenos" data-linenos="487 "></span>        <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
-<span class="linenos" data-linenos="488 "></span>            <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="n">url</span><span class="p">,</span>
-<span class="linenos" data-linenos="489 "></span>            <span class="s1">&#39;tags&#39;</span><span class="p">:</span> <span class="n">tags</span><span class="p">,</span>
-<span class="linenos" data-linenos="490 "></span>            <span class="s1">&#39;location&#39;</span><span class="p">:</span> <span class="n">location</span><span class="p">,</span>
-<span class="linenos" data-linenos="491 "></span>        <span class="p">}</span>
-<span class="linenos" data-linenos="492 "></span>
-<span class="linenos" data-linenos="493 "></span>        <span class="k">if</span> <span class="n">html</span><span class="p">:</span>
-<span class="linenos" data-linenos="494 "></span>            <span class="n">data</span><span class="p">[</span><span class="s1">&#39;html&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">html</span>
-<span class="linenos" data-linenos="495 "></span>
-<span class="linenos" data-linenos="496 "></span>        <span class="k">if</span> <span class="n">should_clean_html</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="linenos" data-linenos="497 "></span>            <span class="n">data</span><span class="p">[</span><span class="s1">&#39;should_clean_html&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">should_clean_html</span>
-<span class="linenos" data-linenos="498 "></span>
-<span class="linenos" data-linenos="499 "></span>        <span class="k">if</span> <span class="n">title</span><span class="p">:</span>
-<span class="linenos" data-linenos="500 "></span>            <span class="n">data</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">title</span>
-<span class="linenos" data-linenos="501 "></span>
-<span class="linenos" data-linenos="502 "></span>        <span class="k">if</span> <span class="n">author</span><span class="p">:</span>
-<span class="linenos" data-linenos="503 "></span>            <span class="n">data</span><span class="p">[</span><span class="s1">&#39;author&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">author</span>
-<span class="linenos" data-linenos="504 "></span>
-<span class="linenos" data-linenos="505 "></span>        <span class="k">if</span> <span class="n">summary</span><span class="p">:</span>
-<span class="linenos" data-linenos="506 "></span>            <span class="n">data</span><span class="p">[</span><span class="s1">&#39;summary&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">summary</span>
-<span class="linenos" data-linenos="507 "></span>
-<span class="linenos" data-linenos="508 "></span>        <span class="k">if</span> <span class="n">published_at</span><span class="p">:</span>
-<span class="linenos" data-linenos="509 "></span>            <span class="n">data</span><span class="p">[</span><span class="s1">&#39;published_at&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">published_at</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span>
-<span class="linenos" data-linenos="510 "></span>
-<span class="linenos" data-linenos="511 "></span>        <span class="k">if</span> <span class="n">image_url</span><span class="p">:</span>
-<span class="linenos" data-linenos="512 "></span>            <span class="n">data</span><span class="p">[</span><span class="s1">&#39;image_url&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">image_url</span>
+<span class="linenos" data-linenos="437 "></span><span class="sd">        Returns:</span>
+<span class="linenos" data-linenos="438 "></span><span class="sd">            requests.Response</span>
+<span class="linenos" data-linenos="439 "></span><span class="sd">        &#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="440 "></span>        <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Getting &quot;</span><span class="si">{</span><span class="n">endpoint</span><span class="si">}</span><span class="s1">&quot; with params: </span><span class="si">{</span><span class="n">params</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="linenos" data-linenos="441 "></span>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+<span class="linenos" data-linenos="442 "></span>
+<span class="linenos" data-linenos="443 "></span>    <span class="k">def</span> <span class="nf">get_with_limit_20</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{})</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
+<span class="linenos" data-linenos="444 "></span><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="445 "></span><span class="sd">        Get a response from the Readwise Reader API with a rate limit of 20 requests</span>
+<span class="linenos" data-linenos="446 "></span><span class="sd">        per minute.</span>
+<span class="linenos" data-linenos="447 "></span>
+<span class="linenos" data-linenos="448 "></span><span class="sd">        Args:</span>
+<span class="linenos" data-linenos="449 "></span><span class="sd">            endpoint: API endpoint</span>
+<span class="linenos" data-linenos="450 "></span><span class="sd">            params: Query parameters</span>
+<span class="linenos" data-linenos="451 "></span><span class="sd">        Returns:</span>
+<span class="linenos" data-linenos="452 "></span><span class="sd">            requests.Response</span>
+<span class="linenos" data-linenos="453 "></span><span class="sd">        &#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="454 "></span>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">endpoint</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+<span class="linenos" data-linenos="455 "></span>
+<span class="linenos" data-linenos="456 "></span>    <span class="k">def</span> <span class="nf">_get_pagination</span><span class="p">(</span>
+<span class="linenos" data-linenos="457 "></span>        <span class="bp">self</span><span class="p">,</span>
+<span class="linenos" data-linenos="458 "></span>        <span class="n">get_method</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;get&#39;</span><span class="p">,</span> <span class="s1">&#39;get_with_limit_20&#39;</span><span class="p">],</span>
+<span class="linenos" data-linenos="459 "></span>        <span class="n">endpoint</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<span class="linenos" data-linenos="460 "></span>        <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{},</span>
+<span class="linenos" data-linenos="461 "></span>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+<span class="linenos" data-linenos="462 "></span><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="463 "></span><span class="sd">        Get a response from the Readwise Reader API with pagination.</span>
+<span class="linenos" data-linenos="464 "></span>
+<span class="linenos" data-linenos="465 "></span><span class="sd">        Args:</span>
+<span class="linenos" data-linenos="466 "></span><span class="sd">            get_method: Method to use for making requests</span>
+<span class="linenos" data-linenos="467 "></span><span class="sd">            endpoint: API endpoint</span>
+<span class="linenos" data-linenos="468 "></span><span class="sd">            params: Query parameters</span>
+<span class="linenos" data-linenos="469 "></span><span class="sd">            page_size: Number of items per page</span>
+<span class="linenos" data-linenos="470 "></span><span class="sd">        Yields:</span>
+<span class="linenos" data-linenos="471 "></span><span class="sd">            dict: Response data</span>
+<span class="linenos" data-linenos="472 "></span><span class="sd">        &#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="473 "></span>        <span class="n">pageCursor</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="linenos" data-linenos="474 "></span>        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="linenos" data-linenos="475 "></span>            <span class="k">if</span> <span class="n">pageCursor</span><span class="p">:</span>
+<span class="linenos" data-linenos="476 "></span>                <span class="n">params</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;pageCursor&#39;</span><span class="p">:</span> <span class="n">pageCursor</span><span class="p">})</span>
+<span class="linenos" data-linenos="477 "></span>            <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Getting page with cursor &quot;</span><span class="si">{</span><span class="n">pageCursor</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">)</span>
+<span class="linenos" data-linenos="478 "></span>            <span class="k">try</span><span class="p">:</span>
+<span class="linenos" data-linenos="479 "></span>                <span class="n">response</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">get_method</span><span class="p">)(</span><span class="n">endpoint</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+<span class="linenos" data-linenos="480 "></span>            <span class="k">except</span> <span class="n">ChunkedEncodingError</span><span class="p">:</span>
+<span class="linenos" data-linenos="481 "></span>                <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Error getting page with cursor &quot;</span><span class="si">{</span><span class="n">pageCursor</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">)</span>
+<span class="linenos" data-linenos="482 "></span>                <span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="linenos" data-linenos="483 "></span>                <span class="k">continue</span>
+<span class="linenos" data-linenos="484 "></span>            <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="linenos" data-linenos="485 "></span>            <span class="k">yield</span> <span class="n">data</span>
+<span class="linenos" data-linenos="486 "></span>            <span class="k">if</span> <span class="p">(</span>
+<span class="linenos" data-linenos="487 "></span>                <span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">==</span> <span class="nb">list</span>
+<span class="linenos" data-linenos="488 "></span>                <span class="ow">or</span> <span class="ow">not</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;nextPageCursor&#39;</span><span class="p">)</span>
+<span class="linenos" data-linenos="489 "></span>                <span class="ow">or</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;nextPageCursor&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="n">pageCursor</span>
+<span class="linenos" data-linenos="490 "></span>            <span class="p">):</span>
+<span class="linenos" data-linenos="491 "></span>                <span class="k">break</span>
+<span class="linenos" data-linenos="492 "></span>            <span class="n">pageCursor</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;nextPageCursor&#39;</span><span class="p">)</span>
+<span class="linenos" data-linenos="493 "></span>
+<span class="linenos" data-linenos="494 "></span>    <span class="k">def</span> <span class="nf">get_pagination_limit_20</span><span class="p">(</span>
+<span class="linenos" data-linenos="495 "></span>        <span class="bp">self</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="linenos" data-linenos="496 "></span>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+<span class="linenos" data-linenos="497 "></span><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="498 "></span><span class="sd">        Get a response from the Readwise Reader API with pagination and a rate limit</span>
+<span class="linenos" data-linenos="499 "></span><span class="sd">        of 20 requests per minute.</span>
+<span class="linenos" data-linenos="500 "></span>
+<span class="linenos" data-linenos="501 "></span><span class="sd">        Args:</span>
+<span class="linenos" data-linenos="502 "></span><span class="sd">            endpoint: API endpoint</span>
+<span class="linenos" data-linenos="503 "></span><span class="sd">            params: Query parameters</span>
+<span class="linenos" data-linenos="504 "></span><span class="sd">            page_size: Number of items per page</span>
+<span class="linenos" data-linenos="505 "></span><span class="sd">        Yields:</span>
+<span class="linenos" data-linenos="506 "></span><span class="sd">            Response data</span>
+<span class="linenos" data-linenos="507 "></span><span class="sd">        &#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="508 "></span>        <span class="k">yield from</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_pagination</span><span class="p">(</span><span class="s1">&#39;get_with_limit_20&#39;</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+<span class="linenos" data-linenos="509 "></span>
+<span class="linenos" data-linenos="510 "></span>    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{})</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
+<span class="linenos" data-linenos="511 "></span><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="512 "></span><span class="sd">        Make a POST request to the Readwise Reader API.</span>
 <span class="linenos" data-linenos="513 "></span>
-<span class="linenos" data-linenos="514 "></span>        <span class="k">if</span> <span class="n">saved_using</span><span class="p">:</span>
-<span class="linenos" data-linenos="515 "></span>            <span class="n">data</span><span class="p">[</span><span class="s1">&#39;saved_using&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">saved_using</span>
-<span class="linenos" data-linenos="516 "></span>
-<span class="linenos" data-linenos="517 "></span>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;/save/&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="linenos" data-linenos="514 "></span><span class="sd">        Args:</span>
+<span class="linenos" data-linenos="515 "></span><span class="sd">            endpoint: API endpoints</span>
+<span class="linenos" data-linenos="516 "></span><span class="sd">            data: Request body</span>
+<span class="linenos" data-linenos="517 "></span>
+<span class="linenos" data-linenos="518 "></span><span class="sd">        Returns:</span>
+<span class="linenos" data-linenos="519 "></span><span class="sd">            requests.Response</span>
+<span class="linenos" data-linenos="520 "></span><span class="sd">        &#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="521 "></span>        <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_url</span> <span class="o">+</span> <span class="n">endpoint</span>
+<span class="linenos" data-linenos="522 "></span>        <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Posting &quot;</span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s1">&quot; with data: </span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="linenos" data-linenos="523 "></span>        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_request</span><span class="p">(</span><span class="s1">&#39;POST&#39;</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+<span class="linenos" data-linenos="524 "></span>        <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+<span class="linenos" data-linenos="525 "></span>        <span class="k">return</span> <span class="n">response</span>
+<span class="linenos" data-linenos="526 "></span>
+<span class="linenos" data-linenos="527 "></span>    <span class="k">def</span> <span class="nf">create_document</span><span class="p">(</span>
+<span class="linenos" data-linenos="528 "></span>        <span class="bp">self</span><span class="p">,</span>
+<span class="linenos" data-linenos="529 "></span>        <span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<span class="linenos" data-linenos="530 "></span>        <span class="n">html</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="linenos" data-linenos="531 "></span>        <span class="n">should_clean_html</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="linenos" data-linenos="532 "></span>        <span class="n">title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="linenos" data-linenos="533 "></span>        <span class="n">author</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="linenos" data-linenos="534 "></span>        <span class="n">summary</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="linenos" data-linenos="535 "></span>        <span class="n">published_at</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="linenos" data-linenos="536 "></span>        <span class="n">image_url</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="linenos" data-linenos="537 "></span>        <span class="n">location</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;new&#39;</span><span class="p">,</span> <span class="s1">&#39;later&#39;</span><span class="p">,</span> <span class="s1">&#39;archive&#39;</span><span class="p">,</span> <span class="s1">&#39;feed&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;new&#39;</span><span class="p">,</span>
+<span class="linenos" data-linenos="538 "></span>        <span class="n">saved_using</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="linenos" data-linenos="539 "></span>        <span class="n">tags</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
+<span class="linenos" data-linenos="540 "></span>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
+<span class="linenos" data-linenos="541 "></span><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="542 "></span><span class="sd">        Create a document in Readwise Reader.</span>
+<span class="linenos" data-linenos="543 "></span>
+<span class="linenos" data-linenos="544 "></span><span class="sd">        Args:</span>
+<span class="linenos" data-linenos="545 "></span><span class="sd">            url: Document URL</span>
+<span class="linenos" data-linenos="546 "></span><span class="sd">            html: Document HTML</span>
+<span class="linenos" data-linenos="547 "></span><span class="sd">            should_clean_html: Whether to clean the HTML</span>
+<span class="linenos" data-linenos="548 "></span><span class="sd">            title: Document title</span>
+<span class="linenos" data-linenos="549 "></span><span class="sd">            author: Document author</span>
+<span class="linenos" data-linenos="550 "></span><span class="sd">            summary: Document summary</span>
+<span class="linenos" data-linenos="551 "></span><span class="sd">            published_at: Date and time the document was published</span>
+<span class="linenos" data-linenos="552 "></span><span class="sd">            image_url: An image URL to use as cover image</span>
+<span class="linenos" data-linenos="553 "></span><span class="sd">            location: Document location</span>
+<span class="linenos" data-linenos="554 "></span><span class="sd">            saved_using: How the document was saved</span>
+<span class="linenos" data-linenos="555 "></span><span class="sd">            tags: List of tags</span>
+<span class="linenos" data-linenos="556 "></span>
+<span class="linenos" data-linenos="557 "></span><span class="sd">        Returns:</span>
+<span class="linenos" data-linenos="558 "></span><span class="sd">            requests.Response</span>
+<span class="linenos" data-linenos="559 "></span><span class="sd">        &#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="560 "></span>        <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+<span class="linenos" data-linenos="561 "></span>            <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="n">url</span><span class="p">,</span>
+<span class="linenos" data-linenos="562 "></span>            <span class="s1">&#39;tags&#39;</span><span class="p">:</span> <span class="n">tags</span><span class="p">,</span>
+<span class="linenos" data-linenos="563 "></span>            <span class="s1">&#39;location&#39;</span><span class="p">:</span> <span class="n">location</span><span class="p">,</span>
+<span class="linenos" data-linenos="564 "></span>        <span class="p">}</span>
+<span class="linenos" data-linenos="565 "></span>
+<span class="linenos" data-linenos="566 "></span>        <span class="k">if</span> <span class="n">html</span><span class="p">:</span>
+<span class="linenos" data-linenos="567 "></span>            <span class="n">data</span><span class="p">[</span><span class="s1">&#39;html&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">html</span>
+<span class="linenos" data-linenos="568 "></span>
+<span class="linenos" data-linenos="569 "></span>        <span class="k">if</span> <span class="n">should_clean_html</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="linenos" data-linenos="570 "></span>            <span class="n">data</span><span class="p">[</span><span class="s1">&#39;should_clean_html&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">should_clean_html</span>
+<span class="linenos" data-linenos="571 "></span>
+<span class="linenos" data-linenos="572 "></span>        <span class="k">if</span> <span class="n">title</span><span class="p">:</span>
+<span class="linenos" data-linenos="573 "></span>            <span class="n">data</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">title</span>
+<span class="linenos" data-linenos="574 "></span>
+<span class="linenos" data-linenos="575 "></span>        <span class="k">if</span> <span class="n">author</span><span class="p">:</span>
+<span class="linenos" data-linenos="576 "></span>            <span class="n">data</span><span class="p">[</span><span class="s1">&#39;author&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">author</span>
+<span class="linenos" data-linenos="577 "></span>
+<span class="linenos" data-linenos="578 "></span>        <span class="k">if</span> <span class="n">summary</span><span class="p">:</span>
+<span class="linenos" data-linenos="579 "></span>            <span class="n">data</span><span class="p">[</span><span class="s1">&#39;summary&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">summary</span>
+<span class="linenos" data-linenos="580 "></span>
+<span class="linenos" data-linenos="581 "></span>        <span class="k">if</span> <span class="n">published_at</span><span class="p">:</span>
+<span class="linenos" data-linenos="582 "></span>            <span class="n">data</span><span class="p">[</span><span class="s1">&#39;published_at&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">published_at</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span>
+<span class="linenos" data-linenos="583 "></span>
+<span class="linenos" data-linenos="584 "></span>        <span class="k">if</span> <span class="n">image_url</span><span class="p">:</span>
+<span class="linenos" data-linenos="585 "></span>            <span class="n">data</span><span class="p">[</span><span class="s1">&#39;image_url&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">image_url</span>
+<span class="linenos" data-linenos="586 "></span>
+<span class="linenos" data-linenos="587 "></span>        <span class="k">if</span> <span class="n">saved_using</span><span class="p">:</span>
+<span class="linenos" data-linenos="588 "></span>            <span class="n">data</span><span class="p">[</span><span class="s1">&#39;saved_using&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">saved_using</span>
+<span class="linenos" data-linenos="589 "></span>
+<span class="linenos" data-linenos="590 "></span>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;/save/&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="linenos" data-linenos="591 "></span>
+<span class="linenos" data-linenos="592 "></span>    <span class="k">def</span> <span class="nf">get_documents</span><span class="p">(</span>
+<span class="linenos" data-linenos="593 "></span>        <span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="linenos" data-linenos="594 "></span>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">ReadwiseReaderDocument</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+<span class="linenos" data-linenos="595 "></span>        <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_pagination_limit_20</span><span class="p">(</span><span class="s1">&#39;/list/&#39;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">):</span>
+<span class="linenos" data-linenos="596 "></span>            <span class="k">for</span> <span class="n">document</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;results&#39;</span><span class="p">]:</span>
+<span class="linenos" data-linenos="597 "></span>                <span class="k">yield</span> <span class="n">ReadwiseReaderDocument</span><span class="p">(</span>
+<span class="linenos" data-linenos="598 "></span>                    <span class="nb">id</span><span class="o">=</span><span class="n">document</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">],</span>
+<span class="linenos" data-linenos="599 "></span>                    <span class="n">url</span><span class="o">=</span><span class="n">document</span><span class="p">[</span><span class="s1">&#39;url&#39;</span><span class="p">],</span>
+<span class="linenos" data-linenos="600 "></span>                    <span class="n">source_url</span><span class="o">=</span><span class="n">document</span><span class="p">[</span><span class="s1">&#39;source_url&#39;</span><span class="p">],</span>
+<span class="linenos" data-linenos="601 "></span>                    <span class="n">title</span><span class="o">=</span><span class="n">document</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">],</span>
+<span class="linenos" data-linenos="602 "></span>                    <span class="n">author</span><span class="o">=</span><span class="n">document</span><span class="p">[</span><span class="s1">&#39;author&#39;</span><span class="p">],</span>
+<span class="linenos" data-linenos="603 "></span>                    <span class="n">source</span><span class="o">=</span><span class="n">document</span><span class="p">[</span><span class="s1">&#39;source&#39;</span><span class="p">],</span>
+<span class="linenos" data-linenos="604 "></span>                    <span class="n">category</span><span class="o">=</span><span class="n">document</span><span class="p">[</span><span class="s1">&#39;category&#39;</span><span class="p">],</span>
+<span class="linenos" data-linenos="605 "></span>                    <span class="n">location</span><span class="o">=</span><span class="n">document</span><span class="p">[</span><span class="s1">&#39;location&#39;</span><span class="p">],</span>
+<span class="linenos" data-linenos="606 "></span>                    <span class="n">tags</span><span class="o">=</span><span class="n">document</span><span class="p">[</span><span class="s1">&#39;tags&#39;</span><span class="p">],</span>
+<span class="linenos" data-linenos="607 "></span>                    <span class="n">site_name</span><span class="o">=</span><span class="n">document</span><span class="p">[</span><span class="s1">&#39;site_name&#39;</span><span class="p">],</span>
+<span class="linenos" data-linenos="608 "></span>                    <span class="n">word_count</span><span class="o">=</span><span class="n">document</span><span class="p">[</span><span class="s1">&#39;word_count&#39;</span><span class="p">],</span>
+<span class="linenos" data-linenos="609 "></span>                    <span class="n">created_at</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromisoformat</span><span class="p">(</span><span class="n">document</span><span class="p">[</span><span class="s1">&#39;created_at&#39;</span><span class="p">]),</span>
+<span class="linenos" data-linenos="610 "></span>                    <span class="n">updated_at</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromisoformat</span><span class="p">(</span><span class="n">document</span><span class="p">[</span><span class="s1">&#39;updated_at&#39;</span><span class="p">]),</span>
+<span class="linenos" data-linenos="611 "></span>                    <span class="n">notes</span><span class="o">=</span><span class="n">document</span><span class="p">[</span><span class="s1">&#39;notes&#39;</span><span class="p">],</span>
+<span class="linenos" data-linenos="612 "></span>                    <span class="n">published_date</span><span class="o">=</span><span class="n">document</span><span class="p">[</span><span class="s1">&#39;published_date&#39;</span><span class="p">],</span>
+<span class="linenos" data-linenos="613 "></span>                    <span class="n">summary</span><span class="o">=</span><span class="n">document</span><span class="p">[</span><span class="s1">&#39;summary&#39;</span><span class="p">],</span>
+<span class="linenos" data-linenos="614 "></span>                    <span class="n">image_url</span><span class="o">=</span><span class="n">document</span><span class="p">[</span><span class="s1">&#39;image_url&#39;</span><span class="p">],</span>
+<span class="linenos" data-linenos="615 "></span>                    <span class="n">parent_id</span><span class="o">=</span><span class="n">document</span><span class="p">[</span><span class="s1">&#39;parent_id&#39;</span><span class="p">],</span>
+<span class="linenos" data-linenos="616 "></span>                    <span class="n">reading_progress</span><span class="o">=</span><span class="n">document</span><span class="p">[</span><span class="s1">&#39;reading_progress&#39;</span><span class="p">],</span>
+<span class="linenos" data-linenos="617 "></span>                <span class="p">)</span>
 </code></pre></div>
             </details>
 
@@ -784,21 +899,21 @@ https://readwise.io/reader_api</p>
 
           <details class="quote">
             <summary>Source code in <code>readwise/api.py</code></summary>
-            <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="365 "></span><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
-<span class="linenos" data-linenos="366 "></span>    <span class="bp">self</span><span class="p">,</span>
-<span class="linenos" data-linenos="367 "></span>    <span class="n">token</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-<span class="linenos" data-linenos="368 "></span><span class="p">):</span>
-<span class="linenos" data-linenos="369 "></span><span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="linenos" data-linenos="370 "></span><span class="sd">    Readwise Reader API client.</span>
-<span class="linenos" data-linenos="371 "></span>
-<span class="linenos" data-linenos="372 "></span><span class="sd">    Documentation for the Readwise Reader API can be found here:</span>
-<span class="linenos" data-linenos="373 "></span><span class="sd">    https://readwise.io/reader_api</span>
-<span class="linenos" data-linenos="374 "></span>
-<span class="linenos" data-linenos="375 "></span><span class="sd">    Args:</span>
-<span class="linenos" data-linenos="376 "></span><span class="sd">        token: Readwise Reader Connector token</span>
-<span class="linenos" data-linenos="377 "></span><span class="sd">    &#39;&#39;&#39;</span>
-<span class="linenos" data-linenos="378 "></span>    <span class="bp">self</span><span class="o">.</span><span class="n">_token</span> <span class="o">=</span> <span class="n">token</span>
-<span class="linenos" data-linenos="379 "></span>    <span class="bp">self</span><span class="o">.</span><span class="n">_url</span> <span class="o">=</span> <span class="s1">&#39;https://readwise.io/api/v3&#39;</span>
+            <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="371 "></span><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+<span class="linenos" data-linenos="372 "></span>    <span class="bp">self</span><span class="p">,</span>
+<span class="linenos" data-linenos="373 "></span>    <span class="n">token</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<span class="linenos" data-linenos="374 "></span><span class="p">):</span>
+<span class="linenos" data-linenos="375 "></span><span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="376 "></span><span class="sd">    Readwise Reader API client.</span>
+<span class="linenos" data-linenos="377 "></span>
+<span class="linenos" data-linenos="378 "></span><span class="sd">    Documentation for the Readwise Reader API can be found here:</span>
+<span class="linenos" data-linenos="379 "></span><span class="sd">    https://readwise.io/reader_api</span>
+<span class="linenos" data-linenos="380 "></span>
+<span class="linenos" data-linenos="381 "></span><span class="sd">    Args:</span>
+<span class="linenos" data-linenos="382 "></span><span class="sd">        token: Readwise Reader Connector token</span>
+<span class="linenos" data-linenos="383 "></span><span class="sd">    &#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="384 "></span>    <span class="bp">self</span><span class="o">.</span><span class="n">_token</span> <span class="o">=</span> <span class="n">token</span>
+<span class="linenos" data-linenos="385 "></span>    <span class="bp">self</span><span class="o">.</span><span class="n">_url</span> <span class="o">=</span> <span class="s1">&#39;https://readwise.io/api/v3&#39;</span>
 </code></pre></div>
           </details>
   </div>
@@ -1016,70 +1131,70 @@ https://readwise.io/reader_api</p>
 
           <details class="quote">
             <summary>Source code in <code>readwise/api.py</code></summary>
-            <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="454 "></span><span class="k">def</span> <span class="nf">create_document</span><span class="p">(</span>
-<span class="linenos" data-linenos="455 "></span>    <span class="bp">self</span><span class="p">,</span>
-<span class="linenos" data-linenos="456 "></span>    <span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-<span class="linenos" data-linenos="457 "></span>    <span class="n">html</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<span class="linenos" data-linenos="458 "></span>    <span class="n">should_clean_html</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<span class="linenos" data-linenos="459 "></span>    <span class="n">title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<span class="linenos" data-linenos="460 "></span>    <span class="n">author</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<span class="linenos" data-linenos="461 "></span>    <span class="n">summary</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<span class="linenos" data-linenos="462 "></span>    <span class="n">published_at</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<span class="linenos" data-linenos="463 "></span>    <span class="n">image_url</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<span class="linenos" data-linenos="464 "></span>    <span class="n">location</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;new&#39;</span><span class="p">,</span> <span class="s1">&#39;later&#39;</span><span class="p">,</span> <span class="s1">&#39;archive&#39;</span><span class="p">,</span> <span class="s1">&#39;feed&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;new&#39;</span><span class="p">,</span>
-<span class="linenos" data-linenos="465 "></span>    <span class="n">saved_using</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<span class="linenos" data-linenos="466 "></span>    <span class="n">tags</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
-<span class="linenos" data-linenos="467 "></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
-<span class="linenos" data-linenos="468 "></span><span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="linenos" data-linenos="469 "></span><span class="sd">    Create a document in Readwise Reader.</span>
-<span class="linenos" data-linenos="470 "></span>
-<span class="linenos" data-linenos="471 "></span><span class="sd">    Args:</span>
-<span class="linenos" data-linenos="472 "></span><span class="sd">        url: Document URL</span>
-<span class="linenos" data-linenos="473 "></span><span class="sd">        html: Document HTML</span>
-<span class="linenos" data-linenos="474 "></span><span class="sd">        should_clean_html: Whether to clean the HTML</span>
-<span class="linenos" data-linenos="475 "></span><span class="sd">        title: Document title</span>
-<span class="linenos" data-linenos="476 "></span><span class="sd">        author: Document author</span>
-<span class="linenos" data-linenos="477 "></span><span class="sd">        summary: Document summary</span>
-<span class="linenos" data-linenos="478 "></span><span class="sd">        published_at: Date and time the document was published</span>
-<span class="linenos" data-linenos="479 "></span><span class="sd">        image_url: An image URL to use as cover image</span>
-<span class="linenos" data-linenos="480 "></span><span class="sd">        location: Document location</span>
-<span class="linenos" data-linenos="481 "></span><span class="sd">        saved_using: How the document was saved</span>
-<span class="linenos" data-linenos="482 "></span><span class="sd">        tags: List of tags</span>
-<span class="linenos" data-linenos="483 "></span>
-<span class="linenos" data-linenos="484 "></span><span class="sd">    Returns:</span>
-<span class="linenos" data-linenos="485 "></span><span class="sd">        requests.Response</span>
-<span class="linenos" data-linenos="486 "></span><span class="sd">    &#39;&#39;&#39;</span>
-<span class="linenos" data-linenos="487 "></span>    <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
-<span class="linenos" data-linenos="488 "></span>        <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="n">url</span><span class="p">,</span>
-<span class="linenos" data-linenos="489 "></span>        <span class="s1">&#39;tags&#39;</span><span class="p">:</span> <span class="n">tags</span><span class="p">,</span>
-<span class="linenos" data-linenos="490 "></span>        <span class="s1">&#39;location&#39;</span><span class="p">:</span> <span class="n">location</span><span class="p">,</span>
-<span class="linenos" data-linenos="491 "></span>    <span class="p">}</span>
-<span class="linenos" data-linenos="492 "></span>
-<span class="linenos" data-linenos="493 "></span>    <span class="k">if</span> <span class="n">html</span><span class="p">:</span>
-<span class="linenos" data-linenos="494 "></span>        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;html&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">html</span>
-<span class="linenos" data-linenos="495 "></span>
-<span class="linenos" data-linenos="496 "></span>    <span class="k">if</span> <span class="n">should_clean_html</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="linenos" data-linenos="497 "></span>        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;should_clean_html&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">should_clean_html</span>
-<span class="linenos" data-linenos="498 "></span>
-<span class="linenos" data-linenos="499 "></span>    <span class="k">if</span> <span class="n">title</span><span class="p">:</span>
-<span class="linenos" data-linenos="500 "></span>        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">title</span>
-<span class="linenos" data-linenos="501 "></span>
-<span class="linenos" data-linenos="502 "></span>    <span class="k">if</span> <span class="n">author</span><span class="p">:</span>
-<span class="linenos" data-linenos="503 "></span>        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;author&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">author</span>
-<span class="linenos" data-linenos="504 "></span>
-<span class="linenos" data-linenos="505 "></span>    <span class="k">if</span> <span class="n">summary</span><span class="p">:</span>
-<span class="linenos" data-linenos="506 "></span>        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;summary&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">summary</span>
-<span class="linenos" data-linenos="507 "></span>
-<span class="linenos" data-linenos="508 "></span>    <span class="k">if</span> <span class="n">published_at</span><span class="p">:</span>
-<span class="linenos" data-linenos="509 "></span>        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;published_at&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">published_at</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span>
-<span class="linenos" data-linenos="510 "></span>
-<span class="linenos" data-linenos="511 "></span>    <span class="k">if</span> <span class="n">image_url</span><span class="p">:</span>
-<span class="linenos" data-linenos="512 "></span>        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;image_url&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">image_url</span>
-<span class="linenos" data-linenos="513 "></span>
-<span class="linenos" data-linenos="514 "></span>    <span class="k">if</span> <span class="n">saved_using</span><span class="p">:</span>
-<span class="linenos" data-linenos="515 "></span>        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;saved_using&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">saved_using</span>
-<span class="linenos" data-linenos="516 "></span>
-<span class="linenos" data-linenos="517 "></span>    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;/save/&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+            <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="527 "></span><span class="k">def</span> <span class="nf">create_document</span><span class="p">(</span>
+<span class="linenos" data-linenos="528 "></span>    <span class="bp">self</span><span class="p">,</span>
+<span class="linenos" data-linenos="529 "></span>    <span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<span class="linenos" data-linenos="530 "></span>    <span class="n">html</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="linenos" data-linenos="531 "></span>    <span class="n">should_clean_html</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="linenos" data-linenos="532 "></span>    <span class="n">title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="linenos" data-linenos="533 "></span>    <span class="n">author</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="linenos" data-linenos="534 "></span>    <span class="n">summary</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="linenos" data-linenos="535 "></span>    <span class="n">published_at</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="linenos" data-linenos="536 "></span>    <span class="n">image_url</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="linenos" data-linenos="537 "></span>    <span class="n">location</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;new&#39;</span><span class="p">,</span> <span class="s1">&#39;later&#39;</span><span class="p">,</span> <span class="s1">&#39;archive&#39;</span><span class="p">,</span> <span class="s1">&#39;feed&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;new&#39;</span><span class="p">,</span>
+<span class="linenos" data-linenos="538 "></span>    <span class="n">saved_using</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="linenos" data-linenos="539 "></span>    <span class="n">tags</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
+<span class="linenos" data-linenos="540 "></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
+<span class="linenos" data-linenos="541 "></span><span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="542 "></span><span class="sd">    Create a document in Readwise Reader.</span>
+<span class="linenos" data-linenos="543 "></span>
+<span class="linenos" data-linenos="544 "></span><span class="sd">    Args:</span>
+<span class="linenos" data-linenos="545 "></span><span class="sd">        url: Document URL</span>
+<span class="linenos" data-linenos="546 "></span><span class="sd">        html: Document HTML</span>
+<span class="linenos" data-linenos="547 "></span><span class="sd">        should_clean_html: Whether to clean the HTML</span>
+<span class="linenos" data-linenos="548 "></span><span class="sd">        title: Document title</span>
+<span class="linenos" data-linenos="549 "></span><span class="sd">        author: Document author</span>
+<span class="linenos" data-linenos="550 "></span><span class="sd">        summary: Document summary</span>
+<span class="linenos" data-linenos="551 "></span><span class="sd">        published_at: Date and time the document was published</span>
+<span class="linenos" data-linenos="552 "></span><span class="sd">        image_url: An image URL to use as cover image</span>
+<span class="linenos" data-linenos="553 "></span><span class="sd">        location: Document location</span>
+<span class="linenos" data-linenos="554 "></span><span class="sd">        saved_using: How the document was saved</span>
+<span class="linenos" data-linenos="555 "></span><span class="sd">        tags: List of tags</span>
+<span class="linenos" data-linenos="556 "></span>
+<span class="linenos" data-linenos="557 "></span><span class="sd">    Returns:</span>
+<span class="linenos" data-linenos="558 "></span><span class="sd">        requests.Response</span>
+<span class="linenos" data-linenos="559 "></span><span class="sd">    &#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="560 "></span>    <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+<span class="linenos" data-linenos="561 "></span>        <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="n">url</span><span class="p">,</span>
+<span class="linenos" data-linenos="562 "></span>        <span class="s1">&#39;tags&#39;</span><span class="p">:</span> <span class="n">tags</span><span class="p">,</span>
+<span class="linenos" data-linenos="563 "></span>        <span class="s1">&#39;location&#39;</span><span class="p">:</span> <span class="n">location</span><span class="p">,</span>
+<span class="linenos" data-linenos="564 "></span>    <span class="p">}</span>
+<span class="linenos" data-linenos="565 "></span>
+<span class="linenos" data-linenos="566 "></span>    <span class="k">if</span> <span class="n">html</span><span class="p">:</span>
+<span class="linenos" data-linenos="567 "></span>        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;html&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">html</span>
+<span class="linenos" data-linenos="568 "></span>
+<span class="linenos" data-linenos="569 "></span>    <span class="k">if</span> <span class="n">should_clean_html</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="linenos" data-linenos="570 "></span>        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;should_clean_html&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">should_clean_html</span>
+<span class="linenos" data-linenos="571 "></span>
+<span class="linenos" data-linenos="572 "></span>    <span class="k">if</span> <span class="n">title</span><span class="p">:</span>
+<span class="linenos" data-linenos="573 "></span>        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">title</span>
+<span class="linenos" data-linenos="574 "></span>
+<span class="linenos" data-linenos="575 "></span>    <span class="k">if</span> <span class="n">author</span><span class="p">:</span>
+<span class="linenos" data-linenos="576 "></span>        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;author&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">author</span>
+<span class="linenos" data-linenos="577 "></span>
+<span class="linenos" data-linenos="578 "></span>    <span class="k">if</span> <span class="n">summary</span><span class="p">:</span>
+<span class="linenos" data-linenos="579 "></span>        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;summary&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">summary</span>
+<span class="linenos" data-linenos="580 "></span>
+<span class="linenos" data-linenos="581 "></span>    <span class="k">if</span> <span class="n">published_at</span><span class="p">:</span>
+<span class="linenos" data-linenos="582 "></span>        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;published_at&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">published_at</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span>
+<span class="linenos" data-linenos="583 "></span>
+<span class="linenos" data-linenos="584 "></span>    <span class="k">if</span> <span class="n">image_url</span><span class="p">:</span>
+<span class="linenos" data-linenos="585 "></span>        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;image_url&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">image_url</span>
+<span class="linenos" data-linenos="586 "></span>
+<span class="linenos" data-linenos="587 "></span>    <span class="k">if</span> <span class="n">saved_using</span><span class="p">:</span>
+<span class="linenos" data-linenos="588 "></span>        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;saved_using&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">saved_using</span>
+<span class="linenos" data-linenos="589 "></span>
+<span class="linenos" data-linenos="590 "></span>    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;/save/&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
 </code></pre></div>
           </details>
   </div>
@@ -1171,19 +1286,290 @@ https://readwise.io/reader_api</p>
 
           <details class="quote">
             <summary>Source code in <code>readwise/api.py</code></summary>
-            <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="423 "></span><span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{})</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
-<span class="linenos" data-linenos="424 "></span><span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="linenos" data-linenos="425 "></span><span class="sd">    Make a GET request to the Readwise Reader API client.</span>
-<span class="linenos" data-linenos="426 "></span>
-<span class="linenos" data-linenos="427 "></span><span class="sd">    Args:</span>
-<span class="linenos" data-linenos="428 "></span><span class="sd">        endpoint: API endpoints</span>
-<span class="linenos" data-linenos="429 "></span><span class="sd">        params: Query parameters</span>
-<span class="linenos" data-linenos="430 "></span>
-<span class="linenos" data-linenos="431 "></span><span class="sd">    Returns:</span>
-<span class="linenos" data-linenos="432 "></span><span class="sd">        requests.Response</span>
-<span class="linenos" data-linenos="433 "></span><span class="sd">    &#39;&#39;&#39;</span>
-<span class="linenos" data-linenos="434 "></span>    <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Getting &quot;</span><span class="si">{</span><span class="n">endpoint</span><span class="si">}</span><span class="s1">&quot; with params: </span><span class="si">{</span><span class="n">params</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="linenos" data-linenos="435 "></span>    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+            <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="429 "></span><span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{})</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
+<span class="linenos" data-linenos="430 "></span><span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="431 "></span><span class="sd">    Make a GET request to the Readwise Reader API client.</span>
+<span class="linenos" data-linenos="432 "></span>
+<span class="linenos" data-linenos="433 "></span><span class="sd">    Args:</span>
+<span class="linenos" data-linenos="434 "></span><span class="sd">        endpoint: API endpoints</span>
+<span class="linenos" data-linenos="435 "></span><span class="sd">        params: Query parameters</span>
+<span class="linenos" data-linenos="436 "></span>
+<span class="linenos" data-linenos="437 "></span><span class="sd">    Returns:</span>
+<span class="linenos" data-linenos="438 "></span><span class="sd">        requests.Response</span>
+<span class="linenos" data-linenos="439 "></span><span class="sd">    &#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="440 "></span>    <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Getting &quot;</span><span class="si">{</span><span class="n">endpoint</span><span class="si">}</span><span class="s1">&quot; with params: </span><span class="si">{</span><span class="n">params</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="linenos" data-linenos="441 "></span>    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+</code></pre></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="readwise.api.ReadwiseReader.get_documents" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">get_documents</span><span class="p">(</span><span class="n">params</span><span class="o">=</span><span class="p">{})</span></code>
+
+<a href="#readwise.api.ReadwiseReader.get_documents" class="headerlink" title="Permanent link">⚑</a></h2>
+
+
+  <div class="doc doc-contents ">
+
+          <details class="quote">
+            <summary>Source code in <code>readwise/api.py</code></summary>
+            <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="592 "></span><span class="k">def</span> <span class="nf">get_documents</span><span class="p">(</span>
+<span class="linenos" data-linenos="593 "></span>    <span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="linenos" data-linenos="594 "></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">ReadwiseReaderDocument</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+<span class="linenos" data-linenos="595 "></span>    <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_pagination_limit_20</span><span class="p">(</span><span class="s1">&#39;/list/&#39;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">):</span>
+<span class="linenos" data-linenos="596 "></span>        <span class="k">for</span> <span class="n">document</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;results&#39;</span><span class="p">]:</span>
+<span class="linenos" data-linenos="597 "></span>            <span class="k">yield</span> <span class="n">ReadwiseReaderDocument</span><span class="p">(</span>
+<span class="linenos" data-linenos="598 "></span>                <span class="nb">id</span><span class="o">=</span><span class="n">document</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">],</span>
+<span class="linenos" data-linenos="599 "></span>                <span class="n">url</span><span class="o">=</span><span class="n">document</span><span class="p">[</span><span class="s1">&#39;url&#39;</span><span class="p">],</span>
+<span class="linenos" data-linenos="600 "></span>                <span class="n">source_url</span><span class="o">=</span><span class="n">document</span><span class="p">[</span><span class="s1">&#39;source_url&#39;</span><span class="p">],</span>
+<span class="linenos" data-linenos="601 "></span>                <span class="n">title</span><span class="o">=</span><span class="n">document</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">],</span>
+<span class="linenos" data-linenos="602 "></span>                <span class="n">author</span><span class="o">=</span><span class="n">document</span><span class="p">[</span><span class="s1">&#39;author&#39;</span><span class="p">],</span>
+<span class="linenos" data-linenos="603 "></span>                <span class="n">source</span><span class="o">=</span><span class="n">document</span><span class="p">[</span><span class="s1">&#39;source&#39;</span><span class="p">],</span>
+<span class="linenos" data-linenos="604 "></span>                <span class="n">category</span><span class="o">=</span><span class="n">document</span><span class="p">[</span><span class="s1">&#39;category&#39;</span><span class="p">],</span>
+<span class="linenos" data-linenos="605 "></span>                <span class="n">location</span><span class="o">=</span><span class="n">document</span><span class="p">[</span><span class="s1">&#39;location&#39;</span><span class="p">],</span>
+<span class="linenos" data-linenos="606 "></span>                <span class="n">tags</span><span class="o">=</span><span class="n">document</span><span class="p">[</span><span class="s1">&#39;tags&#39;</span><span class="p">],</span>
+<span class="linenos" data-linenos="607 "></span>                <span class="n">site_name</span><span class="o">=</span><span class="n">document</span><span class="p">[</span><span class="s1">&#39;site_name&#39;</span><span class="p">],</span>
+<span class="linenos" data-linenos="608 "></span>                <span class="n">word_count</span><span class="o">=</span><span class="n">document</span><span class="p">[</span><span class="s1">&#39;word_count&#39;</span><span class="p">],</span>
+<span class="linenos" data-linenos="609 "></span>                <span class="n">created_at</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromisoformat</span><span class="p">(</span><span class="n">document</span><span class="p">[</span><span class="s1">&#39;created_at&#39;</span><span class="p">]),</span>
+<span class="linenos" data-linenos="610 "></span>                <span class="n">updated_at</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromisoformat</span><span class="p">(</span><span class="n">document</span><span class="p">[</span><span class="s1">&#39;updated_at&#39;</span><span class="p">]),</span>
+<span class="linenos" data-linenos="611 "></span>                <span class="n">notes</span><span class="o">=</span><span class="n">document</span><span class="p">[</span><span class="s1">&#39;notes&#39;</span><span class="p">],</span>
+<span class="linenos" data-linenos="612 "></span>                <span class="n">published_date</span><span class="o">=</span><span class="n">document</span><span class="p">[</span><span class="s1">&#39;published_date&#39;</span><span class="p">],</span>
+<span class="linenos" data-linenos="613 "></span>                <span class="n">summary</span><span class="o">=</span><span class="n">document</span><span class="p">[</span><span class="s1">&#39;summary&#39;</span><span class="p">],</span>
+<span class="linenos" data-linenos="614 "></span>                <span class="n">image_url</span><span class="o">=</span><span class="n">document</span><span class="p">[</span><span class="s1">&#39;image_url&#39;</span><span class="p">],</span>
+<span class="linenos" data-linenos="615 "></span>                <span class="n">parent_id</span><span class="o">=</span><span class="n">document</span><span class="p">[</span><span class="s1">&#39;parent_id&#39;</span><span class="p">],</span>
+<span class="linenos" data-linenos="616 "></span>                <span class="n">reading_progress</span><span class="o">=</span><span class="n">document</span><span class="p">[</span><span class="s1">&#39;reading_progress&#39;</span><span class="p">],</span>
+<span class="linenos" data-linenos="617 "></span>            <span class="p">)</span>
+</code></pre></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="readwise.api.ReadwiseReader.get_pagination_limit_20" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">get_pagination_limit_20</span><span class="p">(</span><span class="n">endpoint</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{})</span></code>
+
+<a href="#readwise.api.ReadwiseReader.get_pagination_limit_20" class="headerlink" title="Permanent link">⚑</a></h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Get a response from the Readwise Reader API with pagination and a rate limit
+of 20 requests per minute.</p>
+
+
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>endpoint</code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>API endpoint</p>
+            </div>
+          </td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>params</code></td>
+          <td>
+                <code>dict</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>Query parameters</p>
+            </div>
+          </td>
+          <td>
+                <code>{}</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>page_size</code></td>
+          <td>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>Number of items per page</p>
+            </div>
+          </td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+
+  <p><strong>Yields:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+                <code>dict</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>Response data</p>
+            </div>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+          <details class="quote">
+            <summary>Source code in <code>readwise/api.py</code></summary>
+            <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="494 "></span><span class="k">def</span> <span class="nf">get_pagination_limit_20</span><span class="p">(</span>
+<span class="linenos" data-linenos="495 "></span>    <span class="bp">self</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="linenos" data-linenos="496 "></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+<span class="linenos" data-linenos="497 "></span><span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="498 "></span><span class="sd">    Get a response from the Readwise Reader API with pagination and a rate limit</span>
+<span class="linenos" data-linenos="499 "></span><span class="sd">    of 20 requests per minute.</span>
+<span class="linenos" data-linenos="500 "></span>
+<span class="linenos" data-linenos="501 "></span><span class="sd">    Args:</span>
+<span class="linenos" data-linenos="502 "></span><span class="sd">        endpoint: API endpoint</span>
+<span class="linenos" data-linenos="503 "></span><span class="sd">        params: Query parameters</span>
+<span class="linenos" data-linenos="504 "></span><span class="sd">        page_size: Number of items per page</span>
+<span class="linenos" data-linenos="505 "></span><span class="sd">    Yields:</span>
+<span class="linenos" data-linenos="506 "></span><span class="sd">        Response data</span>
+<span class="linenos" data-linenos="507 "></span><span class="sd">    &#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="508 "></span>    <span class="k">yield from</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_pagination</span><span class="p">(</span><span class="s1">&#39;get_with_limit_20&#39;</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+</code></pre></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="readwise.api.ReadwiseReader.get_with_limit_20" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">get_with_limit_20</span><span class="p">(</span><span class="n">endpoint</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{})</span></code>
+
+<a href="#readwise.api.ReadwiseReader.get_with_limit_20" class="headerlink" title="Permanent link">⚑</a></h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Get a response from the Readwise Reader API with a rate limit of 20 requests
+per minute.</p>
+
+
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>endpoint</code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>API endpoint</p>
+            </div>
+          </td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>params</code></td>
+          <td>
+                <code>dict</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>Query parameters</p>
+            </div>
+          </td>
+          <td>
+                <code>{}</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+                <code><a class="autorefs autorefs-external" href="https://docs.python-requests.org/en/master/api/#module-requests">requests</a>.<a class="autorefs autorefs-external" title="requests.Response" href="https://docs.python-requests.org/en/master/api/#requests.Response">Response</a></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>requests.Response</p>
+            </div>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+          <details class="quote">
+            <summary>Source code in <code>readwise/api.py</code></summary>
+            <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="443 "></span><span class="k">def</span> <span class="nf">get_with_limit_20</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{})</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
+<span class="linenos" data-linenos="444 "></span><span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="445 "></span><span class="sd">    Get a response from the Readwise Reader API with a rate limit of 20 requests</span>
+<span class="linenos" data-linenos="446 "></span><span class="sd">    per minute.</span>
+<span class="linenos" data-linenos="447 "></span>
+<span class="linenos" data-linenos="448 "></span><span class="sd">    Args:</span>
+<span class="linenos" data-linenos="449 "></span><span class="sd">        endpoint: API endpoint</span>
+<span class="linenos" data-linenos="450 "></span><span class="sd">        params: Query parameters</span>
+<span class="linenos" data-linenos="451 "></span><span class="sd">    Returns:</span>
+<span class="linenos" data-linenos="452 "></span><span class="sd">        requests.Response</span>
+<span class="linenos" data-linenos="453 "></span><span class="sd">    &#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="454 "></span>    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">endpoint</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
 </code></pre></div>
           </details>
   </div>
@@ -1275,22 +1661,22 @@ https://readwise.io/reader_api</p>
 
           <details class="quote">
             <summary>Source code in <code>readwise/api.py</code></summary>
-            <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="437 "></span><span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{})</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
-<span class="linenos" data-linenos="438 "></span><span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="linenos" data-linenos="439 "></span><span class="sd">    Make a POST request to the Readwise Reader API.</span>
-<span class="linenos" data-linenos="440 "></span>
-<span class="linenos" data-linenos="441 "></span><span class="sd">    Args:</span>
-<span class="linenos" data-linenos="442 "></span><span class="sd">        endpoint: API endpoints</span>
-<span class="linenos" data-linenos="443 "></span><span class="sd">        data: Request body</span>
-<span class="linenos" data-linenos="444 "></span>
-<span class="linenos" data-linenos="445 "></span><span class="sd">    Returns:</span>
-<span class="linenos" data-linenos="446 "></span><span class="sd">        requests.Response</span>
-<span class="linenos" data-linenos="447 "></span><span class="sd">    &#39;&#39;&#39;</span>
-<span class="linenos" data-linenos="448 "></span>    <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_url</span> <span class="o">+</span> <span class="n">endpoint</span>
-<span class="linenos" data-linenos="449 "></span>    <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Posting &quot;</span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s1">&quot; with data: </span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="linenos" data-linenos="450 "></span>    <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_request</span><span class="p">(</span><span class="s1">&#39;POST&#39;</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
-<span class="linenos" data-linenos="451 "></span>    <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
-<span class="linenos" data-linenos="452 "></span>    <span class="k">return</span> <span class="n">response</span>
+            <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="510 "></span><span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{})</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
+<span class="linenos" data-linenos="511 "></span><span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="512 "></span><span class="sd">    Make a POST request to the Readwise Reader API.</span>
+<span class="linenos" data-linenos="513 "></span>
+<span class="linenos" data-linenos="514 "></span><span class="sd">    Args:</span>
+<span class="linenos" data-linenos="515 "></span><span class="sd">        endpoint: API endpoints</span>
+<span class="linenos" data-linenos="516 "></span><span class="sd">        data: Request body</span>
+<span class="linenos" data-linenos="517 "></span>
+<span class="linenos" data-linenos="518 "></span><span class="sd">    Returns:</span>
+<span class="linenos" data-linenos="519 "></span><span class="sd">        requests.Response</span>
+<span class="linenos" data-linenos="520 "></span><span class="sd">    &#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="521 "></span>    <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_url</span> <span class="o">+</span> <span class="n">endpoint</span>
+<span class="linenos" data-linenos="522 "></span>    <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Posting &quot;</span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s1">&quot; with data: </span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="linenos" data-linenos="523 "></span>    <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_request</span><span class="p">(</span><span class="s1">&#39;POST&#39;</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+<span class="linenos" data-linenos="524 "></span>    <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+<span class="linenos" data-linenos="525 "></span>    <span class="k">return</span> <span class="n">response</span>
 </code></pre></div>
           </details>
   </div>

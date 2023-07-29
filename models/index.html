@@ -756,42 +756,42 @@
 
             <details class="quote">
               <summary>Source code in <code>readwise/models.py</code></summary>
-              <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="18 "></span><span class="nd">@dataclass</span>
-<span class="linenos" data-linenos="19 "></span><span class="k">class</span> <span class="nc">ReadwiseBook</span><span class="p">:</span>
-<span class="linenos" data-linenos="20 "></span><span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="linenos" data-linenos="21 "></span><span class="sd">    Represents a Readwise book.</span>
-<span class="linenos" data-linenos="22 "></span>
-<span class="linenos" data-linenos="23 "></span><span class="sd">    Attributes:</span>
-<span class="linenos" data-linenos="24 "></span><span class="sd">        id: The book&#39;s ID.</span>
-<span class="linenos" data-linenos="25 "></span><span class="sd">        title: The book&#39;s title.</span>
-<span class="linenos" data-linenos="26 "></span><span class="sd">        author: The book&#39;s author.</span>
-<span class="linenos" data-linenos="27 "></span><span class="sd">        category: The book&#39;s category.</span>
-<span class="linenos" data-linenos="28 "></span><span class="sd">        source: The book&#39;s source.</span>
-<span class="linenos" data-linenos="29 "></span><span class="sd">        num_highlights: The number of highlights for the book.</span>
-<span class="linenos" data-linenos="30 "></span><span class="sd">        last_highlight_at: The date and time of the last highlight for the book.</span>
-<span class="linenos" data-linenos="31 "></span><span class="sd">        updated: The date and time the book was last updated.</span>
-<span class="linenos" data-linenos="32 "></span><span class="sd">        cover_image_url: The URL of the book&#39;s cover image.</span>
-<span class="linenos" data-linenos="33 "></span><span class="sd">        highlights_url: The URL of the book&#39;s highlights.</span>
-<span class="linenos" data-linenos="34 "></span><span class="sd">        source_url: The URL of the book&#39;s source.</span>
-<span class="linenos" data-linenos="35 "></span><span class="sd">        asin: The book&#39;s ASIN.</span>
-<span class="linenos" data-linenos="36 "></span><span class="sd">        tags: The book&#39;s tags.</span>
-<span class="linenos" data-linenos="37 "></span><span class="sd">        document_note: The book&#39;s document note.</span>
-<span class="linenos" data-linenos="38 "></span><span class="sd">    &#39;&#39;&#39;</span>
-<span class="linenos" data-linenos="39 "></span>
-<span class="linenos" data-linenos="40 "></span>    <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span>
-<span class="linenos" data-linenos="41 "></span>    <span class="n">title</span><span class="p">:</span> <span class="nb">str</span>
-<span class="linenos" data-linenos="42 "></span>    <span class="n">author</span><span class="p">:</span> <span class="nb">str</span>
-<span class="linenos" data-linenos="43 "></span>    <span class="n">category</span><span class="p">:</span> <span class="nb">str</span>
-<span class="linenos" data-linenos="44 "></span>    <span class="n">source</span><span class="p">:</span> <span class="nb">str</span>
-<span class="linenos" data-linenos="45 "></span>    <span class="n">num_highlights</span><span class="p">:</span> <span class="nb">int</span>
-<span class="linenos" data-linenos="46 "></span>    <span class="n">last_highlight_at</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">|</span> <span class="kc">None</span>
-<span class="linenos" data-linenos="47 "></span>    <span class="n">updated</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">|</span> <span class="kc">None</span>
-<span class="linenos" data-linenos="48 "></span>    <span class="n">cover_image_url</span><span class="p">:</span> <span class="nb">str</span>
-<span class="linenos" data-linenos="49 "></span>    <span class="n">highlights_url</span><span class="p">:</span> <span class="nb">str</span>
-<span class="linenos" data-linenos="50 "></span>    <span class="n">source_url</span><span class="p">:</span> <span class="nb">str</span>
-<span class="linenos" data-linenos="51 "></span>    <span class="n">asin</span><span class="p">:</span> <span class="nb">str</span>
-<span class="linenos" data-linenos="52 "></span>    <span class="n">tags</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">ReadwiseTag</span><span class="p">]</span>
-<span class="linenos" data-linenos="53 "></span>    <span class="n">document_note</span><span class="p">:</span> <span class="nb">str</span>
+              <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="19 "></span><span class="nd">@dataclass</span>
+<span class="linenos" data-linenos="20 "></span><span class="k">class</span> <span class="nc">ReadwiseBook</span><span class="p">:</span>
+<span class="linenos" data-linenos="21 "></span><span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="22 "></span><span class="sd">    Represents a Readwise book.</span>
+<span class="linenos" data-linenos="23 "></span>
+<span class="linenos" data-linenos="24 "></span><span class="sd">    Attributes:</span>
+<span class="linenos" data-linenos="25 "></span><span class="sd">        id: The book&#39;s ID.</span>
+<span class="linenos" data-linenos="26 "></span><span class="sd">        title: The book&#39;s title.</span>
+<span class="linenos" data-linenos="27 "></span><span class="sd">        author: The book&#39;s author.</span>
+<span class="linenos" data-linenos="28 "></span><span class="sd">        category: The book&#39;s category.</span>
+<span class="linenos" data-linenos="29 "></span><span class="sd">        source: The book&#39;s source.</span>
+<span class="linenos" data-linenos="30 "></span><span class="sd">        num_highlights: The number of highlights for the book.</span>
+<span class="linenos" data-linenos="31 "></span><span class="sd">        last_highlight_at: The date and time of the last highlight for the book.</span>
+<span class="linenos" data-linenos="32 "></span><span class="sd">        updated: The date and time the book was last updated.</span>
+<span class="linenos" data-linenos="33 "></span><span class="sd">        cover_image_url: The URL of the book&#39;s cover image.</span>
+<span class="linenos" data-linenos="34 "></span><span class="sd">        highlights_url: The URL of the book&#39;s highlights.</span>
+<span class="linenos" data-linenos="35 "></span><span class="sd">        source_url: The URL of the book&#39;s source.</span>
+<span class="linenos" data-linenos="36 "></span><span class="sd">        asin: The book&#39;s ASIN.</span>
+<span class="linenos" data-linenos="37 "></span><span class="sd">        tags: The book&#39;s tags.</span>
+<span class="linenos" data-linenos="38 "></span><span class="sd">        document_note: The book&#39;s document note.</span>
+<span class="linenos" data-linenos="39 "></span><span class="sd">    &#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="40 "></span>
+<span class="linenos" data-linenos="41 "></span>    <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span>
+<span class="linenos" data-linenos="42 "></span>    <span class="n">title</span><span class="p">:</span> <span class="nb">str</span>
+<span class="linenos" data-linenos="43 "></span>    <span class="n">author</span><span class="p">:</span> <span class="nb">str</span>
+<span class="linenos" data-linenos="44 "></span>    <span class="n">category</span><span class="p">:</span> <span class="nb">str</span>
+<span class="linenos" data-linenos="45 "></span>    <span class="n">source</span><span class="p">:</span> <span class="nb">str</span>
+<span class="linenos" data-linenos="46 "></span>    <span class="n">num_highlights</span><span class="p">:</span> <span class="nb">int</span>
+<span class="linenos" data-linenos="47 "></span>    <span class="n">last_highlight_at</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">|</span> <span class="kc">None</span>
+<span class="linenos" data-linenos="48 "></span>    <span class="n">updated</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">|</span> <span class="kc">None</span>
+<span class="linenos" data-linenos="49 "></span>    <span class="n">cover_image_url</span><span class="p">:</span> <span class="nb">str</span>
+<span class="linenos" data-linenos="50 "></span>    <span class="n">highlights_url</span><span class="p">:</span> <span class="nb">str</span>
+<span class="linenos" data-linenos="51 "></span>    <span class="n">source_url</span><span class="p">:</span> <span class="nb">str</span>
+<span class="linenos" data-linenos="52 "></span>    <span class="n">asin</span><span class="p">:</span> <span class="nb">str</span>
+<span class="linenos" data-linenos="53 "></span>    <span class="n">tags</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">ReadwiseTag</span><span class="p">]</span>
+<span class="linenos" data-linenos="54 "></span>    <span class="n">document_note</span><span class="p">:</span> <span class="nb">str</span>
 </code></pre></div>
             </details>
 
@@ -962,34 +962,34 @@
 
             <details class="quote">
               <summary>Source code in <code>readwise/models.py</code></summary>
-              <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="56 "></span><span class="nd">@dataclass</span>
-<span class="linenos" data-linenos="57 "></span><span class="k">class</span> <span class="nc">ReadwiseHighlight</span><span class="p">:</span>
-<span class="linenos" data-linenos="58 "></span><span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="linenos" data-linenos="59 "></span><span class="sd">    Represents a Readwise highlight.</span>
-<span class="linenos" data-linenos="60 "></span>
-<span class="linenos" data-linenos="61 "></span><span class="sd">    Attributes:</span>
-<span class="linenos" data-linenos="62 "></span><span class="sd">        id: The highlight&#39;s ID.</span>
-<span class="linenos" data-linenos="63 "></span><span class="sd">        text: The highlight&#39;s text.</span>
-<span class="linenos" data-linenos="64 "></span><span class="sd">        note: The highlight&#39;s note.</span>
-<span class="linenos" data-linenos="65 "></span><span class="sd">        location: The highlight&#39;s location.</span>
-<span class="linenos" data-linenos="66 "></span><span class="sd">        location_type: The highlight&#39;s location type.</span>
-<span class="linenos" data-linenos="67 "></span><span class="sd">        url: The highlight&#39;s URL.</span>
-<span class="linenos" data-linenos="68 "></span><span class="sd">        color: The highlight&#39;s color.</span>
-<span class="linenos" data-linenos="69 "></span><span class="sd">        updated: The date and time the highlight was last updated.</span>
-<span class="linenos" data-linenos="70 "></span><span class="sd">        book_id: The ID of the book the highlight is from.</span>
-<span class="linenos" data-linenos="71 "></span><span class="sd">        tags: The highlight&#39;s tags.</span>
-<span class="linenos" data-linenos="72 "></span><span class="sd">    &#39;&#39;&#39;</span>
-<span class="linenos" data-linenos="73 "></span>
-<span class="linenos" data-linenos="74 "></span>    <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span>
-<span class="linenos" data-linenos="75 "></span>    <span class="n">text</span><span class="p">:</span> <span class="nb">str</span>
-<span class="linenos" data-linenos="76 "></span>    <span class="n">note</span><span class="p">:</span> <span class="nb">str</span>
-<span class="linenos" data-linenos="77 "></span>    <span class="n">location</span><span class="p">:</span> <span class="nb">int</span>
-<span class="linenos" data-linenos="78 "></span>    <span class="n">location_type</span><span class="p">:</span> <span class="nb">str</span>
-<span class="linenos" data-linenos="79 "></span>    <span class="n">url</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span>
-<span class="linenos" data-linenos="80 "></span>    <span class="n">color</span><span class="p">:</span> <span class="nb">str</span>
-<span class="linenos" data-linenos="81 "></span>    <span class="n">updated</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">|</span> <span class="kc">None</span>
-<span class="linenos" data-linenos="82 "></span>    <span class="n">book_id</span><span class="p">:</span> <span class="nb">str</span>
-<span class="linenos" data-linenos="83 "></span>    <span class="n">tags</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">ReadwiseTag</span><span class="p">]</span>
+              <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="57 "></span><span class="nd">@dataclass</span>
+<span class="linenos" data-linenos="58 "></span><span class="k">class</span> <span class="nc">ReadwiseHighlight</span><span class="p">:</span>
+<span class="linenos" data-linenos="59 "></span><span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="60 "></span><span class="sd">    Represents a Readwise highlight.</span>
+<span class="linenos" data-linenos="61 "></span>
+<span class="linenos" data-linenos="62 "></span><span class="sd">    Attributes:</span>
+<span class="linenos" data-linenos="63 "></span><span class="sd">        id: The highlight&#39;s ID.</span>
+<span class="linenos" data-linenos="64 "></span><span class="sd">        text: The highlight&#39;s text.</span>
+<span class="linenos" data-linenos="65 "></span><span class="sd">        note: The highlight&#39;s note.</span>
+<span class="linenos" data-linenos="66 "></span><span class="sd">        location: The highlight&#39;s location.</span>
+<span class="linenos" data-linenos="67 "></span><span class="sd">        location_type: The highlight&#39;s location type.</span>
+<span class="linenos" data-linenos="68 "></span><span class="sd">        url: The highlight&#39;s URL.</span>
+<span class="linenos" data-linenos="69 "></span><span class="sd">        color: The highlight&#39;s color.</span>
+<span class="linenos" data-linenos="70 "></span><span class="sd">        updated: The date and time the highlight was last updated.</span>
+<span class="linenos" data-linenos="71 "></span><span class="sd">        book_id: The ID of the book the highlight is from.</span>
+<span class="linenos" data-linenos="72 "></span><span class="sd">        tags: The highlight&#39;s tags.</span>
+<span class="linenos" data-linenos="73 "></span><span class="sd">    &#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="74 "></span>
+<span class="linenos" data-linenos="75 "></span>    <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span>
+<span class="linenos" data-linenos="76 "></span>    <span class="n">text</span><span class="p">:</span> <span class="nb">str</span>
+<span class="linenos" data-linenos="77 "></span>    <span class="n">note</span><span class="p">:</span> <span class="nb">str</span>
+<span class="linenos" data-linenos="78 "></span>    <span class="n">location</span><span class="p">:</span> <span class="nb">int</span>
+<span class="linenos" data-linenos="79 "></span>    <span class="n">location_type</span><span class="p">:</span> <span class="nb">str</span>
+<span class="linenos" data-linenos="80 "></span>    <span class="n">url</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span>
+<span class="linenos" data-linenos="81 "></span>    <span class="n">color</span><span class="p">:</span> <span class="nb">str</span>
+<span class="linenos" data-linenos="82 "></span>    <span class="n">updated</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">|</span> <span class="kc">None</span>
+<span class="linenos" data-linenos="83 "></span>    <span class="n">book_id</span><span class="p">:</span> <span class="nb">str</span>
+<span class="linenos" data-linenos="84 "></span>    <span class="n">tags</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">ReadwiseTag</span><span class="p">]</span>
 </code></pre></div>
             </details>
 
@@ -1072,17 +1072,17 @@
 
             <details class="quote">
               <summary>Source code in <code>readwise/models.py</code></summary>
-              <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 5 "></span><span class="nd">@dataclass</span>
-<span class="linenos" data-linenos=" 6 "></span><span class="k">class</span> <span class="nc">ReadwiseTag</span><span class="p">:</span>
-<span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="sd">&#39;&#39;&#39;Represents a Readwise tag.</span>
-<span class="linenos" data-linenos=" 8 "></span>
-<span class="linenos" data-linenos=" 9 "></span><span class="sd">    Attributes:</span>
-<span class="linenos" data-linenos="10 "></span><span class="sd">        id: The tag&#39;s ID.</span>
-<span class="linenos" data-linenos="11 "></span><span class="sd">        name: The tag&#39;s name.</span>
-<span class="linenos" data-linenos="12 "></span><span class="sd">    &#39;&#39;&#39;</span>
-<span class="linenos" data-linenos="13 "></span>
-<span class="linenos" data-linenos="14 "></span>    <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span>
-<span class="linenos" data-linenos="15 "></span>    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+              <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 6 "></span><span class="nd">@dataclass</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="k">class</span> <span class="nc">ReadwiseTag</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="sd">&#39;&#39;&#39;Represents a Readwise tag.</span>
+<span class="linenos" data-linenos=" 9 "></span>
+<span class="linenos" data-linenos="10 "></span><span class="sd">    Attributes:</span>
+<span class="linenos" data-linenos="11 "></span><span class="sd">        id: The tag&#39;s ID.</span>
+<span class="linenos" data-linenos="12 "></span><span class="sd">        name: The tag&#39;s name.</span>
+<span class="linenos" data-linenos="13 "></span><span class="sd">    &#39;&#39;&#39;</span>
+<span class="linenos" data-linenos="14 "></span>
+<span class="linenos" data-linenos="15 "></span>    <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span>
+<span class="linenos" data-linenos="16 "></span>    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
 </code></pre></div>
             </details>
 
