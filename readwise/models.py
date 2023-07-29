@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from datetime import datetime
+from typing import Any, Optional
 
 
 @dataclass
@@ -81,3 +82,26 @@ class ReadwiseHighlight:
     updated: datetime | None
     book_id: str
     tags: list[ReadwiseTag]
+
+
+@dataclass
+class ReadwiseReaderDocument:
+    id: str
+    url: str
+    source_url: str
+    title: str
+    author: str
+    source: str
+    category: str
+    location: str
+    tags: dict[str, Any]
+    site_name: str
+    word_count: int
+    created_at: datetime
+    updated_at: datetime
+    notes: str
+    published_date: str
+    summary: str
+    image_url: str
+    parent_id: Optional[str]
+    reading_progress: float

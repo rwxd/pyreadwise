@@ -4,8 +4,14 @@ from time import sleep
 from typing import Any, Generator, Literal
 
 import requests
+from requests.models import ChunkedEncodingError
 
-from readwise.models import ReadwiseBook, ReadwiseHighlight, ReadwiseTag
+from readwise.models import (
+    ReadwiseBook,
+    ReadwiseHighlight,
+    ReadwiseReaderDocument,
+    ReadwiseTag,
+)
 
 
 class ReadwiseRateLimitException(Exception):
@@ -434,6 +440,73 @@ class ReadwiseReader:
         logging.debug(f'Getting "{endpoint}" with params: {params}')
         return self._request('GET', endpoint, params=params)
 
+    def get_with_limit_20(self, endpoint: str, params: dict = {}) -> requests.Response:
+        '''
+        Get a response from the Readwise Reader API with a rate limit of 20 requests
+        per minute.
+
+        Args:
+            endpoint: API endpoint
+            params: Query parameters
+        Returns:
+            requests.Response
+        '''
+        return self.get(endpoint, params)
+
+    def _get_pagination(
+        self,
+        get_method: Literal['get', 'get_with_limit_20'],
+        endpoint: str,
+        params: dict = {},
+    ) -> Generator[dict, None, None]:
+        '''
+        Get a response from the Readwise Reader API with pagination.
+
+        Args:
+            get_method: Method to use for making requests
+            endpoint: API endpoint
+            params: Query parameters
+            page_size: Number of items per page
+        Yields:
+            dict: Response data
+        '''
+        pageCursor = None
+        while True:
+            if pageCursor:
+                params.update({'pageCursor': pageCursor})
+            logging.debug(f'Getting page with cursor "{pageCursor}"')
+            try:
+                response = getattr(self, get_method)(endpoint, params=params)
+            except ChunkedEncodingError:
+                logging.error(f'Error getting page with cursor "{pageCursor}"')
+                sleep(5)
+                continue
+            data = response.json()
+            yield data
+            if (
+                type(data) == list
+                or not data.get('nextPageCursor')
+                or data.get('nextPageCursor') == pageCursor
+            ):
+                break
+            pageCursor = data.get('nextPageCursor')
+
+    def get_pagination_limit_20(
+        self, endpoint: str, params: dict = {}
+    ) -> Generator[dict, None, None]:
+        '''
+        Get a response from the Readwise Reader API with pagination and a rate limit
+        of 20 requests per minute.
+
+        Args:
+            endpoint: API endpoint
+            params: Query parameters
+            page_size: Number of items per page
+        Yields:
+            Response data
+        '''
+        yield from self._get_pagination('get_with_limit_20', endpoint, params)
+
     def post(self, endpoint: str, data: dict = {}) -> requests.Response:
         '''
         Make a POST request to the Readwise Reader API.
@@ -515,3 +588,30 @@ class ReadwiseReader:
             data['saved_using'] = saved_using
 
         return self.post('/save/', data)
+
+    def get_documents(
+        self, params: dict = {}
+    ) -> Generator[ReadwiseReaderDocument, None, None]:
+        for data in self.get_pagination_limit_20('/list/', params=params):
+            for document in data['results']:
+                yield ReadwiseReaderDocument(
+                    id=document['id'],
+                    url=document['url'],
+                    source_url=document['source_url'],
+                    title=document['title'],
+                    author=document['author'],
+                    source=document['source'],
+                    category=document['category'],
+                    location=document['location'],
+                    tags=document['tags'],
+                    site_name=document['site_name'],
+                    word_count=document['word_count'],
+                    created_at=datetime.fromisoformat(document['created_at']),
+                    updated_at=datetime.fromisoformat(document['updated_at']),
+                    notes=document['notes'],
+                    published_date=document['published_date'],
+                    summary=document['summary'],
+                    image_url=document['image_url'],
+                    parent_id=document['parent_id'],
+                    reading_progress=document['reading_progress'],
+                )
