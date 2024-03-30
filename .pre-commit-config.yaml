@@ -12,7 +12,6 @@ repos:
       - id: no-commit-to-branch
       - id: trailing-whitespace
       - id: debug-statements
-      - id: double-quote-string-fixer
       - id: requirements-txt-fixer
 
   - repo: https://github.com/psf/black

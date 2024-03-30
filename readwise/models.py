@@ -5,12 +5,12 @@ from typing import Any, Optional
 
 @dataclass
 class ReadwiseTag:
-    '''Represents a Readwise tag.
+    """Represents a Readwise tag.
 
     Attributes:
         id: The tag's ID.
         name: The tag's name.
-    '''
+    """
 
     id: str
     name: str
@@ -18,7 +18,7 @@ class ReadwiseTag:
 
 @dataclass
 class ReadwiseBook:
-    '''
+    """
     Represents a Readwise book.
 
     Attributes:
@@ -36,7 +36,7 @@ class ReadwiseBook:
         asin: The book's ASIN.
         tags: The book's tags.
         document_note: The book's document note.
-    '''
+    """
 
     id: str
     title: str
@@ -56,7 +56,7 @@ class ReadwiseBook:
 
 @dataclass
 class ReadwiseHighlight:
-    '''
+    """
     Represents a Readwise highlight.
 
     Attributes:
@@ -70,7 +70,7 @@ class ReadwiseHighlight:
         updated: The date and time the highlight was last updated.
         book_id: The ID of the book the highlight is from.
         tags: The highlight's tags.
-    '''
+    """
 
     id: str
     text: str
