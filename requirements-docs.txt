@@ -1,5 +1,5 @@
 material-plausible-plugin==0.2.0
 material-plausible-plugin==0.2.0
 mkdocs==1.6.1
-mkdocs-material==9.5.38
-mkdocstrings[python]==0.26.1
+mkdocs-material==9.5.41
+mkdocstrings[python]==0.26.2
